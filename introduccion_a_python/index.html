@@ -7,7 +7,7 @@
     <title></title>
     <link rel="stylesheet" href="dist/reveal.css" />
     <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
-    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
 	<link rel="stylesheet" href="css/layout.css" />
 	<link rel="stylesheet" href="plugin/customcontrols/style.css">
 
@@ -84,72 +84,799 @@
   </head>
   <body>
     <div class="reveal">
-      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-# Introducción a Python
+### #### Introducción a la Programación (IP)
 
-Python es un lenguaje de programación de alto nivel, interpretado y de propósito general. Su diseño enfatiza la legibilidad del código y su sintaxis permite a los programadores expresar conceptos en menos líneas de código de las que serían posibles en lenguajes como C++ o Java.
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+N1 - Laboratorio 2
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-#### Características Principales
+### Función en matemáticas
 
-- **Fácil de aprender y usar**: Python tiene una sintaxis simple y elegante, lo que lo convierte en un excelente lenguaje para principiantes.
-- **Interpretable**: Python no requiere compilación, lo que permite un ciclo rápido de pruebas y desarrollo.
-- **Multiplataforma**: Funciona en varios sistemas operativos como Windows, macOS y Linux.
-- **Ampliamente soportado**: Posee una gran cantidad de bibliotecas y frameworks que cubren casi cualquier necesidad, desde desarrollo web hasta análisis de datos.
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+Una **función** en matemáticas se expresa como:
+
+`$f(x) = x^2$`
+
+- Toma un valor `x` como entrada.
+- Realiza una serie de operaciones.
+- Devuelve un valor como salida.
+- Básicamente, es una **caja negra** que recibe un valor y devuelve otro.
+
+`$ \text{Entrada (x)} \rightarrow f(x) \rightarrow \text{Salida (y)} $`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-# Instalación de Python
+### Función en Python
 
-### En Windows
-1. Descarga el instalador desde [python.org](https://www.python.org/).
-2. Durante la instalación, selecciona la opción "Add Python to PATH".
-
-### En macOS
-1. Abre Terminal y ejecuta:
-   ```bash
-   brew install python
-   ```
-
-### En Linux
-1. Abre tu terminal y ejecuta:
-   ```bash
-   sudo apt-get install python3
-   ```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+- Bloque de código reutilizable con nombre, diseñado para una tarea específica
+	- Puede recibir datos de entrada
+	- Puede producir un efecto 
+		- Ej. Reproducir una canción
+	- ó puede devolver resultados
+		- Ej. Un promedio
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-# Ejemplo de Código Simple
+# ¿Por qué necesitamos funciones?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Utilidad de las funciones (I)
+
+### Reutilización
+
+- Crear una vez, usar muchas veces
+- Evitar la duplicación de código
+- Reducir el riesgo de errores en múltiples ubicaciones
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Utilidad de las funciones (II)
+### Modularidad
+
+- Desglosar problemas grandes en piezas (partes) basadas en funciones
+
+<img src="Pasted image 20240815162053.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Utilidad de las funciones (III)
+### Aislamiento
+
+- Facilitar la prueba y depuración de bloques de código aislados
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Utilidad de las funciones (IV)
+
+### Legibilidad
+
+- Mejorar la legibilidad del código
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# ¿Qué tipos de funciones hay en Python?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Función integrada 
+#### (built-in function)
+
+- Predefinida en Python
+- No es necesario definirla para usarla
+- Hace parte de la librería de Python
+	- Contiene funciones de uso común
+- Ej: `type(...)`, `print(...)`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Función definida por el usuario  
+#### (user-defined function)
+
+- Definida por los programadores
+- Es una forma de extender el lenguaje y de enseñarle a Python:
+-  Cálculos/operaciones/procesos que inicialmente no sabía hacer
+- Hay una sintaxis para definir (declarar) una función
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# ¿Cómo se ve una Función en Python?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de Estructura de una Función
 
 ```python
-print("¡Hola, Mundo!")
+def nombre_funcion(par1: tipo, ...) -> tipo_de_retorno:
+    # Cuerpo de la función
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `def`
+
+```python
+def nombre_funcion(par1: tipo, ...) -> tipo_de_retorno:
+    # Cuerpo de la función
 ```
 
-- Este código imprime "¡Hola, Mundo!" en la pantalla.
-- Es el primer programa que generalmente se escribe al aprender un nuevo lenguaje de programación.
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+- `def` Palabra clave usada en Python para definir una función
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-# Recursos Adicionales
+### Signatura (I)
 
-- **Documentación oficial**: [docs.python.org](https://docs.python.org/)
-- **Tutoriales interactivos**: [learnpython.org](https://www.learnpython.org/)
-- **Cursos en línea**: [Coursera](https://www.coursera.org/courses?query=python), [edX](https://www.edx.org/learn/python)
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+```python
+def nombre_funcion(par1: tipo, ...) -> tipo_de_retorno:
+    # Cuerpo de la función
+```
+
+- `nombre_funcion(par1: tipo, ...) -> tipo_de_retorno:` : a todo este encabezado se le denomina *signatura*
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-# Preguntas
+### Signatura (II)
 
-¿Tienes alguna pregunta sobre Python?
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+```python
+nombre_funcion(par1: tipo, ...) -> tipo_de_retorno:
+```
+
+- nombre_funcion: Identificador único de la función
+- Lista de parámetros: Vacía o con múltiples parámetros
+- Tipo de retorno: El tipo de dato que la función espera retornar
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-# Fin de la Presentación
+### Nombre de la función
 
-¡Gracias por tu atención!
+- El nombre de una función es un *identificador*
+	- Identificador: Nombre textual dado a una variable, función (y otros elementos en Python)
+    
+- Hay reglas que aplican a identificadores en Python
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Reglas para Identificadores en Python
+
+- Sensible a mayúsculas y minúsculas
+- Debe comenzar con una letra o guión bajo: 
+	- (a-z, A-Z) o _
+- Solo puede contener 
+	- letras (a-z, A-Z), 
+	- dígitos (0-9) 
+	- y guiones bajos _
+- No debe contener caracteres especiales 
+	- Ej: -, !, @, #, $, %, etc.
+- No debe contener espacios 
+	- En su lugar, use guiones bajos _
+- No puede ser una palabra clave de Python
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Nombre de la Función - Convenciones
+
+- Por convención usar `snake_case`
+- Ej: `ordenar_nombres`
+- Siempre usar
+	- Nombre concisos y **auto explicativos**
+- Evitar usar
+	- Nombres largos y confusos
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Parámetros
+
+```python
+(par1: tipo, ...)
+```
+
+- **Parámetro**: Espacio reservado para una variable de entrada
+
+	- Utilizado para datos de entrada
+	- Una función puede tener cero o cualquier número y tipo de parámetros
+	- La lista de parámetros está siempre en paréntesis
+	- Cada parámetro tiene su tipo
+	- Si hay múltiples parámetros, se separan con coma
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tipo de retorno
+
+```python
+-> tipo_de_retorno:
+```
+
+- Tipo de retorno: El tipo de dato que la función espera retornar
+- Si la función no retorna nada
+	- El tipo debe ser `None`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `None`
+
+- Palabra clave que representa la ausencia de valor o valor nulo
+
+- Valor retornado implícitamente si la función no retorna explícitamente un valor
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Cuerpo (I)
+
+```python
+def nombre_funcion(par1: tipo, ...) -> tipo_de_retorno:
+    # Cuerpo de la función
+```
+
+- **Cuerpo**: *Bloque de código* que contiene las instrucciones que hacen parte de la función
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Bloque de código
+
+- Grupo de instrucciones relacionadas
+	- Marcado por una *indentación* idéntica
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Indentación
+
+- Es iniciar una línea de código con espacios en blanco
+- Por convención
+	- Se usa 4 espacios en blanco
+
+```python
+def nombre_funcion(par1: tipo, ...) -> tipo_de_retorno:
+    # El cuerpo de la función está indentado
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Cuerpo (II)
+
+```python
+def nombre_funcion(par1: tipo, ...) -> tipo_de_retorno:
+    # Aquí inicia la función
+    # Instrucción 1
+    # Instrucción 1
+    ...
+    # Instrucción n
+    # Aquí termina la función
+
+# Esto ya no es parte de la función
+# Ya no está indentado
+```
+
+- El cuerpo puede contener una o varias líneas
+- El cuerpo inicia con la primera línea identada
+- El cuerpo termina con la última línea identada
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### return (I)
+
+```python
+def nombre_funcion(par1: tipo, ...) -> tipo_de_retorno:
+    return  # expresión
+```
+
+- `return`: Palabra clave que permite a la función retornar un resultado
+    
+- Sintaxis: `return expresión`
+	- `return` es opcional
+		- Si no se incluye, la función retorna `None`
+- `expresión` es opcional
+	- Si no se incluye, la función retorna None
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Definición de una Función en Python
+
+### Ejemplo de definición
+
+```python
+def suma(a: int, b: int) -> int:
+    return a + b
+```
+
+El anterior código define la función `suma(...)`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### return (II)
+
+```python
+def suma(a: int, b: int) -> int:
+    return a + b
+```
+
+- En este ejemplo se usa `return expresión`
+	- En donde la expresión es: `a + b`
+- La expresión se resolverá a un valor
+	- Se sumará `a` y  `b`
+- El valor resultante se retornará
+	- *Valor de retorno*
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (I)
+
+```python
+def suma(a: int, b: int) -> int:
+    return a + b
+```
+- ¿Para qué  sirve la palabra clave `def`? 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Para declarar una función
+	
+- ¿Cuál es el nombre de la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->`suma`
+	
+- ¿Cuántos parámetros tiene la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->2
+	
+- ¿De qué tipo son los parámetros tiene la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Los dos son `int`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (II)
+- ¿Cuántas líneas tiene el cuerpo de la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Una
+	
+- ¿Qué hace el cuerpo de la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Suma aritmeticamente a `a` y  `b`
+	
+- ¿Qué retorna la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->La suma de `a` y  `b`
+	
+- ¿Cuál es el tipo de retorno de la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->`int`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Invocación a una Función
+
+Una vez la función ha sido definida:
+```python
+def suma(a: int, b: int) -> int:
+    return a + b
+```
+
+Se puede *invocar*:
+`suma(2, 2)`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Invocación
+- Llamar a una función
+- La invocación se hace usando el nombre de la función
+- La función debe existir
+- Se usa paréntesis en la invocación
+
+```python
+def suma(a: int, b: int) -> int:
+    return a + b
+```
+
+```python
+suma(2, 2)  # Se invoca a la función suma(...)
+```
+
+- `2`, `2` son los *argumentos* con los que se llama a la función `suma(...)`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Argumentos
+- Valor que se da un parámetro al invocar la función
+- Si hay múltiples
+	- se separan con coma
+- Si hay múltiples argumentos
+	- El orden importa
+    
+```python
+def suma(a: int, b: int) -> int:
+    return a + b
+```
+
+```python
+suma(4, 6)  # a -> 4, b -> 6
+```
+
+- `4`, `6` son los *argumentos* con los que se invoca a la función `suma(...)`
+
+- Al invocar a la función
+	- Esta se *ejecuta*
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejecución de la Función (I)
+- Al invocar correctamente a una función
+	- Esta se ejecutará
+		- Los argumentos serán el valor de los parámetros
+		- El cuerpo de la función se ejecutará
+
+```python
+def suma(a: int, b: int) -> int:
+    return a + b
+```
+
+```python
+suma(5, 5)  # suma retornaría 10 `
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejecución de la Función (II)
+<img src="Screenshot 2024-08-15 at 5.51.14 PM.png" alt="" style="object-fit: scale-down">
+
+
+- `suma(3, 3)` invoca a la función `suma(...)`
+- Los argumentos `3`, `3` se pasan como valores
+	- A los parámetros de la función `a`, `b`
+- El cuerpo de `suma(...)` se ejecuta
+	- `return a + b`
+- La función `suma(...)` retorna
+- El valor de retorno (6) se asigna a `resultado`
+	- `resultado` será igual a 6
+ - Se invoca a la función `print(...)` 
+	 - Usando como argumento `resultado` (6)
+ - Se imprime `resultado` -> 6
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Definir vs. Invocar Funciones
+
+- **Definir**:  se define una sola vez
+
+  ```python
+  def saludar(nombre: str) -> str:
+      return "Hola " + nombre
+  ```
+
+- **Invocar**:  se puede invocar n veces
+
+```python
+  nombre = "Eduardo"
+  mensaje = saludar(nombre)
+  print(mensaje)  # Imprime "Hola Eduardo"
+  
+  nombre = "Ejemplo"
+  mensaje = saludar(nombre)
+  print(mensaje)  # Imprime "Hola Ejemplo"
+  ```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Documentación de Funciones
+
+- Explican el propósito de la función
+	- Alineado con [PEP 257](https://peps.python.org/pep-0257/)
+    
+- Documentación encerrada en comillas triples 
+	- `'''` ó `"""`
+- Típicamente incluyen:
+	- Descripción/propósito
+	- Parámetros
+		- Nombre, tipo, descripción, valor por defecto (si lo hay)
+	- Valor de retorno
+		- Nombre (si se nombra), tipo y descripción
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Resumen: Funciones
+    
+<img src="Screenshot 2024-08-15 at 6.16.25 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Encadenamiento de Funciones
+
+- Ejecutar múltiples funciones en secuencia
+
+- Mejora la modularidad
+  - Aumenta la legibilidad
+
+- La salida de una función → Entrada de otra función
+  - Todo en una sola línea
+
+- Los tipos deben ser compatibles entre funciones
+
+- El orden del encadenamiento es clave
+```python
+result = function1(function2(function3(data)))`
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de Encadenamiento de Funciones
+
+  ```python
+  def suma(a: int, b: int) -> int:
+    return a + b
+  ```
+
+  ```python
+  print(suma(5, 5))
+  # Primero se ejecuta la función suma(...)
+    # Esta retorna un int (10) 
+  # Luego se ejecuta la función print(...)
+    # A la cual se le pasa como argumento
+      # La salida de la función suma(...)
+  # Se imprime: 10
+  ```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#  Funciones Integradas Útiles en N1-LAB2
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `help(...)`
+
+- Proporciona información de ayuda de objetos, módulos, funciones, etc.
+
+- Sintaxis: `help(objeto)`
+  - `objeto`: puede ser un objeto, módulo, función, método, etc.
+
+- Retorna la documentación relevante si está disponible
+
+- Ejemplos:
+  ```python
+  help(type)  # → Muestra la ayuda de la función type(...)
+  help()  # → Modo de ayuda interactivo, escribe 'quit' para salir
+  ```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `print(...)`
+
+- Muestra información en la consola
+
+- Sintaxis: `print(*elementos, sep=' ', end='\n', ...)`
+  - `elementos`: Elementos a imprimir
+  - `sep`: Separador entre elementos (por defecto, espacio)
+  - `end`: Carácter al final de la línea (por defecto, nueva línea)
+
+- `help(print)` para más información
+
+- Útil para mostrar resultados, mensajes de error y depurar
+
+- Ejemplos:
+  ```python
+  print('Hola, mundo!')  # → Hola, mundo!
+  print('Nombre:', 'Isaac Newton')  # → Nombre: Isaac Newton
+  ```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `round(...)`
+
+- Redondea un número a un número específico de decimales
+
+- Sintaxis: `round(numero[, ndigits])`  
+	- `# [] significa: opcional`
+  - `numero`: Un número flotante
+  - `ndigits` (opcional): Número de decimales a los que redondear
+    - Si se omite, se redondea al entero más cercano
+
+- `help(round)` para más información
+
+- Ejemplos:
+  ```python
+  1 / 3  # → 0.3333333333333333 (no redondeado)
+  round(1/3)  # → 0 (redondea al entero más cercano)
+  round(1/3, 2)  # → 0.33 (redondea a dos posiciones decimales)
+  ```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#  ¡Vamos a la Práctica!
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Inicie Sesión en Senecode
+
+- Vaya a [Senecode](https://senecode.virtual.uniandes.edu.co/)
+- Inicie sesión con su usuario y clave Uniandes
+
+<img src="Screenshot 2024-08-15 at 6.35.41 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Desarrolle la Primera Tarea (I)
+
+- Busque y haga click en la '**Tarea N1 - Tarea 1**':
+
+<img src="Screenshot 2024-08-15 at 6.39.51 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Desarrolle la Primera Tarea (II)
+
+- La tarea se compone de 10 ejercicios:
+	- Altura de una persona (1 pts.)
+	- Volumen de un cilindro (1 pts.)
+	- Área de una habitación (1 pts.)
+	- Tiempo de descarga (1 pts.)
+	- Unidades de tiempo a segundos (1 pts.)
+	- Tarifa de un taxi (1 pts.)
+	- Suma de los primeros n enteros positivos (1 pts.)
+	- Índice de masa corporal (2 pts.)
+	- Eficiencia de combustible (2 pts.)
+	- Caída libre (2 pts.)
+	
+- La calificación de la tarea, corresponde al **1%** de la nota del Nivel 1
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Desarrolle la Primera Tarea (III)
+
+- Haga click en uno de los 10 ejercicios
+- Tomemos como ejemplo:
+	- **Volumen de un cilindro**
+- Haga click sobre este ejercicio
+
+<img src="Screenshot 2024-08-15 at 6.48.44 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Desarrolle la Primera Tarea (IV)
+
+- Se mostrará:
+  - Descripción del problema
+  - Función requerida
+	  - Especificación
+
+<img src="Screenshot 2024-08-15 at 6.50.52 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Desarrolle la Primera Tarea (V)
+
+- Siga el **Proceso de Desarrollo de Software:*
+
+- **Análisis​**
+	- Entender y especificar el problema​
+	- Comprensión de lectura​
+    
+- *Diseño*​
+	- Detallar la solución​
+	- Dividir el problema en subproblemas​
+	- Diseñar algoritmos ​
+	- 
+- *Construcción​*
+	- Implementar el diseño/algoritmo​
+		- Codificar​
+	- Probar la solución​
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Análisis
+
+- **Entienda el problema**
+​
+- Determine los requisitos:​
+- 
+	- ¿Qué **datos de entrada** se requieren?​
+		- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Dos números decimales positivos
+		
+	- ¿Cuál sería la **salida** producida?​
+		- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->El volumen del cilindro
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Diseño (I)
+
+- **Detalle la solución**
+​
+- ¿Cuál será el **nombre** de la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Ej: `volumen_cilindro`
+
+- ¿Qué **parámetros** tendrá la función?​
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->`radio`
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->`altura`
+	
+- ¿De qué tipo serán los **parámetros** tendrá la función?​
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Los dos serán  `float`
+	
+- ¿Qué tipo de retorno tendrá la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->`float`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Desarrolle la Primera Tarea (VI)
+
+- Haga click en 'Nuevo envío'
+
+<img src="Screenshot 2024-08-15 at 7.06.18 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Desarrolle la Primera Tarea (VII)
+
+- Revise el esqueleto que senecode le muestra
+	- ¿Se corresponde este con su análisis?
+	- ¿Se corresponde este con su diseño?
+- Si es así, continúe
+- Caso contrario
+	- **Repita el análisis y el diseño**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Desarrolle la Primera Tarea (VIII)
+
+ - Copie el código de senecode a Spyder
+- Reemplace la palabra `pass` por su implementación de la función
+
+<img src="Screenshot 2024-08-15 at 7.09.19 PM.png" alt="" style="object-fit: scale-down">
+
+
+- Una vez termine la implementación en Spyder
+	- Copie su implementación a senecode
+- Click en 'Subir solución' para enviarla
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Desarrolle la Primera Tarea (IX)
+
+- La revisión sintáctica debe ser exitosa
+
+<img src="Screenshot 2024-08-15 at 7.11.11 PM.png" alt="" style="object-fit: scale-down">
+
+
+- Si la revisión sintáctica falla
+	- Resuelva el error en su código
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Desarrolle la Primera Tarea (X)
+
+- Click en 'Enviar solución' para enviar la solución
+
+<img src="Screenshot 2024-08-15 at 7.11.11 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Desarrolle la Primera Tarea (XI)
+
+- Espere unos segundos a que senecode califique
+
+<img src="Screenshot 2024-08-15 at 7.14.04 PM.png" alt="" style="object-fit: scale-down">
+
+
+- Luego, refresque la página o haga click en 'Ver envío'
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Desarrolle la Primera Tarea (XII)
+
+- La retroalimentación **NO** debe mostrar errores
+
+<img src="Screenshot 2024-08-15 at 7.15.55 PM.png" alt="" style="object-fit: scale-down">
+
+
+- Si hay errores, debe corregirlos
+	- E intentar un nuevo envío
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Desarrolle la Primera Tarea (XIII)
+
+- Repita el proceso anterior
+	- Resolviendo los **9** ejercicios restantes
+- Fecha límite de entrega:
+	- **20/8/2024 23:00**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### **¿Necesita ayuda?**
+- Para ayuda, levante la mano ​
+
+- Nuestros nombres:​
+	- *Eduardo*​
+	- *Joshua​*
+	- *Juan José*​
 </div></script></section></div>
     </div>
 
