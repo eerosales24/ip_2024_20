@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Índice General
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+- [**Nivel 1**](https://eerosales24.github.io/ip_2024_20/indice/#2)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+- Nivel 2 (en construcción)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+- Nivel 3 (en construcción)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+- Nivel 4 (en construcción)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Nivel 1 - Clases (I)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+[Introducción](https://eerosales24.github.io/ip_2024_20/n1/n1_0_introduccion/#/)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+1. [Descubriendo el mundo de la programación](https://eerosales24.github.io/ip_2024_20/n1/n1_01_descubriendo_el_mundo_de_la_programacion/#/)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+2. [Valores y tipos de datos](https://eerosales24.github.io/ip_2024_20/n1/n1_02_valores_y_tipos_de_datos/#/)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+3. [Variables, asignación y tipado dinámico](https://eerosales24.github.io/ip_2024_20/n1/n1_03_variables_asignación_y_tipado_dinamico/#/)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+4. [Expresiones, operadores aritméticos y operaciones sobre strings](https://eerosales24.github.io/ip_2024_20/n1/n1_04_expresiones_operadores_aritmeticos_y_operaciones_sobre_strings/#/)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+### Nivel 1 - Clases (II)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+5. [Conversión de tipos](https://eerosales24.github.io/ip_2024_20/n1/n1_05_conversion_de_tipos/#/)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+6. [Funciones matemáticas y de entrada y salida](https://eerosales24.github.io/ip_2024_20/n1/n1_06_funciones_de_python_matematicas_y_de_entrada_salida/#/)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+7. [Funciones y Variables Locales](https://eerosales24.github.io/ip_2024_20/n1/n1_07_funciones_y_variables_locales/#/)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+8. Estilo de programación (en construcción)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+9. Construcción e importación de módulos (en construcción)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+10. Separación entre Interfaz de Usuario y Lógica del Programa  (en construcción)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+### Nivel 1 - Laboratorios
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+- [N1-L1: Ambientes básicos de trabajo](https://eerosales24.github.io/ip_2024_20/n1/n1_l1/n1_l1.pdf)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+- [N1_L2: Senecode](https://eerosales24.github.io/ip_2024_20/n1/n1_l2/#/)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+### Introducción a la Programación (IP)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+Sección 15 - 2024-20
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+[Eduardo Rosales](mailto:ee.rosales24@uniandes.edu.co)
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+Departamento de Ingeniería de Sistemas y Computación
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+Universidad de los Andes
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+
+
+<!-- .slide: class="has-dark-background" data-background-color="#2E3440" -->
+<img src="copyright.png" alt="" style="object-fit: scale-down">
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
