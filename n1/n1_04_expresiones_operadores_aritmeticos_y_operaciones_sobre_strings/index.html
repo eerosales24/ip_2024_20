@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Introducción a la Programación (IP)
+
+**Expresiones, Operadores Aritméticos y  
+Operaciones sobre Strings**
+
+[Eduardo Rosales](mailto:ee.rosales24@uniandes.edu.co)
+
+Departamento de Ingeniería de Sistemas y Computación
+
+Universidad de los Andes
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Expresión
+-   Sintaxis *evaluable* que produce un valor
+-   Se compone de 
+	- Un elemento único
+	- Ó una combinación de 
+		- Valores
+		- Variables
+		- Operadores, etc.
+-   Ej:
+
+```Python
+2  # → 2 (un valor)
+
+100 - 30 / (7 - 6)  
+# → 70.0 (valores y operadores)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (I)
+
+- ¿Cuál es el valor retornado por cada expresión?
+
+```Python
+10_000
+.14
+'Uniandes'
+100 - 50
+2.0 + 2.0
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (I)
+
+- Respuesta:
+
+```Python
+10_000  # → 10000
+.14  # → 0.14
+'Uniandes'  # → 'Uniandes'
+100 - 50  # → 50
+2.0 + 2.0  # → 4.0
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Expresiones y Variables (I)
+- El valor resultante de la expresión
+	- Se puede asignar a una variable
+-   Sintaxis: `variable = Expresion`
+	- `variable`: Un identificador Python válido
+	- `Expresion`: Una expresión
+-   ¿Cómo funciona?
+	- Primero se  evalúa la expresión
+		- Resultando en un valor
+	- Luego, se asigna ese valor a la variable
+		- Python no retorna nada
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Expresiones y Variables - Ejemplos
+- **Notación**: 
+	- El comentario muestra el identificador 
+		- y luego el valor que le es asignado
+	
+```
+- suma = 2 + 2  # suma = 4
+- division = 2 / 2  # division = 1.0
+- apellido = 'Goméz'  # apellido = 'Goméz'
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (II)
+
+- ¿Cuál es el valor asignado a cada variable?
+
+```Python
+area = 15_000 + 100
+perimetro = 14.17 - 0.17
+nombre = 'Julio Verne'
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (II)
+
+- Respuesta:
+
+```Python
+area = 15_000 + 100  # area = 15100
+perimetro = 14.17 - 0.17  # perimetro = 14.0
+nombre = 'Julio Verne'  # nombre = 'Julio Verne'
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Operador
+-   Símbolo especial que realiza una operación
+- *Operando*
+	- Argumento usado por un operador:
+		- Valor
+		- Variable
+		- Expresión
+- Ej:
+```python
+5 + 5  # → 10
+````
+-   El operador de adición (`+`) suma dos valores
+	- Los operandos son dos enteros
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tipos de Operadores
+- *Operadores unarios*:
+	- Actúan sobre **un solo** operando
+	-   Ej:
+		- Operador de cambio de signo: `-`
+		
+```Python
+-1  # → -1
+```
+
+- Operadores *binarios*:
+	- Actúan sobre **dos** operandos
+	-   Ej:
+		- Operador de sustracción:  `-`
+		
+```Python
+4 - 2  # → 2
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Operadores Unarios (I)
+- **Cambio de signo (Negativo)**
+	- Invierte el signo de un valor numérico
+	- Diferente de la sustracción
+		- Que es un operador binario
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Operadores Unarios (II)
+- **Identidad (Positivo)**
+	- Sin efecto (solo para claridad)
+	- Diferente de la adición
+		- Que un operador binario
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Operadores Unarios - Ejemplos
+
+```Python
++5  # → 5
+-5  # → -5
+--5  # → 5
++-5  # → -5
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Operadores Unarios - Resumen
+
+<img src="Screenshot 2024-08-18 at 1.52.28 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Operadores Aritméticos (I)
+
+- Permiten realizar cálculos matemáticos 
+	- Básicos y avanzados
+- Principales operadores aritméticos en Python:
+  - Suma: `+`
+  - Resta: `-`
+  - Multiplicación: `*`
+  - División: `/`
+  - División entera: `//`
+  - Módulo: `%`
+  - Exponenciación: `**`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Operadores Aritméticos (III) - Resumen
+
+<img src="Screenshot 2024-08-18 at 1.52.53 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Veamos las Reglas que Aplican a las Operaciones Aritméticas en Python
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Suma, Resta, Multiplicación y Exponenciación
+- Entrada entera 
+	- → Resultado entero
+- Entrada decimal 
+	- → Resultado decimal
+- Entrada mixta (es decir, entero y decimal) 
+	- → Resultado decimal
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Suma, Resta, Multiplicación y Exponenciación - Ejemplos
+
+```Python
+2 + 2  # → 4
+5 - 3  # → 2
+4 * 2  # → 8
+2 ** 3  # → 8
+2 + 2.  # → 4.0
+5. - 3  # → 2.0
+4. * 2  # → 8.0
+2 ** 3  # → 8
+2 ** 3.  # → 8.0
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (III)
+
+- ¿Cuál es el valor retornado por cada expresión?
+
+```Python
+2 + 3.
+10 - 6.
+9 * -3
+3 ** 3.
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (III)
+
+- Respuesta:
+
+```Python
+2 + 3.  # → 5.0
+10 - 6.  # → 4.0
+9 * -3  # → -27
+3 ** 3.  # → 27.0
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### División
+- Siempre resultado decimal
+	- Incluso si la división es exacta
+		- No redondeado
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### División - Ejemplos
+
+```Python
+4 / 2  # → 2.0
+4.0 / 2.0  # → 2.0
+5 / 2  # → 2.5
+5. / 2  # → 2.5
+1 / -3  # → -0.3333333333333333
+-1. / 3  # → -0.3333333333333333
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### División Entera (Positivos)
+- Para la división entera con positivos
+	-   Entrada entera 
+		- → Resultado entero
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### División Entera (Positivos) - Ejemplos
+
+```Python
+6 // 2  # → 3
+5 // 2  # → 2
+9 // 2  # → 4
+1 // 3  # → 0
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### División Entera (Negativos)
+- Entrada entera 
+	- → Resultado entero
+	- Redondeo hacia el número entero más cercano
+		- Hacia el infinito negativo
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### División Entera (Negativos) - Ejemplos
+
+```Python
+-6 // 2  # → -3
+-5 // 2  # → -3
+-9 // 2  # → -5
+-1 // 3  # → -1
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### División Entera (Decimales Positivos)
+-   Entrada decimal 
+	- → Resultado decimal
+		- Redondeo hacia al número entero más cercano
+			- Mostrado como un decimal
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### División Entera (Decimales Positivos) - Ejemplos
+
+```Python
+6.0 // 2  # → 3.0
+5.0 // 2.0  # → 2.0
+9 // 2.0  # → 4.0
+1 // 3.0  # → 0.0
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### División Entera (Decimales Negativos)
+-   Entrada decimal 
+	- → Resultado decimal
+		- Redondeo hacia al número entero más cercano
+			- Hacia el infinito negativo
+				- Mostrado como decimal
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### División Entera (Decimales Negativos) - Ejemplos
+
+```Python
+-6.0 // 2 # → -3.0
+-5.0 // 2 # → -3.0
+-9 // 2.0 # → -5.0
+-1 // 3.0 # → -1.0
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (IV)
+
+- ¿Cuál es el valor retornado por cada expresión?
+
+```Python
+10 // 2
+6. // -2
+5 // 2.
+5 // -2.
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (IV)
+
+- Respuesta:
+
+```Python
+10 // 2   # → 5
+6. // -2   # → -3.0
+5 // 2.   # → 2.0
+5 // -2.   # → -3.0
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Operación de Módulo
+-  *Resto* o *residuo* de una división
+	- Útil para determinar si un número 
+		- Es divisible por otro
+			- Cuando el módulo es 0
+-   El resultado del módulo 
+	- Siempre tiene el signo del divisor
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Módulo - Ejemplo
+
+```Python
+10 % 3
+```
+
+-   División entera: `10 // 3 = 3`
+-   Multiplicación del cociente y divisor: `3 * 3 = 9`
+-   Cálculo del módulo (resto): `10 - 9 = 1`
+
+```Python
+10 % 3 = 1
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (V)
+
+- ¿Cuál es el valor retornado por cada expresión?
+
+```Python
+10 % 2
+2 % 10
+4599 % 7000
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (V)
+
+- Respuesta:
+
+```Python
+10 % 2   # → 0
+2 % 10  # → 2
+4599 % 7000  # → 4599
+	# Si el dividendo es menor que el divisor
+	# El resultado del módulo es el dividendo
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# ¿Qué Prioridad de Ejecución tienen los Operadores en Python?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Precedencia (ó Prioridad)
+- Define el orden de evaluación de los operadores 
+	- Basado en una *jerarquía*
+	- Los operadores de mayor prioridad 
+		- Se evalúan primero
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Jerarquía de Prioridades - Version 1
+
+<img src="Screenshot 2024-08-18 at 1.53.30 PM.png" alt="" style="object-fit: scale-down">
+
+
+- *Jerarquía de prioridades*
+	- Los operadores de mayor prioridad 
+		- Actúan antes que los de menor prioridad
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# ¿En Qué Orden se Ejecutan Operadores de Igual Prioridad  en Python?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Asociatividad
+- Define la dirección de evaluación de operadores de igual precedencia
+	- La mayoría de los operadores 
+		- Tienen asociatividad de izquierda a derecha
+			- Excepto la exponenciación
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Asociatividad por el Lado Izquierdo (I)
+- Ejemplo de asociatividad por el Lado Izquierdo
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+9 % 6 % 2
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Asociatividad por el Lado Izquierdo (II)
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+9 % 6 % 2
+```
+
+- De izquierda a derecha (**correcto**):
+
+```Python
+9 % 6 = 3
+3 % 2 = 1
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Asociatividad por el Lado Izquierdo (III)
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+9 % 6 % 2
+```
+
+- De izquierda a derecha (**INCORRECTO**):
+
+```Python
+6 % 2 = 0
+
+9 % 0  # → ZeroDivisionError
+# Error estudiado luego en esta clase...
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# La Exponenciación es Única es tener  Asociatividad de Derecha a Izquierda
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Asociatividad por el Lado Derecho (I)
+- Ejemplo de asociatividad por el Lado Derecho
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+2 ** 2 ** 3
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Asociatividad por el Lado Derecho (II)
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+2 ** 2 ** 3
+```
+
+- De derecha a izquierda (**correcto**):
+	
+```Python
+2 ** 3 = 8
+2 ** 8 = 256
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Asociatividad por el Lado Derecho (III)
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+9 % 6 % 2
+```
+
+- De izquierda a derecha (**INCORRECTO**):
+
+```Python
+2 ** 2 = 4
+4 ** 3 = 64.  # Resultado Erróneo
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paréntesis
+-   Pueden alterar la vinculación predeterminada
+	- Las operaciones entre paréntesis 
+		- Se calculan primero
+- Mejoran la legibilidad del código
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Uso de Paréntesis - Ejemplos
+
+-   Sin paréntesis:
+```Python
+5 + 3 * 2 ** 2  # → 17 
+# Orden: Exponenciación, multiplicación, adición
+```
+-   Con paréntesis para **aclarar el orden**:
+
+```Python
+5 + (3 * (2 ** 2))  # → 17
+# Mejor legibilidad
+````
+
+-   Con paréntesis para **alterar el orden**:
+
+```Python
+(5 + 3) * 2 ** 2  # → 32 
+# Orden alterado: Adición evaluada primero
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Expresión (repaso)
+- Sintaxis *evaluable* que produce un valor
+-   Se compone de 
+	- Un elemento único
+	- Ó una combinación de 
+		- Valores
+		- Variables
+		- Operadores, etc.
+-   Ej:
+
+```Python
+2  # → 2 (un valor)
+
+100 - 30 / (7 - 6)  
+# → 70.0 (valores y operadores)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Jerarquía de Prioridades - Version 2
+
+<img src="Screenshot 2024-08-18 at 1.54.22 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Quiz (VI)
+
+- ¿Cuál es el valor retornado por cada expresión y el valor asignado a `resultado`  (asumiendo ejecución secuencial de cada línea)?
+
+```Python
+# Sin paréntesis:
+a = 4 + 2 * 3
+
+# Con paréntesis para aclarar el orden:
+b = 4 + (2 * 3)
+
+# Con paréntesis para alterar el orden:
+c = (4 + 2) * 3
+
+# Asignación de una expresión:
+resultado = a + b + c
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VI)
+
+- Respuesta:
+
+```Python
+# Sin paréntesis:
+a = 4 + 2 * 3  # → 10 (Multiplicación, luego adición)
+
+# Con paréntesis para aclarar el orden:
+b = 4 + (2 * 3)  # → 10
+
+# Con paréntesis para alterar el orden:
+c = (4 + 2) * 3  # → 18 (Alteración: adición evaluada primero)
+
+# Asignación de una expresión:
+resultado = a + b + c  # resultado = 38
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### División por Cero (I)
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+1 / 0
+```
+ 
+ - Respuesta:
+ 
+ ```Python
+Traceback (most recent call last):
+    Cell In[...], line …
+        1/0
+ZeroDivisionError: division by zero
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `ZeroDivisionError`
+
+- Excepción que ocurre cuando
+  - Se intenta realizar una división por cero
+- Ej: 
+	- La operación `1 / 0` genera un error porque
+		- No se puede dividir ningún número por cero
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### División por Cero (II)
+- **Evitar**: 
+	- División por cero
+	- División entera por cero
+	- Módulo de una división por cero
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Solucionando un `ZeroDivisionError`
+
+- ¿Cómo se soluciona el siguiente error?
+```Python
+promedio = 100 / 0
+# ZeroDivisionError: division by zero
+```
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Nunca dividir por cero, usar otro valor:
+```Python
+promedio = 100 / 4
+# promedio = 25.0
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Asignaciones con Operador
+-   Combinación de operador y  asignación:
+-     +=, -=, *=, /=, %=, //=, **=
+-   Ej:
+```Python
+# Asuma ejecución secuencial de cada línea
+x = 1
+x += 1  # → 2 (Equivalente a: x = x + 1)
+x -= 1  # → 1 (Equivalente a: x = x - 1)
+x *= 1  # → 1 (Equivalente a: x = x * 1)
+x /= 1  # → 1.0 (Equivalente a: x = x / 1)
+x //= 1  # → 1.0 (Equivalente a: x = x // 1)
+x **= 1  # → 1.0 (Equivalente a: x = x ** 1)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Asignaciones con Operador - Resumen
+
+<img src="Screenshot 2024-08-18 at 1.55.44 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Quiz (VII)
+
+- ¿Cuál es el valor retornado por cada expresión y el valor asignado a `resultado`  (asumiendo ejecución secuencial de cada línea)?
+
+```Python
+y = 2
+y += 2
+y *= 2
+y -= 3
+y //= 2
+resultado = y + 2
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VII)
+
+- Respuesta:
+
+```Python
+y = 2  # y = 2
+y += 2  # → 4 (Equivalente a: y = y + 2)
+y *= 2  # → 8 (Equivalente a: y = y * 2)
+y -= 3  # → 5 (Equivalente a: y = y - 3)
+y //= 2  # → 2 (Equivalente a: y = y // 2)
+resultado = y + 2  # resultado = 4
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Estudiemos Dos Operaciones sobre Cadenas de Caracteres (Strings)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Operaciones sobre Strings - Concatenación (I)
+
+-   Crea una nueva cadena 
+	- Yuxtaponiendo las dos cadenas especificadas
+-   Sintaxis: `string1 + string2`
+	-   Ambos operandos **deben** ser cadenas
+-   La concatenación es asociativa: 
+	- (A + B) + C = A + (B + C)
+-   Sobrecarga del operador binario: `+`
+	-   Contrario a la suma
+		- La concatenación NO es conmutativa: 
+			- A + B ≠ B + A
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Concatenación - Ejemplos
+
+```Python
+'' + ''  # → ''
+
+'A' + 'B'  # → 'AB'
+
+'A' + ' ' + 'B'  # → 'A B'
+
+'B' + ' ' + 'A'  # → 'B A'
+
+'Cero' + 'Espacios' + 'Añadidos'  
+# → 'CeroEspaciosAñadidos'
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Operaciones sobre Strings - Repetición (I)
+
+-   Crea una nueva cadena donde la cadena especificada se replica n veces
+-   Sintaxis: `string * n   ó   n * string`
+	- `n` debe ser entero
+-   La repetición de cadenas es conmutativa: 
+	- A * B = B * A
+-   Sobrecarga del operador binario de multiplicación: `*`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Repetición - Ejemplos
+
+```Python
+'.' * 3  # → '...'
+3 * '.'  # → '...'
+```
+
+- Casos especiales:
+
+```Python
+'.' * 0  # → '' (Retorna cadena vacía para cero)
+'.' * -1  # → '' (Retorna cadena vacía para números negativos)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Quiz (VIII)
+
+- ¿Cuál es el valor asignado a `resultado`  (asumiendo ejecución secuencial de cada línea)?
+
+```Python
+texto = 'A'
+
+texto = texto + 'B'
+
+texto = texto * 2
+
+resultado = texto + ' ' + ('C' * 2)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VIII)
+
+- Respuesta:
+
+```Python
+texto = 'A'  # texto = 'A'
+
+texto = texto + 'B'  # texto = 'AB'
+
+texto = texto * 2  # texto = 'ABAB'
+
+resultado = texto + ' ' + ('C' * 2)  # resultado = 'ABAB CC
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ¿Preguntas?
+<img src="Pasted image 20240817131627.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="copyright.png" alt="" style="object-fit: scale-down">
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
