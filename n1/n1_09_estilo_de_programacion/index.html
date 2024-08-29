@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Introducción a la Programación (IP)
+
+*Estilo de Programación*
+
+[Eduardo Rosales](mailto:ee.rosales24@uniandes.edu.co)
+
+Departamento de Ingeniería de Sistemas y Computación
+
+Universidad de los Andes
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas con Variables (I)
+- Seguir el estilo [PEP 8](https://peps.python.org/pep-0008/#naming-conventions)
+	- Usar identificadores **autoexplicativos**
+	    - Identificador -> Propósito de la variable
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas con Variables (II)
+- Seguir el estilo [PEP 8](https://peps.python.org/pep-0008/#naming-conventions)
+	- Por legibilidad usar *snake_case*
+		- Separar palabras con guiones bajos
+	    - Ej: 
+	        - `salario_promedio`
+	        - `altura_maxima`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas con Variables (III)
+- Seguir el estilo [PEP 8](https://peps.python.org/pep-0008/#naming-conventions)
+	- Usar identificadores concisos
+		- Nombres largos son difíciles de leer
+	- NO reutilizar identificadores 
+		- Con distintos tipos de datos
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejore Prácticas con Constantes
+- Nombres en mayúsculas por convención
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas - Funciones (I)
+
+- Una función debe ser (idealmente) concisa
+	- Si es muy larga
+		- Puede indicar 
+			- Que se necesitan 
+				- 2 o más funciones
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas - Funciones (II)
+
+- La lista de parámetros 
+	- Debe ser (idealmente) corta
+		- Si es muy larga
+			- Puede indicar 
+				- Que se necesitan 
+					- 2 o más funciones
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas - Funciones (III)
+
+- No "reinventar la rueda"
+    - Utilizar funciones integradas ([**built-in functions**](https://docs.python.org/3/library/functions.html)):
+    - Tipos: [**`type()`**](https://docs.python.org/3/library/functions.html#type),  [**`float()`**](https://docs.python.org/3/library/functions.html#float), [**`int()`**](https://docs.python.org/3/library/functions.html#int), [**`str()`**](https://docs.python.org/3/library/functions.html#func-str)
+    - **Numéricas**: [**`abs()`**](https://docs.python.org/3/library/functions.html#abs), [**`round()`**](https://docs.python.org/3/library/functions.html#round), [ **`min()`**](https://docs.python.org/3/library/functions.html#min), [ **`max()`**](https://docs.python.org/3/library/functions.html#max), [ **`pow()`**](https://docs.python.org/3/library/functions.html#pow)
+    - Ayuda: [**`help()`**](https://docs.python.org/3/library/functions.html#help)
+    - Entrada: [**`input`**](https://docs.python.org/3/library/functions.html#input)
+    - Salida: [**`print()`**](https://docs.python.org/3/library/functions.html#print)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas - Funciones (IV)
+- Nombramiento de funciones
+    - [PEP 8 Style](https://peps.python.org/pep-0008/#naming-conventions)
+        - Usar nombre autoexplicativos
+
+- Tipos de datos
+    - Siempre incluir en la signatura el(los) tipo(s) de parámetro(s) y el tipo de retorno**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas - Funciones (V)
+- Documentación
+    - Las funciones deben documentarse
+        - [PEP 257](https://peps.python.org/pep-0257/)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas - Funciones (VI)
+- Diseño de funciones
+    - El cuerpo de la función debe ser *conciso*
+        - Si no es así, normalmente se requerirá de otra(s) nueva(s) función(es)
+- Limitar el tamaño de la lista de parámetros
+    - Demasiados parámetros indica que se requerirá de otra(s) nueva(s) función(es)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas - Lógica (I)
+- La lógica NUNCA
+	- Recibe datos de entrada
+		- ❌ NO usa `input()`
+	- Muestra resultados
+		- ❌ NO usa `print()`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas - Lógica (II)
+- Cada función en la lógica
+	-  ✅ Tiene un propósito ÚNICO
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Práctica que se Alinea con  el SRP
+
+``` Python
+def calcular_area(ancho: float, alto: float) -> float:
+    return ancho * alto
+```
+
+``` Python
+def calcular_perimetro(ancho: float, alto: float) -> float:
+    return 2 * (ancho + alto)
+```
+
+ ✅ Cada función tiene un propósito único
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas - Interfaz (I)
+- La interfaz NUNCA
+	- ❌ Contiene las funciones que implementan
+	    - ❌ La lógica del programa
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas - Comentarios
+
+- Moderación: 
+	- Evite el exceso de comentarios
+		- Deteriora la legibilidad
+- Claridad: 
+	- Comente segmentos significativos/complejos
+		- No traduzca el código línea a línea
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# TEMA OPCIONAL
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ¿Cómo se crea un Programa? (I)
+
+- **Análisis​**
+	- Entender y especificar el problema​
+- **Diseño**​
+	- Dividir el problema en subproblemas​
+	- Diseñar algoritmos ​
+- **Construcción​**
+	- Codificar​: Implementar el diseño/algoritmo​
+	- *Probar la solución​*
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# MIREMOS UNA FORMA OPCIONAL PARA PROBAR UNA FUNCIÓN
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `doctest` (I)
+
+- Incorporan casos de prueba 
+	- Dentro de la documentación​ de una función
+- Permiten probar el código de una función directamente​
+- Sintaxis: ​
+
+1. Probando todas las funciones:
+
+```Python
+import doctest
+
+# Lo siguiente es parte del docstring
+...
+línea de código que llama a la función
+>>> salida esperada (exacta)
+...
+
+# Lo siguiente va después de las funciones a probar:
+doctest.testmod(verbose=True)  # Ejecuta todos los doctests
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `doctest` (II)
+
+Sintaxis: ​
+
+2. Probando una sola función:
+
+```Python
+import doctest
+
+# Lo siguiente es parte del docstring
+...
+línea de código que llama a la función
+>>> salida esperada (exacta)
+...
+
+# Lo siguiente va después de la función a probar.
+# Ejecuta solo los doctests de `nombre_funcion`:
+doctest.run_docstring_examples(nombre_funcion, globals(), verbose=True)  
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `doctest` (III)
+
+- Para más información sobre `doctest`:
+```Python
+import doctest
+help(doctest.testmod)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# EJEMPLOS DE USO DE DOCTEST
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Ejemplo de Prueba Exitosa
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Función correctamente implementada
+
+```Python
+import doctest
+def suma(a: int, b: int) -> int:
+    '''
+    Retorna la suma de dos números enteros.
+    Parámetros:
+        a (int): Primer número entero a sumar.
+        b (int): Segundo número entero a sumar.
+    Retorno:
+        (int): el resultado de sumar a y b.
+    >>> suma(1, 2)
+    3
+    '''
+    return a + b​
+doctest.run_docstring_examples(suma, globals(), verbose=True)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Prueba exitosa (I)
+
+```Python[10,11]
+...
+    >>> suma(1, 2)​
+    3​
+...​
+```
+
+- Aquí se definió un doctest
+- Si se ejecuta, se llamará a la función `suma()`
+	- Con argumentos `1`  y  `2`
+		- Y se verificará que el resultado sea `3`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Prueba exitosa (II)
+
+- Resultado de ejecutar el doctest:
+
+```Python[3,4,5,9,11,12]
+Trying:​
+suma(1, 2)​
+Expecting:​
+3​
+ok​
+1 items had no tests:​
+__main__​
+1 items passed all tests:​
+1 tests in __main__.suma​
+1 tests in 2 items.​
+1 passed and 0 failed.​
+Test passed.​​
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Ejemplo de Prueba Fallida
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Función incorrectamente implementada
+
+```Python
+import doctest
+def suma(a: int, b: int) -> int:
+    '''
+    Retorna la suma de dos números enteros.
+    Parámetros:
+        a (int): Primer número entero a sumar.
+        b (int): Segundo número entero a sumar.
+    Retorno:
+        (int): el resultado de sumar a y b.
+    >>> suma(1, 2)
+    3
+    '''
+    return -1  # Esta línea es errónea
+doctest.run_docstring_examples(suma, globals(), verbose=True)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Prueba fallida (I)
+
+```Python[10,11]
+...
+    >>> suma(1, 2)​
+    3​
+...​
+```
+
+- Aquí se definió un doctest
+- Si se ejecuta, se llamará a la función `suma()`
+	- Con argumentos `1` y  `2`
+		- Y se verificará que el resultado sea `3`
+			- Pero la función está mal implementada
+				- Y siempre retorna -1
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Prueba fallida (II)
+
+- Resultado de ejecutar el doctest:
+
+```Python[5,6,7,8,11,12]
+Trying:​
+suma(1, 2)​
+Failed example:​
+suma(1, 2)​
+Expected:​
+3​
+Got:​
+-1​
+…​
+1 items had failures:​
+0 passed and 1 failed.​
+***Test Failed*** 1 failures.​  
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ¿Preguntas?
+<img src="Pasted image 20240817131627.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+[Click para volver al menú principal](https://eerosales24.github.io/ip_2024_20/)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="copyright.png" alt="" style="object-fit: scale-down">
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
