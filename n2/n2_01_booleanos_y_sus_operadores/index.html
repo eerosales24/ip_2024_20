@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Introducción a la Programación (IP)
+
+*Booleanos y sus Operadores*
+
+[Eduardo Rosales](mailto:ee.rosales24@uniandes.edu.co)
+
+Departamento de Ingeniería de Sistemas y Computación
+
+Universidad de los Andes
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Objeto (I) (repaso)
+
+- Bloque de construcción en Python
+- No es el objetivo del curso estudiar objetos
+- Basta con saber que
+	- En Python, *todo se trata como un objeto*
+- Por eso, la documentación de Python
+	- Hace referencia a
+		- Objetos
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Objeto (II) (repaso)
+
+- Un objeto en Python tiene asociado
+	- **Tipo**
+	- Valor
+	- Identidad
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Objeto (III) (repaso)
+
+<img src="Screenshot 2024-08-17 at 3.48.16 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Objeto (IV) (repaso)
+
+<img src="Screenshot 2024-08-17 at 3.49.36 PM.png" alt="" style="object-fit: scale-down">
+
+- Cada objeto es de un **tipo de dato**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tipo de dato (repaso)
+
+<img src="Screenshot 2024-08-17 at 4.18.30 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# CONOZCÁMOS UN NUEVO TIPO DE DATO
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-02 at 10.03.03 AM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Booleano (boolean) - `bool`
+
+- Representan uno de dos posibles valores:
+	- `True` ó  `False`
+- `True` y `False` son constantes en Python
+	- `True` es equivalente a `1`
+	- `False` es equivalente a `0`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (I)
+
+- ¿Cuál es el valor retornado por cada expresión?
+
+```Python
+type(True)  
+type(10_000)
+type('.2')  
+type(2.0)
+type(False)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (I)
+
+- Respuesta:
+
+```Python
+type(True)  # → bool  
+type(10_000)  # → int
+type('.2')  # → str  
+type(2.0)  # → float
+type(False)  # → bool
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Conversión de Tipos (repaso)
+- Cambiar el tipo de dato de un objeto
+- Funciones integradas para conversión de datos:
+- `int(...)`: Convierte a un entero
+	- Toma un número o una cadena de dígitos
+- `float(...)`: Convierte a un flotante
+	- Toma un número o una cadena de dígitos
+- `str(...)`: Convierte a una cadena de caracteres
+	- Toma un valor de cualquier tipo
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `bool(...)`
+- Función integrada para convertir a booleano
+- Ej:
+```Python
+bool(1)  # → True
+bool(0)  # → False
+```
+
+- `help(bool)` para más información
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (II)
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+a = 1
+
+print(bool(a))
+
+b = 0
+
+print(bool(b))
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (II)
+
+- Respuesta:
+
+```Python
+a = 1
+
+print(bool(a))  # → True
+
+b = 0
+
+print(bool(b))  # → False
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# ¿Qué es "Verdadero" en el contexto Booleano?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### "Verdadero" en el Contexto Booleano (Truthy)
+
+-  Valor interpretado como `True` 
+	- En el contexto booleano
+- Ej:
+
+``` Python
+True  # → True (porque bool(True) → True)
+
+1  # → True  (porque bool(1) → True)
+   # Aplica para cualquier int distinto de cero
+   
+1.0  # → True  (porque bool(1.0) → True)
+     # Aplica para cualquier float distinto de cero
+     
+'abc'  # → True (porque bool('abc') → True)
+       # Aplica para cualquier string no vacío
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# ¿Qué es "Falso" en el contexto Booleano?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### "Falso" en el Contexto Booleano (Falsy)
+
+-  Valor interpretado como `False` 
+	- En el contexto booleano
+- Ej:
+
+``` Python
+False  # → False (porque bool(False) → False)
+
+0  # → False  (porque bool(0) → False)
+   
+0.0  # → False  (porque bool(0.0) → False)
+     # Aplica también para .0
+     
+''  # → False (porque bool('') → False)
+       # Aplica también para "" y """"""
+       # Un string vacío se considera como False
+       
+None  # → False (porque bool(None) → False)
+      # En Python `None` se considera `False`
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (III)
+
+- Clasifique los siguiente valores en verdaderos y falsos en el contexto booleano
+
+```Python
+False
+True
+0
+1
+0.0
+7
+''
+None
+'Abc'
+.5
+""
+.0
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (III)
+
+- Respuesta:
+
+```Python
+# Falsos:
+False
+0
+0.0
+''
+None
+""
+.0
+# Verdaderos:
+True
+1 
+7 
+'Abc'
+.5
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Expresión (I) (repaso)
+-   Sintaxis *evaluable* que produce un valor
+-   Se compone de 
+	- Un elemento único
+	- Ó una combinación de 
+		- Valores
+		- Variables
+		- Operadores
+		- Funciones, etc.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Expresión (II) (repaso)
+
+-   Ej:
+
+```Python
+2  
+# → 2 (un valor)
+
+100 - 30 / (7 - 6)  
+# → 70.0 (valores y operadores)
+
+100 + min(50, 100)  
+# → 150 (valores, operador y función)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Booleanos y Expresiones
+
+- Como cualquier otro tipo de dato
+	- Los booleanos pueden formar expresiones
+- Ej:
+```Python
+True  # → True
+False  # → False
+bool(1)  # → True
+bool(0)  # → False
+1 < 10  # → True (Se usa un operador relacional)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Operadores Relacionales
+
+- Operador que compara dos valores
+	- Retorna `True` si la comparación es verdadera
+		- De lo contrario `False`
+- Operadores:
+
+```Python
+==
+!=
+<
+<=
+>
+>=
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Operadores Relacionales - Resumen
+
+
+<img src="Screenshot 2024-09-02 at 10.39.27 AM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (IV)
+
+- ¿Cuál es el valor retornado por cada expresión?
+
+```Python
+10_000 == 10_000
+10_000 - 10_000 >= 0
+True > False
+True < 1
+False < 1
+True >= 1
+False <= 1
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (IV)
+
+- Respuesta:
+
+```Python
+10_000 == 10_000  # → True (10000 es igual que 10000)
+
+10_000 - 10_000 >= 0  # → True (0 es mayor o igual que 0)
+
+True > False  # → True (True es 1 y False es 0, 1 > 0 es True)
+
+True < 1  # → False (True es 1, 1 < 1 es False)
+
+False < 1  # → True (False es 0, 0 < 1 es True)
+
+True >= 1  # → True (True es 1, 1 >= 1 es True)
+
+False <= 1  # → True (False es 0, 0 <= 1 es True)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Expresiones Relacionales
+
+- Expresiones que incluyen operadores relacionales
+- Ej:
+```Python
+5 == 5  # → True
+5 != '5'  # → True
+4 + 4 > 10 * 1  # → False (8 es menor que 10)
+4 * 5 == 10 * 2  # → True (20 es igual a 20)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Asignación (I) (repaso)
+```Python
+x = 0
+```
+
+<img src="Screenshot 2024-08-17 at 9.17.00 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Asignación (I) (repaso)
+
+```Python
+x = 0
+```
+
+- Por simplicidad 
+	- Se dice que *"a la variable '`x`' se le asigna `0`"*
+- Consecuencia
+	- Ahora, la variable '`x`' ha sido definida (declarada) 
+		- Y puede usarse en el programa
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Asignación `=` vs. Es Igual Que `==`
+- Es igual que `==`
+	- Es una comparación
+	- No implica una asignación
+- Ej (asuma la ejecución secuencial de cada línea a línea):
+
+```Python
+x = 0  # x = 0 (asignación)
+x == 0  # True (porque compara `x`, que es igual 0, con 0)
+x == 1  # False (porque 0 nos es igual que 1)
+x == -1  # False (porque 0 nos es igual que -1)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (V)
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+a = 1
+
+print(a == 1)
+
+b = 0
+
+print(b == 1)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (V)
+
+- Respuesta:
+
+```Python
+a = 1
+
+print(a == 1)  # → True (porque `a` es igual que 1)
+
+b = 0
+
+print(b == 1)  # → False (porque `b` no es igual que 1)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Operadores de Identidad
+
+- Operador que compara 
+	- La identidad de dos objetos
+	- No solo su valor
+- Operadores:
+
+```Python
+is
+is not
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Operadores de Identidad - Repaso
+
+<img src="Screenshot 2024-09-02 at 10.52.26 AM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Operadores Lógicos
+
+- Combinan lógicamente o manipulan expresiones
+- Operadores:
+```Python
+and
+or
+not
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `and` (I)
+- Sintaxis: `expresión1 and expresión2`
+	- Retorna `True` si ambas expresiones 
+		- Evalúan a `True`
+			- De lo contrario `False`
+- Ej:
+
+```Python
+True and True  # → True
+
+True and False  # → False
+
+False and True  # → False
+
+False and False  # → False
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `and` (II)
+
+- Evaluación en *"cortocircuito"*
+- Si la primera expresión evalúa a `False`
+	- La segunda expresión no se evalúa
+- Ej:
+
+```Python
+True and True  
+# → True (ambos lados evaluados)
+
+True and False  
+# → False (ambos lados evaluados)
+
+False and True  
+# → False (solo el lado izquierdo evaluado)
+# No puede retornar True si ya hay un False
+
+False and False
+# → False (solo el lado izquierdo evaluado)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VI)
+
+- ¿Cuál es el valor retornado por cada expresión?
+
+```Python
+True and True
+False and False
+bool(1) and bool(1)
+bool(0) and bool(1)
+bool(1) and bool(0)
+bool('') and bool('abc')
+bool(None) and bool('')
+bool(7) and bool(.1)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VI)
+
+- Respuesta:
+
+```Python
+True and True  # → True
+False and False  # → False
+bool(1) and bool(1)  # → True
+bool(0) and bool(1)  # → False
+bool(1) and bool(0)  # → False
+bool('') and bool('abc')  # → False
+bool(None) and bool('')  # → False
+bool(7) and bool(.1)  # → True
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `or` (I)
+- Sintaxis: `expresión1 or expresión2`
+- Retorna `True` si una de las expresiones 
+	- Evalúa a `True`
+		- De lo contrario `False`
+- Ej:
+
+```Python
+True or True  # → True 
+True or False  # → True 
+False or True  # → True 
+False or False  # → False
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `or` (II)
+
+- Evaluación en *"cortocircuito"*
+- Si la primera expresión evalúa a `True`
+	- La segunda expresión no se evalúa
+- Ej:
+
+```Python
+True or True  # → True (solo el lado izquierdo evaluado)
+True or False  # → True (solo el lado izquierdo evaluado)
+False or True  # → Truee (ambos lados evaluados)
+False or False  # → False (ambos lados evaluados)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VII)
+
+- ¿Cuál es el valor retornado por cada expresión?
+
+```Python
+True or True
+False or False
+bool(1) or bool(1)
+bool(0) or bool(1)
+bool(1) or bool(0)
+bool('') or bool('abc')
+bool(None) or bool('')
+bool(7) or bool(.1)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VII)
+
+- Respuesta:
+
+```Python
+True or True  # → True
+False or False  # → False
+bool(1) or bool(1)  # → True
+bool(0) or bool(1)  # → True
+bool(1) or bool(0)  # → True
+bool('') or bool('abc')  # → True
+bool(None) or bool('')  # → False
+bool(7) or bool(.1)  # → True
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `not`
+
+- Sintaxis: `not expresión`
+- Invierte el valor booleano de la expresión
+- Retorna `False` si la expresión evalúa a `True`
+- Retorna `True` si la expresión evalúa a `False`
+- Ej:
+
+```Python
+not True  # → False
+not False  # → True
+not bool(1)  # → False
+not bool(0)  # → True
+not bool('')  # → True
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VIII)
+
+- ¿Cuál es el valor retornado por cada expresión?
+
+```Python
+not None
+not ''
+not 0
+not 1
+not 50
+not 0.0
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VIII)
+
+- Respuesta:
+
+```Python
+not None  # → True
+not ''  # → True
+not 0  # → True
+not 1  # → False
+not 50  # → False
+not 0.0  # → True
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Expresiones Booleanas (I)
+
+- Composiciones de 
+	- Expresiones relacionales
+	- Valores
+	- Variables 
+	- Ó *funciones booleanas*
+- Función booleana:  
+	- Función que retorna un booleano
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Expresiones Booleanas (II)
+
+Ej:
+```Python
+1 > 0 and 10 > -1  
+# → True (ambas expresiones evalúan a True)
+-1 >= 0 or 1 == -1  
+# → False (ambas expresiones evaluán a False)
+True and not False  
+# → True (ambas expresiones evalúan a True)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (IX)
+
+- ¿Cuál es el valor retornado por cada expresión?
+
+```Python
+not False and not False
+not False and True
+not False or not True
+not 1 or not ''
+not None or not ''
+not 0.0 or not 0
+True and not ''
+not 1 and not ''
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (IX)
+
+- Respuesta:
+
+```Python
+not False and not False  # → True
+not False and True  # → True
+not False or not True  # → True
+not 1 or not ''  # → True
+not None or not ''  # → True
+not 0.0 or not 0  # → True
+True and not ''  # → True
+not 1 and not ''  # → False
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (X)
+
+- ¿Cuál es el valor retornado por cada expresión?
+
+```Python
+not False and 0.0 > 0
+bool(1) and not (1 <= 0)
+bool(None) or bool(0.0)
+bool('abc') and bool(10_000)
+bool(0.0) or bool(0)
+bool(None) or bool('')
+(bool(0) and bool('')) or True
+(bool(1) and bool('z')) and (True or False)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (X)
+
+- Respuesta:
+
+```Python
+not False and 0.0 > 0  # → False
+bool(1) and not (1 <= 0)  # → True
+bool(None) or bool(0.0)  # → False
+bool('abc') and bool(10_000)  # → True
+bool(0.0) or bool(0)  # → False
+bool(None) or bool('')  # → False
+(bool(0) and bool('')) or True  # → True
+(bool(1) and bool('z')) and (True or False)  # → True
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ¿Preguntas?
+<img src="Pasted image 20240817131627.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+[Click para volver al menú principal](https://eerosales24.github.io/ip_2024_20/)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="copyright.png" alt="" style="object-fit: scale-down">
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
