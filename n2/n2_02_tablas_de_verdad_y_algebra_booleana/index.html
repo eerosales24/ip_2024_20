@@ -125,7 +125,6 @@ Universidad de los Andes
 ### Álgebra Booleana - `and`
 
 ```Python
-
 x and y == y and x
 
 x and (y and z) == (x and y) and z
@@ -209,7 +208,6 @@ not a or (b and not c)
 - Respuesta:
 
 ```Python
-
 a = True
 b = False
 c = True
@@ -234,7 +232,6 @@ a = 45
 b = 30
 c = 10
 
-
 print(a + c >= b)
 print(b - c < a - b)
 print((a > b and b > c) or (b < c and a > b))
@@ -249,7 +246,6 @@ print(a * b < a * b / c)
 - Respuesta:
 
 ```Python
-
 a = 45
 b = 30
 c = 10
@@ -265,6 +261,10 @@ print(a * b < a * b / c)  # → ???
 
 ### Jerarquía de Prioridades (repaso)
 <img src="Screenshot 2024-09-04 at 3.51.40 PM.png" alt="" style="object-fit: scale-down">
+
+
+- Primero multiplicación
+	- Luego división (flotante)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -300,7 +300,7 @@ x < y <= z
 - Verifica 
 	- si  `x` es menor que  `y`  y
 	- si  `y` es menor o igual que  `z`
-- Importante:  `y` es evaluado una sola vez
+- Importante:  `y` es evaluado **una sola vez**
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -369,9 +369,9 @@ b >= 0 and b <= 100  # → 0 <= b <= 100
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Quiz (IV) - 3 mins
+### Quiz (IV)
 
-- Implemente la función es_impar(...) :
+- Implemente la función `es_impar(...)`:
 
 ```Python
 def es_impar(num: int) -> bool:  
@@ -451,7 +451,6 @@ def suma(a: int, b: int) -> int:
   
 ```Python
 def son_iguales(objecto_1: object, objecto_2: object, objecto_3: object) -> bool:
-
     '''
     Verifica si todos los objetos recibidos son iguales.
 
@@ -466,7 +465,7 @@ def son_iguales(objecto_1: object, objecto_2: object, objecto_3: object) -> bool
     >>> son_iguales(5, 'a', True)
     False
     '''
-    # TODO: Implemente la función tal y como se describe en la documentación.
+    # TODO: Implemente la función tal y como se describe en la documentación
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -475,7 +474,6 @@ def son_iguales(objecto_1: object, objecto_2: object, objecto_3: object) -> bool
   
 ```Python
 def son_iguales(objecto_1: object, objecto_2: object, objecto_3: object) -> bool:
-
     '''
     Verifica si todos los objetos recibidos son iguales.
 
@@ -490,8 +488,7 @@ def son_iguales(objecto_1: object, objecto_2: object, objecto_3: object) -> bool
     >>> son_iguales(5, 'a', True)
     False
     '''
-
-    # TODO - DONE: Implemente la función tal y como se describe en la documentación.
+    # TODO - DONE: Implemente la función tal y como se describe en la documentación
     return objecto_1 == objecto_2 == objecto_3
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
@@ -503,7 +500,7 @@ def son_iguales(objecto_1: object, objecto_2: object, objecto_3: object) -> bool
 
 ```Python[2]
 ...
-    # TODO - DONE: Implemente la función tal y como se describe en la documentación.
+    # TODO - DONE: Implemente la función tal y como se describe en la documentación
     return objecto_1 == objecto_2 == objecto_3
 ```
 
@@ -515,10 +512,9 @@ def son_iguales(objecto_1: object, objecto_2: object, objecto_3: object) -> bool
 
 ### Quiz (VI)
 
-- Implemente la función esta_en_rango(...):
+- Implemente la función `esta_en_rango(...)`:
 
 ```Python
-
     '''
     Verifica si un número está en el rango dado (inclusivo).
 
@@ -542,7 +538,6 @@ def son_iguales(objecto_1: object, objecto_2: object, objecto_3: object) -> bool
 ### Quiz (VI) - Solución
 
 ```Python
-
 def esta_en_rango(num: float, inicio: float, fin: float) -> bool:
     '''
     Verifica si un número está en el rango dado (inclusivo).
@@ -570,7 +565,6 @@ def esta_en_rango(num: float, inicio: float, fin: float) -> bool:
 - Implemente la función `es_annio_bisiesto(...)`:
 
 ```Python
-
     '''
     Verifica si un año es bisiesto. Esto es, es divisible por 400 (por ejemplo, 1600,
     2000) ó es divisible por 4 pero no por 100 (por ejemplo, 2004, 2008). 
@@ -593,7 +587,6 @@ def esta_en_rango(num: float, inicio: float, fin: float) -> bool:
 ### Quiz (VII) - Solución
 
 ```Python
-
 def es_annio_bisiesto(annio: int) -> bool:
     '''
     Verifica si un año es bisiesto. Esto es, es divisible por 400 (por ejemplo, 1600,
@@ -611,12 +604,295 @@ def es_annio_bisiesto(annio: int) -> bool:
     False
     '''
     return annio % 400 == 0 or (annio % 4 == 0 and annio % 100 != 0)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VIII)
+
+- Complete el TODO:  
+
+```Python
+def es_triangulo_equilatero(lado_1: float, lado_2: float, lado_3: float) -> bool:
+    '''
+    Verifica si los lados especificados pueden formar un triángulo equilátero.
+
+    Parámetros:
+       a (int or float): Longitud del primer lado.
+       b (int or float): Longitud del segundo lado.
+       c (int or float): Longitud del tercer lado.
+
+    Retorna:
+        (bool): True si los lados pueden formar un triángulo equilátero, caso contrario False.
+
+    >>> es_triangulo_equilatero(3, 3, 3)
+    True
+    >>> es_triangulo_equilatero(3, 4, 0)
+    False
+    '''
+    # TODO: Implemente la función tal y como se describe en la documentación
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VIII) - Solución (I)
+
+```Python
+def es_triangulo_equilatero(lado_1: float, lado_2: float, lado_3: float) -> bool:
+    '''
+    Verifica si los lados especificados pueden formar un triángulo equilátero.
+
+    Parámetros:
+       a (int or float): Longitud del primer lado.
+       b (int or float): Longitud del segundo lado.
+       c (int or float): Longitud del tercer lado.
+
+    Retorna:
+        (bool): True si los lados pueden formar un triángulo equilátero, caso contrario False.
+
+    >>> es_triangulo_equilatero(3, 3, 3)
+    True
+    >>> es_triangulo_equilatero(3, 4, 0)
+    False
+    '''
+    # TODO - DONE: Implemente la función tal y como se describe en la documentación
+    return lado_1 > 0 and lado_1 == lado_2 == lado_3
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VIII) - Solución (II)
+
+```Python
+def es_triangulo_equilatero(lado_1: float, lado_2: float, lado_3: float) -> bool:
+    '''
+    Verifica si los lados especificados pueden formar un triángulo equilátero.
+
+    Parámetros:
+       a (int or float): Longitud del primer lado.
+       b (int or float): Longitud del segundo lado.
+       c (int or float): Longitud del tercer lado.
+
+    Retorna:
+        (bool): True si los lados pueden formar un triángulo equilátero, caso contrario False.
+
+    >>> es_triangulo_equilatero(3, 3, 3)
+    True
+    >>> es_triangulo_equilatero(3, 4, 0)
+    False
+    '''
+    # TODO - DONE: Implemente la función tal y como se describe en la documentación
+    return lado_1 == lado_2 == lado_3 and lado_1 > 0
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# ¿Notó Que las Funciones Retornan Directamente Expresiones Booleanas?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Retorno Directo de Expresiones Booleanas
+
+- Claridad y legibilidad
+	- Hace el código más conciso y legible
+- Eficiencia: 
+	- Evita estructuras condicionales innecesarias
+- Mantenimiento: 
+	- Facilita la modificación 
+		- Y depuración del código
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas con Funciones Booleanas (I)
+
+- Cuando sea posible
+	- Retorne directamente la expresión booleana
+- Ej:
+
+```Python[3]
+# Práctica correcta:
+def es_par(num: int) -> bool:  
+    return num % 2 == 0
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# ¿Notó Alguna Convención de Nombramiento en Todas las Funciones Estudiadas?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ¿Nota alguna convención en el nombramiento de las funciones previamente estudiadas?
+
+- es_impar(...)
+- son_iguales(...)
+- esta_en_rango(...)
+- es_annio_bisiesto(...)
+- es_triangulo_equilatero(...)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas con Funciones Booleanas (II)
+
+- Nombrar a las funciones booleanas 
+	- **Como si fuesen preguntas**
+		- Cuya respuesta es `True`  o  `False`
+- Para indicar su naturaleza
+- Ej:
+
+```Python
+esta_activo()
+
+esta_encendido()
+
+tiene_permiso()
+
+es_valido()
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas con Funciones Booleanas (III)
+
+- Nombrar a las funciones booleanas
+	- **Sin usar negaciones**
+- Ej:
+  
+✅
+```Python
+es_valido()   # Nombramiento correcto y claro
+```
+
+❌
+```Python
+ es_invalido()  # Mal nombramiento (evitar negaciones)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas con Funciones Booleanas (IV)
+
+- Comparaciones
+	- Utilizar paréntesis para mejorar la legibilidad
+	- En especial al usar combinaciones de
+		- Operadores relacionales y lógicos
+- Ej:
+
+✅
+```Python
+(((a + b) > c) and (d or e)) and not (f == g or h < i)
+```
+
+❌
+```Python
+a + b > c and d or e and not f == g or h < i
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas con Funciones Booleanas (V)
+
+- Ser explícito al probar igualdad con `None` 
+	- Usando  `is` 
+- Ej:
+
+✅
+```Python
+x is None  
+```
+
+❌
+```Python
+x == None
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas con Funciones Booleanas (VI)
+
+- Ser explícito al probar desigualdad con `None` 
+	- Usando `is not`
+- Ej:
+
+✅
+```Python
+x is not None
+```
+
+❌
+```Python
+x != None
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas con Funciones Booleanas (VII)
+
+- No usar `is`  e  `is not` 
+	- Con valores literales
+- Ej:
+
+✅
+```Python
+x == 'abc'
+x != 5
+x == True
+```
+
+❌
+```Python
+x is 'abc'
+x is not 5
+x is True
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas con Funciones Booleanas (VIII)
+
+- Ser cauteloso al hacer composiciones 
+	- Con operadores de comparación
+- Ej: 
+
+```Python
+x < y < z 
+# Es diferente de: 
+(x < y) and (y < z)
+
+# `x < y < z` es más eficiente aquí
+# Porque se evalúa a `y` *una sola vez*
 
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-# Continuará...
+### Mejores Prácticas con TODOs (I)
+
+- Usar “TODO” en mayúsculas
+	- Seguido de dos puntos
+- Ej:
+
+```Python
+# TODO: Descripción clara y concisa de la tarea
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mejores Prácticas con TODOs (II)
+
+- Numerar los `TODOs`
+	- Puede ser útil para organizarlos
+- Ej:  
+
+```Python
+# TODO 1: Descripción clara y concisa de la tarea 1
+
+# TODO 2: Descripción clara y concisa de la tarea 2
+
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Pasted image 20240817131627.png" alt="" style="object-fit: scale-down">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
