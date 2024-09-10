@@ -610,10 +610,10 @@ elif edad > 60:
 
 - Palabra clave que introduce 
 	- Un caso alterno condicionado
-- Es una forma compacta de decir "else if"
+- Es una forma compacta de decir "*else if*"
 - La definición de `elif`
 	- Requiere de una definición de `if` previa
-- No puede haber un `else` sin un `if`
+- No puede haber un `elif` sin un `if`
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -638,6 +638,8 @@ elif edad > 60:
 -  `elif` siempre lleva un condición
 	- Si la condición se cumple
 		- Se ejecuta el cuerpo de `elif`
+	- Si la condición no se cumple
+		- Se ignora el cuerpo de `elif`
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -836,7 +838,7 @@ elif es_estudiante():
 
 ### `if-elif` Ejemplo
 
-- Suponga que `age = 21`
+- Suponga que `edad = 21`
 	- Y `es_estudiante()` retorna `True`
 
 <img src="Screenshot 2024-09-09 at 9.47.43 PM.png" alt="" style="object-fit: scale-down">
@@ -897,7 +899,7 @@ else:
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### `if-elif-else` Ejemplo 
-- Suponga que `age = 21`
+- Suponga que `edad = 21`
 	- Y `es_estudiante()` retorna `False`
 
 <img src="Screenshot 2024-09-09 at 9.59.23 PM.png" alt="" style="object-fit: scale-down">
@@ -939,6 +941,158 @@ else:  # Caso contrario, porque todo lo anterior evalúa a `False`
 
 - Se imprime:
 	- Baja temperatura
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `len()`
+
+- Retorna la longitud (tamaño) de un objeto    
+- Sintaxis: `len(objeto)`
+- Compatible con múltiples objetos, por ejemplo strings
+- `help(len)`ó [len](https://docs.python.org/3/library/functions.html#len) para más información
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `len()` - Ejemplos
+
+```Python
+len('')  # → 0 (string vacío)
+
+len('Python')  # → 6 (`Python` tiene 6 caracteres)
+
+len('Hello World!')  # → 12 (Los espacios son caracteres)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (XI)
+
+- ¿Qué hace el siguiente programa?
+
+```Python
+pin = input('Por favor digite un PIN de cuatro dígitos: ')
+
+if len(pin) != 4:
+    print('El PIN debe tener cuatro dígitos de longitud')
+else:
+    print('El PIN se ha guardado')
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (XI) - Respuesta
+
+- Solicita al usuario un PIN de 4 dígitos
+- Si el PIN no coincide con esa longitud
+	- Imprime: 
+		- "El PIN debe tener 4 caracteres de longitud"
+- Caso lo contrario
+	- Imprime: 
+		- "El PIN se ha guardado"
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Comparación de Cadenas (`==`)
+
+- Es posible comparar dos cadenas usando los operadores relacionales
+- Ej:
+
+```Python
+'a' == 'a'  # → True
+'A' == 'a'  # → False
+'Hola' == 'Hola'  # → True
+'hola' == 'Hola'  # → False
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (XII)
+
+- ¿Qué hace el siguiente programa?
+
+```Python
+pin = input('Por favor digite un PIN de cuatro dígitos: ')
+confirmacion_pin = input('Por favor confirme el PIN: ')
+
+if len(pin) != 4:
+    print('El PIN debe tener cuatro dígitos de longitud')
+
+elif pin == confirmacion_pin:
+    print('El PIN se ha guardado')
+else:
+    print('Error: los PINs no coinciden')
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (XII) - Respuesta
+- Solicita al usuario un PIN de 4 dígitos
+- Solicita al usuario que confirme el PIN
+- Si el PIN no coincide con esa longitud, imprime: 
+	- "El PIN debe tener 4 dígitos de longitud"
+- Si ambas entradas coinciden, imprime: 
+	- "El PIN se ha guardado"
+- Caso contrario, imprime: 
+	- "Error: los PINs no coinciden"
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.isdigit()`
+    
+- Determina si los caracteres de un string son **todos dígitos**
+	- Esto es: 0 - 9
+- Retorna `True` si todos los caracteres son dígitos, caso contrario `False`
+- `help(str.isdigit)`ó [isdigit](https://docs.python.org/3/library/stdtypes.html#str.isdigit) para más información
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.isdigit()` - Ejemplos
+
+```Python
+''.isdigit()  # → False (Debe haber al menos un carácter)
+
+'1234'.isdigit()  # → True (Todos son dígitos)
+
+'1.5'.isdigit()  # → False: (El punto `.` no es un dígito)
+
+'1 5'.isdigit()  # → False: (Los espacios no son dígitos)
+
+'$5'.isdigit()  # → False: (Los símbolos no son dígitos)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (XIII)
+
+- ¿Qué hace el siguiente programa?
+
+```Python
+pin = input('Por favor digite un PIN de cuatro dígitos: ')
+confirmacion_pin = input('Por favor confirme el PIN: ')
+
+if len(pin) != 4:
+    print('El PIN debe tener cuatro dígitos de longitud')
+elif not pin.isdigit():
+    print('El PIN debe contener sólo dígitos')
+elif pin == confirmacion_pin:
+    print('El PIN se ha guardado')
+else:
+    print('Error: los PINs no coinciden')
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (XIII) - Respuesta
+- Pide al usuario un PIN de 4 dígitos
+- Pide al usuario que confirme el PIN
+- Si el PIN no coincide con esa longitud, imprime: 
+	- "El PIN debe tener 4 dígitos de longitud"
+- Si el PIN no contiene solo dígitos (0-9), imprime: 
+	- "El PIN debe contener solo dígitos"
+- Si ambas entradas coinciden, imprime: 
+	- "El PIN se ha guardado"
+- De lo contrario, imprime: 
+	- "Error: los PINs no coinciden"
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
