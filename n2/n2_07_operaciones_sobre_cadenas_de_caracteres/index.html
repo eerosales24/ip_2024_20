@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Introducción a la Programación (IP)
+
+*Operaciones sobre Cadenas de Caracteres*
+
+[Eduardo Rosales](mailto:ee.rosales24@uniandes.edu.co)
+
+Departamento de Ingeniería de Sistemas y Computación
+
+Universidad de los Andes
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### `str.format(...)`
+
+- Formateo de cadenas 
+	- Con marcadores de posición 
+		- Para expresiones
+- Sintaxis: 
+```Python
+ 'string {}'.format(expresion)
+```
+- `expresion` se evalúa en tiempo de ejecución
+- Compatible con Python 3.6 o menor
+- Soporta el formateo de decimales
+- `help(str.format)`o [format](https://docs.python.org/3/library/stdtypes.html#str.format) para más información
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### `str.format(...)` - Ejemplos
+
+```Python
+print('Result: {}'.format(5))  # → 'Result: 5'
+
+print('{} + {} = {}'.format(20, 30, 20 + 30))  # → '20 + 30 = 50'
+# `(20, 30, 20 + 30)` se resuelve en tiempo de ejecución
+
+print('{} / {} = {:.2f}'.format(1, 3, 1 / 3))  # → '1 / 3 = 0.33
+# `{:.2f}` se formatea, usando dos decimales
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# TEMA OPCIONAL  
+(`f-strings`)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  f-strings
+    
+- Formateo de cadenas usando una 
+	- Expresión embebida (integrada)
+- Syntax: 
+    ```Python
+ f'string {expresion}'
+```
+
+- `expresion` se evalúa en tiempo de ejecución
+- Soporta formateo de decimales
+- Introducida a partir de Python 3.6
+- [f-strings ](https://docs.python.org/3/tutorial/inputoutput.html#tut-f-strings)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  f-strings - Ejemplos
+
+```Python
+print(f'Result: {5}')  # → 'Result: 5'
+print(f'{20} + {30} = {20 + 30}')  # → '20 + 30 = 50'   
+print(f'{1} / {3} = {1 / 3:.2f}')  # → '1 / 3 = 0.33'**
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Comparación (lexicográfica) de cadenas 
+- Comparación de dos strings, carácter a carácter
+- El orden está determinado por
+	- Los [códigos Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
+- Ej:
+
+```Python
+ord('a')  # → 97
+
+ord('B')  # → 65
+
+'B' < 'a'  # → True
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Operadores de Pertenencia (o Membresía) (I)
+- `in`
+- Sintaxis:
+```Python
+x in s
+```
+- `x`: elemento a buscar
+- `s`: secuencia dentro de la cual buscar
+- `x in s` : devuelve `True` 
+	- Si se encuentra `x` en `s`
+	- Caso contrario `False`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Operadores de Pertenencia (o Membresía) (II)
+-  `not in`
+- Sintaxis:
+```Python
+x not in s
+```
+- `x`: elemento a buscar
+- `s`: secuencia dentro de la cual buscar
+- `x not in s` : devuelve `True`
+	- Si no se encuentra `x` en `s`
+	- Caso contrario `False`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Operadores de Pertenencia (o Membresía) - Ejemplos
+```Python
+# Asumir ejecución secuencial de cada línea:
+frase = '¡Python es divertido!'
+' ' in frase  # → True
+'!' in frase  # → True
+'divertido' in frase  # → True
+'z' in frase  # → False
+'z' not in frase  # → True
+'a' not in frase  # → True
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str` es una clase
+    
+- Una *clase* especifica comportamientos de objetos
+- No es el objetivo del curso usar clases
+- Basta con saber que
+	- `str` es el "molde" 
+		- Para crear strings
+- Esto objetos tienen comportamientos
+	-  Implementados vía funciones especiales
+		- Denominadas *métodos*
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ¿Cómo se Invoca a un Método?
+
+- Sintaxis: ```string.nombre_metodo()```
+- Ej:
+
+```Python
+'1234'.isdigit()  # → True (Todos son dígitos)
+
+'1.5'.isdigit()  # → False: (El punto `.` no es un dígito)
+
+'1 5'.isdigit()  # → False: (Los espacios no son dígitos)
+
+'$5'.isdigit()  # → False: (Los símbolos no son dígitos)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Conozcámos algunos métodos de la Clase `str`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.lower()`
+- Retorna una copia de la cadena original 
+	- En minúsculas 
+- Se usa para comparaciones 
+	- Que no consideran mayúsculas y minúsculas
+`help(str.lower)`o [str.lower](https://docs.python.org/3/library/stdtypes.html#str.lower) para más información
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.lower()` - Ejemplos
+```Python
+'abcd'.lower()  # → 'abcd'
+
+'ABCD'.lower()  # → 'abcd'
+
+''.lower()  # → '' (Cadenas vacías permanecen sin cambios)
+
+'ABCD#%'.lower()  # → 'abcd#%': los símbolos no son afectados
+
+'XYZ'.lower() == 'xyz'  # → True
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.upper()`
+- Retorna una copia de la cadena original
+	- En mayúsculas 
+- Se usa para comparaciones 
+	- Que no consideran mayúsculas y minúsculas
+`help(str.upper)`o [str.upper](https://docs.python.org/3/library/stdtypes.html#str.upper) para más información
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.upper()` - Ejemplos
+```Python
+'ABCD'.upper()  # → 'ABCD'
+
+'abcd'.upper()  # → 'ABCD'
+
+''.upper()  # → '' (Cadenas vacías permanecen sin cambios)
+
+'abcd&'.upper()  # → 'ABCD&' (Los símbolos no son afectados)
+
+'a\n\tb'.upper()  # → 'A\n\tB' (`\n` and `\t` no se afectan)
+
+'xyz'.upper() == 'XYZ'  # → True
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.title()`
+
+- Retorna una copia de la cadena original 
+	- En *formato de título* 
+		- La primera letra en mayúscula
+			- El resto en minúsculas
+- Se usa para formatear títulos y encabezados
+- `help(str.title)`o [str.title](https://docs.python.org/3/library/stdtypes.html#str.title) para más información
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.title()` - Ejemplos
+
+
+```Python
+'ab cd'.title()  # → 'Ab Cd' (Sólo iniciales afectadas)
+
+'python is fun'.title()  # → 'Python Is Fun'
+
+'PYTHON IS FUN'.title()  # → 'Python Is Fun'
+
+''.title()  # → '' (Cadenas vacías permanecen sin cambios)
+
+'HI jOHN&'.title()  # → 'Hi John&' (Los símbolos no se afectan)
+
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.swapcase()`
+    
+- Retorna una copia de la cadena original 
+	- Con mayúsculas convertidas a minúsculas y viceversa
+- Útil para cambiar el caso de todo el texto 
+	- Sin importar su estado original
+- `help(str.swapcase)`o [str.swapcase](https://docs.python.org/3/library/stdtypes.html#str.swapcase) para más información
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.swapcase()` - Ejemplos
+   
+
+```Python
+'abCD'.swapcase()  # → 'ABcd' (Cambia mayúsculas por minúsculas y viceversa)  
+
+'Python Is Fun'.swapcase()  # → 'pYTHON iS fUN'
+
+'PYTHON IS FUN'.swapcase()  # → 'python is fun'
+
+''.swapcase()  # → '' (Cadenas vacías permanecen sin cambios)
+
+'123abc'.swapcase()  # → '123ABC' (Los dígitos permanecen sin cambios)
+
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.count(...)`
+- Retorna el número de ocurrencias 
+	- De una subcadena especificada
+- Sintaxis: 
+```Python
+string.count(substring, start, end)
+```
+- `substring`: subcadena que se busca
+- `start`: Inicio de búsqueda (opcional: `0`)
+- `end`: Fin de búsqueda (opcional: fin de la cadena)
+- Retorna `0`  si no encuentra a la subcadena
+- help(`str.count`) o [str.count](https://docs.python.org/3/library/stdtypes.html#str.count) para más información
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.count(...)` - Ejemplos
+
+```Python
+'banana'.count('a')  # → 3
+
+'ban ana'.count('a')  # → 3
+
+'banana'.count('z')  # → 0
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Las Cadenas de Caracteres son Secuencias
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tipos de datos Escalares 
+
+- Representan un único valor
+- No son divisibles en componentes más pequeños 
+	- Dentro del contexto de su tipo
+- Tipos comunes incluyen: `int`, `float`, `bool`
+- Utilizados para realizar operaciones 
+	- Matemáticas
+	- Lógicas y 
+	- De comparación
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tipos de datos Secuenciales o Estructurados
+
+- Representan una colección ordenada de ítems
+- Pueden ser divididos en componentes 
+	- Más pequeños (ítems o elementos)
+- Tipos comunes incluyen: `str`, `list`, `tuple`
+- Soportan operaciones específicas
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Secuencia
+- Iterable especial que soporta
+	- Indexación 
+	- Cálculo de longitud
+
+- Secuencias integradas comunes: 
+	- Strings, listas, rangos, tuplas
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Iterable
+- Objeto capaz de retornar a sus elementos
+	- Uno a la vez
+- Más sobre iterables después en el curso…
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Índice: 
+- Identificador posicional único 
+	- Para un elemento de la secuencia
+- Las secuencias tienen *índice cero*
+	- El primer elemento está en el índice 0 
+		- No en 1
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Índices - Funcionamiento
+
+<img src="Screenshot 2024-09-11 at 9.31.04 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.find(...)` (I)
+- Retorna el primer índice 
+	- En donde se encuentra la subcadena dada
+- Sintaxis: 
+```Python
+string.find(substring, start, end)
+``` 
+- `substring`: Subcadena a buscar
+- `start`: Inicio de búsqueda (opcional: 0)
+- `end`: Fin de búsqueda (opcional: final de la cadena)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.find(...)` (II)
+- Retorna el primer indice (de izquierda a derecha) 
+	- En donde comienza la subcadena,
+	- `-1` si no se encuentra
+- help(str.find) o [str.find](https://docs.python.org/3/library/stdtypes.html#str.find) para más información**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Comprendamos el método `str.find()`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.39.45 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.39.53 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.40.01 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.40.07 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.40.13 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.40.20 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Indexación
+
+- Acceso específico por posición 
+	- A elementos de una secuencia 
+		- Mediante un índice
+- Sintaxis: 
+```Python 
+secuencia[índice_positivo] o 
+secuencia[índice_negativo]
+```
+- *Indexación positiva*: 
+	- Usada para acceder desde el principio
+- *Indexación negativa*: 
+	- Usada para acceder desde el final
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Comprendamos la Indexación Positiva
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.46.37 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.46.43 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.46.49 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.46.56 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.47.01 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.47.10 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Comprendamos la Indexación Negativa
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.49.47 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.49.53 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.50.02 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.50.08 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.50.13 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.50.20 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ¿Qué Pasa si se usan Índices Inválidos?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-09-11 at 9.52.05 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `IndexError`
+- Ocurre al intentar acceder 
+	- A un índice fuera de rango
+- Rango de índice positivo: 
+	- De `0` a (`len(secuencia) - 1`)
+- Rango de índice negativo: 
+	- De `-1` a (`-len(secuencia)`)
+- `help(IndexError)` para más información
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Inmutabilidad (Strings) (I)
+- Los strings son *inmutables*
+- Después de su creación
+	- Los strings no pueden ser modificados
+- Intentar modificar un string resulta en un error
+- Ej:
+```Python
+s = 'Python'
+s[0] = 'J' # → TypeError: `s` es inmutable
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Inmutabilidad (Strings) (II)
+
+- Las operaciones con cadenas 
+	- Siempre retornan una nueva cadena    
+- Ej:
+
+```Python
+s = 'Python' # `s` es una cadena inmutable
+
+s = s + ' es divertido!' # Ahora `s` es una nueva cadena
+
+# La concatenación produjo una nueva cadena
+# La cual es inmutable:
+# s = 'Python es divertido!'
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.replace(...)`
+- Retorna una copia de la cadena original
+	- Donde las ocurrencias de la subcadena dada
+		- Han sido reemplazadas
+- Sintaxis: 
+```Python
+string.replace(old, new, count)
+```
+- `old`: Subcadena a reemplazar
+- `new`: La cadena reemplazo
+- `count`: Número de ocurrencias a reemplazar (opcional: todas)
+- `help(str.replace)`o [str.replace](https://docs.python.org/3/library/stdtypes.html#str.replace) para más información
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.replace(...)` - Ejemplos
+
+```Python
+'banana'.replace('na', '')  # → 'ba'
+
+'banana'.replace('na', '', 1)  
+# → 'bana' (1ra ocurrencia reemplazada)
+
+'banana'.replace('banana', 'Python')  # → 'Python'
+
+'banana'.replace('NA', '')  
+# → 'banana' (Sensible a mayúsculas)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (I)
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+phrase = 'abracadabra'
+first_chars = phrase[0] + phrase[1] + phrase[2] + phrase[3]
+remaining_phrase = phrase.replace(first_chars, '')
+print(first_chars)
+print(remaining_phrase)
+print(phrase)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (I)
+
+- Respuesta:
+
+```Python
+phrase = 'abracadabra'
+first_chars = phrase[0] + phrase[1] + phrase[2] + phrase[3]
+remaining_phrase = phrase.replace(first_chars, '')
+print(first_chars)
+print(remaining_phrase)
+print(phrase)
+```
+
+- Se imprime:
+```
+abra
+cad
+abracadabra
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.startswith(...)`
+- Verifica si la cadena inicia
+	- Con el prefijo especificado
+- Sintaxis: 
+```Python
+string.startswith(prefix, start, end)
+```
+- `prefix`: Prefijo a buscar
+- `start`:  Inicio de búsqueda (opcional: 0)
+- `end`: Fin de búsqueda (opcional: fin de la cadena)
+- Retorna `True` si la cadena inicia con el prefijo
+	- Caso contrario `False`
+- `help(str.startswith)`o [str.starswith](https://docs.python.org/3/library/stdtypes.html#str.startswith) para más información
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.startswith(...)` - Ejemplos
+
+```Python
+'Python is fun!'.startswith('Python')  # → True
+
+'Hola mundo'.startswith('Python')  # → False
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.endswith(...)`
+- Verifica si la cadena finaliza 
+	- Con el sufijo especificado
+- Sintaxis: 
+```Python
+string.endswith(suffix, start, end)
+```
+- `suffix`: Sufijo a buscar
+- `start`: Inicio de búsqueda (opcional: 0)
+- `end`: Fin de búsqueda (opcional: fin de la cadena)
+- Retorna `True` si la cadena finaliza con el sufijo
+	- Caso contrario `False`
+- `help(str.endswith)` o [str.endswith](https://docs.python.org/3/library/stdtypes.html#str.endswith) para más información
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.endswith(...)` -  Ejemplos
+    
+```Python
+'Python is fun!'.endswith('fun!')  # → True
+
+'Hola mundo'.endswith('fun!')  # → False
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Pasted image 20240817131627.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+[Click para volver al menú principal](https://eerosales24.github.io/ip_2024_20/)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="copyright.png" alt="" style="object-fit: scale-down">
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

@@ -909,6 +909,12 @@ else:
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
+### `if-elif-else` Diagrama de flujo
+
+<img src="Screenshot 2024-09-11 at 6.52.07 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
 ### Quiz (X)
 
 - ¿Cuál es el resultado de ejecutar el siguiente código?
@@ -1020,7 +1026,7 @@ if len(pin) != 4:
 elif pin == confirmacion_pin:
     print('El PIN se ha guardado')
 else:
-    print('Error: los PINs no coinciden')
+    print('Error: Los PINs no coinciden')
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -1032,7 +1038,7 @@ else:
 	- "El PIN debe tener 4 dígitos de longitud"
 - Si ambas entradas coinciden, imprime: 
 	- "El PIN se ha guardado"
-- Caso contrario, imprime: 
+- Caso alterno, imprime: 
 	- "Error: los PINs no coinciden"
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -1042,7 +1048,7 @@ else:
 - Determina si los caracteres de un string son **todos dígitos**
 	- Esto es: 0 - 9
 - Retorna `True` si todos los caracteres son dígitos, caso contrario `False`
-- `help(str.isdigit)`ó [isdigit](https://docs.python.org/3/library/stdtypes.html#str.isdigit) para más información
+- `help(str.isdigit)`ó [str.isdigit](https://docs.python.org/3/library/stdtypes.html#str.isdigit) para más información
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -1077,7 +1083,7 @@ elif not pin.isdigit():
 elif pin == confirmacion_pin:
     print('El PIN se ha guardado')
 else:
-    print('Error: los PINs no coinciden')
+    print('Error: Los PINs no coinciden')
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -1091,8 +1097,48 @@ else:
 	- "El PIN debe contener solo dígitos"
 - Si ambas entradas coinciden, imprime: 
 	- "El PIN se ha guardado"
-- De lo contrario, imprime: 
-	- "Error: los PINs no coinciden"
+- Caso alterno, imprime: 
+	- "Error: Los PINs no coinciden"
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Condicionales anidados - Diagrama de Flujo
+
+<img src="Screenshot 2024-09-11 at 6.50.52 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (IX)
+
+- ¿Qué hace el siguiente programa?
+
+```Python
+pin = input('Por favor digite un PIN de cuatro dígitos: ')
+confirmacion_pin = input('Por favor confirme el PIN: ')
+ 
+if pin == confirmacion_pin:
+    if len(pin) != 4:
+        print('El PIN debe tener cuatro dígitos de longitud')
+    elif not pin.isdigit():
+        print('El PIN debe contener sólo dígitos')
+    else:
+        print('El PIN se ha guardado')
+else:
+    print('Error: PIN distintos')
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (IX) - Respuesta
+- Pide al usuario un PIN de 4 dígitos y confirmación
+- Si ambas entradas coinciden, chequea:
+	- Si el PIN no tiene 4 dígitos, imprime: 
+		- "El PIN debe tener 4 dígitos de longitud"
+	- Si el PIN no es solo dígitos (0-9), imprime: 
+		- "El PIN debe contener solo dígitos"
+	- Caso alterno, imprime: 
+		- "El PIN se ha guardado"
+- Caso alterno, imprime: "Error: PIN distintos"
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
