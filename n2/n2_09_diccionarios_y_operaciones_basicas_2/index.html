@@ -131,7 +131,7 @@ notas = {'Lyn':2.0, 'Jim':5.0, 'Chris':3.5, 'George':4.6 }
 
 ### Quiz (I)
 
-- ¿Cuál es el resultado de ejecutar el siguiente código si el usuario ingresa `Manzana`?
+- ¿Cuál es el resultado de ejecutar el siguiente código si el usuario ingresa: `Manzana`?
 
 ```Python
 precio_frutas = {'Manzana': 9000, 'Fresa': 12000, \
@@ -157,7 +157,21 @@ else:
 - Respuesta:
 
 ```Python
-El precio de la Manzana es: 9000.
+precio_frutas = {'Manzana': 9000, 'Fresa': 12000, \
+                 'Papaya': 5600, 'Naranja': 8700}
+
+fruta_buscada = input("Digite la fruta de la" \
+                      "cual quiere conocer el precio: ")
+    
+precio = precio_frutas.get(fruta_buscada)
+
+if fruta_buscada in precio_frutas:
+    print("El precio de la {} es: "\
+          "{}.".format(fruta_buscada, precio))
+    # → El precio de la Manzana es: 9000.
+else:
+    print("El precio de la fruta {} " \
+          "no está disponible.".format(fruta_buscada))
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -175,7 +189,7 @@ El precio de la Manzana es: 9000.
 ### `len()` - Ejemplos
 
 ```Python
-len({}) # → 0: Diccionario vacío
+len({})  # → 0: Diccionario vacío
 
 len({'a':1}) 
 # → 1: Diccionario de un solo par llave-valor
@@ -206,7 +220,13 @@ if longitud == 4:
 - Respuesta:
 
 ```Python
-Hay 4 precios de frutas disponibles.
+precio_frutas = {'Manzana': 9000, 'Fresa': 12000, \
+                 'Papaya': 5600, 'Naranja': 8700}
+
+longitud = len(precio_frutas)
+if longitud == 4:
+    print(f'Hay {longitud} precios de frutas disponibles.')
+    # → Hay 4 precios de frutas disponibles.
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -232,7 +252,15 @@ else:
 - Respuesta:
 
 ```Python
-No hay precios de frutas disponibles.
+precio_frutas = {}
+
+if not precio_frutas:
+    print("No hay precios de frutas disponibles.")
+    # → No hay precios de frutas disponibles.
+else:
+    print(f"Hay {len(precio_frutas)} " \
+          "precios de frutas disponibles.")
+
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -258,7 +286,14 @@ else:
 - Respuesta:
 
 ```Python
-Hay 1 precio(s) de frutas disponibles.
+precio_frutas = {'Guanabana': 14000}
+
+if not precio_frutas:
+    print("No hay precios de frutas disponibles.")
+else:
+    print(f"Hay {len(precio_frutas)} " \
+          "precio(s) de frutas disponibles.")
+    # → Hay 1 precio(s) de frutas disponibles.
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -278,8 +313,8 @@ Hay 1 precio(s) de frutas disponibles.
 
 ### Paso de Argumentos (II)
 - No es el objetivo del curso
-	- Comprender el detalle 
-		- Del paso por asignación
+	- Comprender en detalle 
+		- El paso por asignación
 - Basta con saber que
 	- Un diccionario **se puede pasar a una función**
 	- Un diccionario que se pasa a una función
@@ -287,7 +322,298 @@ Hay 1 precio(s) de frutas disponibles.
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-___
+# Primero Recordemos el Paso de Argumentos Inmutables
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Tipos de datos inmutables
+- Un tipo de dato es inmutable
+	- Si después de crearlo, no se puede cambiar
+- Tipos de datos inmutables vistos hasta ahora:
+	- `int`
+	- `float`
+	- `str`
+	- `bool`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de Argumentos Inmutables - Ejemplo (I)
+
+```Python
+mensaje_original = 'Original'
+
+def intentar_modificar(mensaje: str) -> None:
+    mensaje = 'Esto solo cambia la variable local'
+    print(mensaje)  # → 'Esto solo cambia la variable local'
+
+print(mensaje_original)  # → Original
+intentar_modificar(mensaje_original)
+print(mensaje_original)  # → Original
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de Argumentos Inmutables - Ejemplo (II)
+
+- Los strings no pueden ser cambiados
+	- Lo que se cambió fue a
+		- La variable local: `mensaje`
+
+```Python[5,6]
+mensaje_original = 'Original'
+
+def intentar_modificar(mensaje: str) -> None:
+    # mensaje es una variable local
+    mensaje = 'Esto solo cambia la variable local'
+    print(mensaje)  # → 'Esto solo cambia la variable local'
+
+print(mensaje_original)  # → Original
+intentar_modificar(mensaje_original)
+print(mensaje_original)  # → Original
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Ahora Entendamos  el Paso de Argumentos con Mutables
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Tipos de datos Mutables
+- Un tipo de dato es mutable
+	- Si después de crearlo, se puede cambiar
+- Tipos de datos mutables vistos hasta ahora:
+	- `dict`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de Argumentos Mutables - Ejemplo (I)
+
+```Python
+diccionario_original = {'clave': 'valor original'}
+
+def modificar_diccionario(diccionario: dict) -> None:
+    diccionario['clave'] = 'Se cambió a `diccionario_original`'
+    print(diccionario)  
+    # → {'clave': 'Se cambió a `diccionario_original`'}
+
+print(diccionario_original)  # → {'clave': 'valor original'}
+modificar_diccionario(diccionario_original)  
+print(diccionario_original)  
+# → {'clave': 'Esto cambió a `diccionario_original`'}
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de Argumentos Mutables - Ejemplo (II)
+
+- Un diccionario es mutable
+	- Y por lo tanto, la función puede cambiarlo
+
+```Python[4,5,6]
+diccionario_original = {'clave': 'valor original'}
+
+def modificar_diccionario(diccionario: dict) -> None:
+    diccionario['clave'] = 'Se cambió a `diccionario_original`'
+    print(diccionario)  
+    # → {'clave': 'Se cambió a `diccionario_original`'}
+
+print(diccionario_original)  # → {'clave': 'valor original'}
+modificar_diccionario(diccionario_original)  
+print(diccionario_original)  
+# → {'clave': 'Esto cambió a `diccionario_original`'}
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (V)
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+dia_actual = 'Hoy'
+
+def intentar_cambiar_dia(dia: str) -> None:
+    print(dia)
+    dia = 'Mañana'  
+    print(dia)
+
+print(dia_actual)
+intentar_cambiar_dia(dia_actual)
+print(dia_actual)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (V)
+
+- Respuesta:
+
+```Python
+dia_actual = 'Hoy'
+
+def intentar_cambiar_dia(dia: str) -> None:
+    print(dia)  # → Hoy
+    dia = 'Mañana'  # Aquí solo se cambió a la variable local
+    print(dia)  # → Mañana
+
+print(dia_actual)  # → Hoy
+intentar_cambiar_dia(dia_actual)
+print(dia_actual)  # → Hoy
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VI)
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+valor_inicial = 1
+
+def intentar_modificar_valor(valor):
+    print(valor)
+    valor = 9
+    print(valor)
+
+
+print(valor_inicial)
+intentar_modificar_valor(valor_inicial)
+print(valor_inicial)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VI)
+
+- Respuesta:
+
+```Python
+valor_inicial = 1
+
+def intentar_modificar_valor(valor):
+    print(valor)  # → 1
+    valor = 9  # Aquí solo se cambió a la variable local
+    print(valor)  # → 9
+
+
+print(valor_inicial)  # → 1
+intentar_modificar_valor(valor_inicial)
+print(valor_inicial)  # → 1
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VII)
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+valor_inicial = 1
+
+def retornar_valor(valor):
+    print(valor)
+    valor = 9
+    print(valor)
+    return valor  
+
+print(valor_inicial)
+valor_inicial = retornar_valor(valor_inicial)  
+print(valor_inicial)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VII)
+
+- Respuesta:
+
+```Python
+valor_inicial = 1
+
+def retornar_valor(valor):
+    print(valor)  # → 1
+    valor = 9   # Aquí se cambió a la variable local
+    print(valor)  # → 9   
+    return valor  # Aquí se retornó a la variable local
+
+print(valor_inicial)  # → 1
+# `valor_inicial` se actualiza con el valor retornado:
+valor_inicial = retornar_valor(valor_inicial)  
+print(valor_inicial)  # → 9
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Estudiemos más Métodos de los Diccionarios
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `dict.copy(...)`
+
+- Crea una copia del diccionario 
+- Sintaxis:   
+
+```Python 
+diccionario_copia = diccionario_original.copy()
+```
+
+- No modifica el diccionario original
+- Útil cuando se necesita trabajar con una copia
+    - Y evitar modificar el original
+- `help(dict.copy)` o [dict.copy](https://docs.python.org/3/library/stdtypes.html#dict.copy) para más información
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `dict.copy(...)` - Ejemplos 
+
+```Python
+# Asumir ejecución secuencial de cada línea:
+dct_original = {'a':1, 'b':2}
+
+copia_dct = dct_original.copy()  # copia_dct = {'a':1, 'b':2}
+
+copia_dct['c'] = 3  # copia_dct = {'a':1, 'b':2, 'c':3}
+
+print(dct_original)  # → {'a':1, 'b':2}
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VIII)
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+original_dict = {'Juan': 18, 'Ana': 22}
+copia = original_dict.copy()
+original_dict['Juan'] = -1
+copia['Ana'] = -1
+print(original_dict)
+print(copia)
+copia['Pedro'] = 27
+print(original_dict)
+print(copia)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VIII)
+
+- Respuesta:
+
+```Python
+original_dict = {'Juan': 18, 'Ana': 22}
+copia = original_dict.copy()
+original_dict['Juan'] = -1
+copia['Ana'] = -1
+print(original_dict)  # → {'Juan': -1, 'Ana': 22}
+print(copia)  # → {'Juan': 18, 'Ana': -1}
+copia['Pedro'] = 27
+print(original_dict)  # → {'Juan': -1, 'Ana': 22}
+print(copia)  # → {'Juan': 18, 'Ana': -1, 'Pedro': 27}
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 <img src="Pasted image 20240817131627.png" alt="" style="object-fit: scale-down">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
