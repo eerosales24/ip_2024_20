@@ -101,7 +101,7 @@ Universidad de los Andes
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Como un **caso académico**, en el curso se usa a los diccionarios para manejar elementos con las mismas características
+**Nota:** Como un **caso académico**, en el curso se usa a los diccionarios para manejar elementos con las mismas características
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -111,7 +111,7 @@ Como un **caso académico**, en el curso se usa a los diccionarios para manejar 
 	- Que tienen las mismas características
 - Ej:
 	- Los datos básicos de una persona
-		- nombre, apellido, edad
+		- `nombre`, `apellido`, `edad`
 - Esta información es común a muchas personas
 	- Podría ser representada en un diccionario
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
@@ -175,7 +175,8 @@ def crear_estudiante(nombre: str, codigo: str, genero: str, carrera: str, promed
 	- ¿Cómo obtener acceso al promedio de 'David'?
 	
 ```Python
-def crear_estudiante(nombre: str, codigo: str, genero: str, carrera: str, promedio: float, ssc: float) -> dict:
+def crear_estudiante(nombre: str, codigo: str, genero: str,  \
+                carrera: str, promedio: float, ssc: float) -> dict:
     return { 'nombre': nombre,
              'código': codigo,
              'género': genero,
@@ -183,9 +184,12 @@ def crear_estudiante(nombre: str, codigo: str, genero: str, carrera: str, promed
              'promedio': promedio,
              'ssc': ssc}
 
-estudiante_1 = crear_estudiante('Daniel', 'A01234567', 'Masculino', 'Ingeniería', 4.1, 1.0)
-estudiante_2 = crear_estudiante('David', 'A01231234', 'Masculino', 'Fisica', 3.5, 9.0)
-estudiante_3 = crear_estudiante('Lorena', 'A0154640', 'Femenino', 'Medicina', 4.5, 3.0)
+estudiante_1 = crear_estudiante('Daniel', 'A01234567', \
+                            'Masculino', 'Ingeniería', 4.1, 1.0)
+estudiante_2 = crear_estudiante('David', 'A01231234',  \
+                            'Masculino', 'Fisica', 3.5, 9.0)
+estudiante_3 = crear_estudiante('Lorena', 'A0154640',  \
+                            'Femenino', 'Medicina', 4.5, 3.0)
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
