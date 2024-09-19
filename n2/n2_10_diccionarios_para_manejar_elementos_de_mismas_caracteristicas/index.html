@@ -127,13 +127,14 @@ Universidad de los Andes
 - ¿Qué hace la siguiente función?
 
 ```Python
-def crear_estudiante(nombre: str, codigo: str, genero: str, carrera: str, promedio: float, ssc: float) -> dict:
+def crear_estudiante(nombre: str, codigo: str, genero: str, \
+		carrera: str, promedio: float, ssc: float) -> dict:
     return { 'nombre': nombre,
              'código': codigo,
              'género': genero,
              'carrera': carrera,
              'promedio': promedio,
-             'ssc': ssc}  # ssc sigla de semestre según créditos
+             'ssc': ssc}  # ssc: semestre según créditos
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -143,7 +144,8 @@ def crear_estudiante(nombre: str, codigo: str, genero: str, carrera: str, promed
 - Respuesta:
 
 ```Python
-def crear_estudiante(nombre: str, codigo: str, genero: str, carrera: str, promedio: float, ssc: float) -> dict:
+def crear_estudiante(nombre: str, codigo: str, \
+	genero: str, carrera: str, promedio: float, ssc: float) -> dict:
     '''
     Crea un diccionario que representa a un estudiante con su
     información básica.
@@ -164,7 +166,7 @@ def crear_estudiante(nombre: str, codigo: str, genero: str, carrera: str, promed
              'género': genero,
              'carrera': carrera,
              'promedio': promedio,
-             'ssc': ssc}  # ssc sigla de semestre según créditos
+             'ssc': ssc}  # ssc: semestre según créditos
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -175,8 +177,8 @@ def crear_estudiante(nombre: str, codigo: str, genero: str, carrera: str, promed
 	- ¿Cómo obtener acceso al promedio de 'David'?
 	
 ```Python
-def crear_estudiante(nombre: str, codigo: str, genero: str,  \
-                carrera: str, promedio: float, ssc: float) -> dict:
+def crear_estudiante(nombre: str, codigo: str, \
+	genero: str, carrera: str, promedio: float, ssc: float) -> dict:
     return { 'nombre': nombre,
              'código': codigo,
              'género': genero,
@@ -210,7 +212,8 @@ estudiante_2['promedio']  # → 3.5
 	- ¿Cómo obtener consultar el promedio de todos los estudiantes?
 	
 ```Python
-def crear_estudiante(nombre: str, codigo: str, genero: str, carrera: str, promedio: float, ssc: float) -> dict:
+def crear_estudiante(nombre: str, codigo: str, \
+	genero: str, carrera: str, promedio: float, ssc: float) -> dict:
     return { 'nombre': nombre,
              'código': codigo,
              'género': genero,
@@ -232,7 +235,7 @@ estudiante_3 = crear_estudiante('Lorena', 'A0154640', 'Femenino', 'Medicina', 4.
 ```Python
 (estudiante_1['promedio'] + 
  estudiante_2['promedio'] + 
- estudiante_3['promedio']) / 3  # → 9.1
+ estudiante_3['promedio']) / 3  # → 4.033333333333333
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -287,7 +290,8 @@ def crear_libro(titulo: str, autor: str, precio: float, genero: str, paginas: in
 - Resuelva el TODO
 
 ```Python
-def buscar_libro_por_titulo(l1: dict, l2: dict, l3: dict, titulo: str) -> dict:
+def buscar_libro_por_titulo(l1: dict, l2: dict, \
+			l3: dict, titulo: str) -> dict:
     '''
     Busca un libro en la plataforma por su título.
 
@@ -317,7 +321,8 @@ def buscar_libro_por_titulo(l1: dict, l2: dict, l3: dict, titulo: str) -> dict:
 ### Quiz (IV)
 
 ```Python
-def buscar_libro_por_titulo(l1: dict, l2: dict, l3: dict, titulo: str) -> dict:
+def buscar_libro_por_titulo(l1: dict, l2: dict, \
+			l3: dict, titulo: str) -> dict:
     resultado = {}
     # TODO: Completar el resto de la función
     return resultado
@@ -330,7 +335,8 @@ def buscar_libro_por_titulo(l1: dict, l2: dict, l3: dict, titulo: str) -> dict:
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ```Python
-def buscar_libro_por_titulo(l1: dict, l2: dict, l3: dict, titulo: str) -> dict:
+def buscar_libro_por_titulo(l1: dict, l2: dict, \
+			l3: dict, titulo: str) -> dict:
     resultado = {}
     # TODO: Completar el resto de la función
     return resultado
@@ -354,7 +360,8 @@ def buscar_libro_por_titulo(l1: dict, l2: dict, l3: dict, titulo: str) -> dict:
 ### Quiz (IV)
 
 ```Python[4,5]
-def buscar_libro_por_titulo(l1: dict, l2: dict, l3: dict, titulo: str) -> dict:
+def buscar_libro_por_titulo(l1: dict, l2: dict, \
+			l3: dict, titulo: str) -> dict:
     resultado = {}
     if l1['titulo'] == titulo: 
         resultado = l1
@@ -382,7 +389,8 @@ def buscar_libro_por_titulo(l1: dict, l2: dict, l3: dict, titulo: str) -> dict:
 ### Quiz (IV)
 
 ```Python[5,6]
-def buscar_libro_por_titulo(l1: dict, l2: dict, l3: dict, titulo: str) -> dict:
+def buscar_libro_por_titulo(l1: dict, l2: dict, \
+			l3: dict, titulo: str) -> dict:
     resultado = {}
     if l1['titulo'] == titulo: 
         resultado = l1
@@ -420,7 +428,8 @@ def buscar_libro_por_titulo(l1: dict, l2: dict, l3: dict, titulo: str) -> dict:
 ### Quiz (IV)
 
 ```Python[7,8]
-def buscar_libro_por_titulo(l1: dict, l2: dict, l3: dict, titulo: str) -> dict:
+def buscar_libro_por_titulo(l1: dict, l2: dict, \
+			l3: dict, titulo: str) -> dict:
     resultado = {}
     if l1['titulo'] == titulo:
         resultado = l1
@@ -436,18 +445,19 @@ def buscar_libro_por_titulo(l1: dict, l2: dict, l3: dict, titulo: str) -> dict:
 ### Quiz (IV) - Solución
 
 ```Python
-def buscar_libro_por_titulo(l1: dict, l2: dict, l3: dict, titulo: str) -> dict:
+def buscar_libro_por_titulo(l1: dict, l2: dict, \
+			l3: dict, titulo: str) -> dict:
     '''
     Busca un libro en la plataforma por su título.
 
     Parámetros:
-        l1 (dict): diccionario que contiene la información del primer libro.
-        l2 (dict): diccionario que contiene la información del segundo libro.
-        l3 (dict): diccionario que contiene la información del tercer libro.
+        l1 (dict): Diccionario que contiene la información del primer libro.
+        l2 (dict): Diccionario que contiene la información del segundo libro.
+        l3 (dict): Diccionario que contiene la información del tercer libro.
         titulo (str): Título del libro a buscar.
 
     Retorna:
-        (dict): diccionario con la información del libro buscado. 
+        (dict): Diccionario con la información del libro buscado. 
         Si no se encuentra el libro, retorna un diccionario vacío.
     '''
     # TODO - DONE:  Implemente la función tal y como se describe en la documentación.
@@ -469,7 +479,8 @@ def buscar_libro_por_titulo(l1: dict, l2: dict, l3: dict, titulo: str) -> dict:
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ```Python
-def buscar_libro_por_nombre(l1: dict, l2: dict, l3: dict, titulo: str) -> dict:
+def buscar_libro_por_nombre(l1: dict, l2: dict, \
+			l3: dict, titulo: str) -> dict:
     resultado = {}  # Variable de retorno
     if l1['titulo'] == titulo:
         resultado = l1
@@ -490,7 +501,8 @@ def buscar_libro_por_nombre(l1: dict, l2: dict, l3: dict, titulo: str) -> dict:
 - Resuelva el TODO
 
 ```Python
-def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
+def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, \
+			l3: dict) -> str:
     '''
     Extrae a libros que sean del género literario ingresado.
 
@@ -512,7 +524,7 @@ def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
 ### Quiz (V)
 
 - ¿Cuál es el valor por defecto a retornar?
-	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->De no encontrarse ningún libro que sean del género de interés
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->De no encontrarse ningún libro que sea del género de interés
 		- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Se retornará la cadena vacía: `''`
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -520,7 +532,8 @@ def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
 ### Quiz (V)
 
 ```Python
-def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
+def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, \
+			l3: dict) -> str:
     libros = ''  # Variable de retorno
     # TODO: Completar el resto de la función
     return libros
@@ -533,7 +546,8 @@ def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ```Python
-def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
+def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, \
+			l3: dict) -> str:
     libros = ''  # Variable de retorno
     # TODO: Completar el resto de la función
     return libros
@@ -551,8 +565,8 @@ def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
 		- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Sea(n) del género de interés
 - ¿Qué valor debe asignarse a la variable de retorno en este caso?
 	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->**El o los nombres** de los libros
-		- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Separados por punto y coma (`;`)
-			- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->Si son varios
+		- &shy;<!-- .element: class="fragment" data-fragment-index="4" --> Si son varios
+			- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->Separados por punto y coma (`;`)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -582,14 +596,15 @@ def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
 
 ### Quiz (V)
 
-```Python[5,6,7,8]
-def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
+```Python[4,5,6,7,8,9]
+def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, \
+			l3: dict) -> str:
     libros = ''  # Variable de retorno
     if genero == l1['genero']:
         libros = l1['titulo']
     if genero == l2['genero']:
-        if libros != '':
-            libros += '; '
+        if libros != '':  # Si l1 era del género buscado
+            libros += '; ' # Se inserta la separación con ;
         libros += l2['titulo']
     # TODO: Completar el resto de la función
     return libros
@@ -599,8 +614,9 @@ def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
 
 ### Quiz (V)
 
-```Python[3,5]
-def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
+```Python[4,6]
+def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, \
+			l3: dict) -> str:
     libros = ''  # Variable de retorno
     if genero == l1['genero']:
         libros = l1['titulo']
@@ -612,7 +628,7 @@ def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
     return libros
 ```
 
-- ¿Por qué se usa `if` y no `elif`?
+- ¿Por qué se usa `if` independientes y no `elif`?
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -622,15 +638,16 @@ def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
 	- Se revisa el segundo libro
 		- **Independientemente** de que `l1`
 			- Sea o no del género buscado
-	- Hay que retornar todos los títulos de libros
+	- Hay que retornar **todos** los títulos de libros
 		- Que sean del género buscado
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Quiz (V)
 
-```Python[4,6,7,8]
-def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
+```Python
+def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, \
+			l3: dict) -> str:
     libros = ''  # Variable de retorno
     if genero == l1['genero']:
         libros = l1['titulo']
@@ -642,7 +659,7 @@ def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
     return libros
 ```
 
-- ¿Cómo se construye la lista?
+- ¿Cómo se construye la lista en el string a retornar?
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -657,7 +674,7 @@ def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
 
 - Si `l1` era del género buscado
 	- La lista contendrá el título de `l1`
-		- Hay que separar los títulos
+		- Entonces, hay que separar los títulos
 			- Con punto y coma
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -671,16 +688,18 @@ def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
             libros += '; '
         libros += l2['titulo']
 ```
-- Si el `l1` no era del género buscado
+- Si `l1` no era del género buscado
 	- La lista solo contendrá por ahora
 		- El título del segundo libro
+			- Sin ; previo
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Quiz (V)
 
 ```Python
-def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
+def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, \
+			l3: dict) -> str:
     libros = ''  # Variable de retorno
     if genero == l1['genero']:
         libros = l1['titulo']
@@ -688,7 +707,7 @@ def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, l3: dict) -> str:
         if libros != '':
             libros += '; '
         libros += l2['titulo']
-    # TODO: Completar el resto de la función
+    # TODO: Completar el resto de la función para `l3`
     return libros  # Hay un solo retorno
 ```
 
