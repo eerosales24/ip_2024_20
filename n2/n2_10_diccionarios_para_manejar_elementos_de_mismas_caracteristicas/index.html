@@ -349,7 +349,7 @@ def buscar_libro_por_titulo(l1: dict, l2: dict, \
 
 ### Quiz (IV)
 
-- ¿Qué condición puede cambiar la variable de retorno?
+- ¿Qué condición puede cambiar a la variable de retorno?
 	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Que uno de los tres libros
 		- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Tenga el título buscado
 - ¿Qué valor debe asignarse a la variable de retorno en este caso?
@@ -479,7 +479,7 @@ def buscar_libro_por_titulo(l1: dict, l2: dict, \
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ```Python
-def buscar_libro_por_nombre(l1: dict, l2: dict, \
+def buscar_libro_por_titulo(l1: dict, l2: dict, \
 			l3: dict, titulo: str) -> dict:
     resultado = {}  # Variable de retorno
     if l1['titulo'] == titulo:
@@ -492,7 +492,8 @@ def buscar_libro_por_nombre(l1: dict, l2: dict, \
 ```
 
 - ✅ Hay un sólo `return` en la función
-	- ✅ No se interrumpe ningún condicional con un `return`
+	- ✅ No se interrumpe ningún condicional 
+		- Con un `return`
 - ✅ Se usa una variable de retorno (`resultado`)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -561,7 +562,7 @@ def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, \
 
 ### Quiz (V)
 
-- ¿Qué condición puede cambiar la variable de retorno?
+- ¿Qué condición puede cambiar a la variable de retorno?
 	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Que **uno o varios** de los tres libros
 		- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Sea(n) del género de interés
 - ¿Qué valor debe asignarse a la variable de retorno en este caso?
@@ -605,7 +606,7 @@ def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, \
         libros = l1['titulo']
     if genero == l2['genero']:
         if libros != '':  # Si l1 era del género buscado
-            libros += '; ' # Se inserta la separación con ;
+            libros += '; '  # Se inserta la separación con ;
         libros += l2['titulo']
     # TODO: Completar el resto de la función
     return libros
@@ -692,7 +693,7 @@ def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, \
 - Si `l1` no era del género buscado
 	- La lista solo contendrá por ahora
 		- El título del segundo libro
-			- Sin ; previo
+			- Sin  punto y coma (`;`) previo
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -715,6 +716,376 @@ def extraer_libros_por_genero(genero: str, l1: dict, l2: dict, \
 - Termine la implementación:
 	- Considerando el tercer libro
 	- Y usando las buenas prácticas del curso
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VI)
+
+- Resuelva el TODO
+
+```Python
+def libro_con_mayor_precio(l1: dict, l2: dict, l3: dict) -> str:
+    '''
+    Retorna el título del libro con el mayor precio. En caso de empate,
+    retorna el primero que encuentre.
+
+    Parámetros:
+        l1 (dict): Diccionario que contiene la información del primer libro.
+        l2 (dict): Diccionario que contiene la información del segundo libro.
+        l3 (dict): Diccionario que contiene la información del tercer libro.
+
+    Retorna:
+        (str): Título del libro con el mayor precio.
+    '''
+    # TODO:  Implemente la función tal y como se describe en la documentación.
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VI)
+
+- ¿Cuál es el valor por defecto a retornar?
+    + Se puede asumir que el primer libro 
+        + Es el de mayor precio
+            + Entonces se retornará su nombre
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VI)
+
+```Python
+def libro_con_mayor_precio(l1: dict, l2: dict, l3: dict) -> str:
+    titulo_mayor_precio = l1['titulo']  # Variable de retorno
+    mayor_precio = l1['precio']  # Variable para guardar al mayor precio
+    # TODO: Completar el resto de la función
+    return titulo_mayor_precio
+```
+
+- `titulo_mayor_precio` 
+    - Se usa para llevar registro 
+        - Del nombre del libro con mayor precio
+- `mayor_precio`
+    - Se usa para llevar registro 
+        - Del mayor precio encontrado
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VI)
+
+```Python[2]
+def libro_con_mayor_precio(l1: dict, l2: dict, l3: dict) -> str:
+    titulo_mayor_precio = l1['titulo']  # Variable de retorno
+    mayor_precio = l1['precio']  # Variable para guardar al mayor precio
+    # TODO: Completar el resto de la función
+    return titulo_mayor_precio
+```
+
+- `titulo_mayor_precio` 
+    - Se inicializa con el nombre de `l1`
+        - Se asume que `l1` 
+            - Será el de mayor precio
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VI)
+
+```Python[2,5]
+def libro_con_mayor_precio(l1: dict, l2: dict, l3: dict) -> str:
+    titulo_mayor_precio = l1['titulo']  # Variable de retorno
+    mayor_precio = l1['precio']  # Variable para guardar al mayor precio
+    # TODO: Completar el resto de la función
+    return titulo_mayor_precio
+```
+
+- `titulo_mayor_precio` 
+    - Es la variable de retorno
+        - La función termina al retornarla
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VI)
+
+```Python[3]
+def libro_con_mayor_precio(l1: dict, l2: dict, l3: dict) -> str:
+    titulo_mayor_precio = l1['titulo']  # Variable de retorno
+    mayor_precio = l1['precio']  # Variable para guardar al mayor precio
+    # TODO: Completar el resto de la función
+    return titulo_mayor_precio
+```
+
+- `mayor_precio` 
+    - Se inicializa con el precio de `l1`
+        - Se asume el precio de `l1` 
+            - Será el mayor precio
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VI)
+
+- ¿Qué condición puede cambiar a la variable de retorno?
+    - &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Que uno de los dos libros restantes
+        - &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Tenga un precio mayor al primer libro
+- ¿Qué valor debe asignarse a la variable de retorno en este caso?
+    - &shy;<!-- .element: class="fragment" data-fragment-index="3" -->El título del libro con el mayor precio
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VI)
+
+```Python[5,6,7]
+def libro_con_mayor_precio(l1: dict, l2: dict, l3: dict) -> str:
+    titulo_mayor_precio = l1['titulo']  # Variable de retorno
+    mayor_precio = l1['precio']  # Variable para guardar al mayor precio
+    # Comparación con l2 
+    if l2['precio'] > mayor_precio: 
+        titulo_mayor_precio = l2['titulo']
+        mayor_precio = l2['precio']
+    # TODO: Completar el resto de la función
+    return titulo_mayor_precio
+```
+
+- Aquí se considera que `l2`
+    - Puede ser el de mayor precio
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VI)
+
+```Python[5,6,7]
+def libro_con_mayor_precio(l1: dict, l2: dict, l3: dict) -> str:
+    titulo_mayor_precio = l1['titulo']  # Variable de retorno
+    mayor_precio = l1['precio']  # Variable para guardar al mayor precio
+    # Comparación con l2 
+    if l2['precio'] > mayor_precio: 
+        titulo_mayor_precio = l2['titulo']
+        mayor_precio = l2['precio']
+    # TODO: Completar el resto de la función
+    return titulo_mayor_precio
+```
+
+- Este código se ejecutará
+    - Únicamente si el precio de `l2`
+        - Es mayor que el de `l1`
+	        - Guardado en `mayor_precio`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VI)
+
+```Python[3,9]
+def libro_con_mayor_precio(l1: dict, l2: dict, l3: dict) -> str:
+    titulo_mayor_precio = l1['titulo']  # Variable de retorno
+    mayor_precio = l1['precio']  # Variable para guardar al mayor precio
+    # Comparación con l2 
+    if l2['precio'] > mayor_precio: 
+        titulo_mayor_precio = l2['titulo']
+        mayor_precio = l2['precio']
+    # TODO: Completar el resto de la función
+    return titulo_mayor_precio
+```
+
+- Si el precio de `l1` es mayor que el de `l2`
+    - El precio de `l1` seguirá siendo el mayor
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VI)
+
+```Python
+def libro_con_mayor_precio(l1: dict, l2: dict, l3: dict) -> str:
+    titulo_mayor_precio = l1['titulo']  # Variable de retorno
+    mayor_precio = l1['precio']  # Variable para guardar al mayor precio
+    # Comparación con l2 
+    if l2['precio'] > mayor_precio: 
+        titulo_mayor_precio = l2['titulo']
+        mayor_precio = l2['precio']
+    # TODO: Completar el resto de la función para `l3`
+    return titulo_mayor_precio
+```
+
+- Termine la implementación:
+    - Considerando el tercer libro
+    - Y usando las buenas prácticas del curso
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VII)
+
+```Python
+def calcular_dias_totales(fecha: int) -> int:
+    '''
+    Calcula la cantidad total de días transcurridos desde un 
+    punto de referencia, asumiendo que un año tiene 
+    360 días y un mes 30 días.
+
+    Parámetros:
+    fecha (int): Fecha en formato YYYYMMDD (año, mes, día).
+
+    Retorna:
+    int: El número total de días acumulados desde un punto de
+    referencia basado en la estructura de la fecha.
+    '''
+    # TODO:  Implemente la función tal y como se describe en la documentación.
+
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VII)
+
+- Dado que la fecha es un entero
+	- En el formato: YYYYMMDD (año, mes, día)
+- ¿Cómo extraer matemáticamente el año?
+    - &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Como el año son los primeros cuatro dígitos
+	    - &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Se puede hacer división entera 
+		    - &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Por `10_000`
+	    - &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Ej: 
+``` Python
+20241224 // 10_000   # → 2024
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VII)
+
+- Dado que la fecha es un entero
+	- En el formato: YYYYMMDD (año, mes, día)
+- ¿Cómo extraer matemáticamente el mes?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->El módulo de 10_000 permitirá excluir al año
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Ej:
+``` Python
+20241224 % 10_000   # →  1224
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VII)
+
+- ¿Cómo extraer matemáticamente el mes?
+	- Extraer matemáticamente el año
+		- Será similar a la extracción de año
+		- Ej:
+``` Python
+20241224 % 10_000 // 100  # →  12
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VII)
+
+```Python
+def calcular_dias_totales(fecha: int) -> int:
+    anio = fecha // 10000 
+    mes = (fecha % 10000) // 100
+    # TODO: Completar el resto de la función
+```
+
+
+ - Termine la implementación:
+    - Calculando los días
+    - Y retornando el total
+```Python
+(anio * 360) + (mes * 30) + dia
+```
+
+	- Ej:
+		- Para `20241224`
+			- El resultado sería: `729024`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VII)
+
+- Complete los TODOs
+
+```Python
+def calcular_dias(fecha_inicial: int, fecha_final: int) -> int:
+    '''
+    Calcula la cantidad de días que han pasado entre dos fechas, bajo el
+    supuesto de que el año tiene 360 días y el mes 30 días. 
+    Usa a la función: calcular_dias_totales().
+
+    Parámetros:
+    fecha_inicial (int): Fecha inicial en formato YYYYMMDD.
+    fecha_final (int): Fecha final en formato YYYYMMDD.
+
+    Retorno:
+    int: Cantidad de días que han pasado entre las dos fechas.
+    '''
+    # TODO 1: Calcule los días totales para cada fecha
+
+
+    # TODO 2: Retorne la diferencia en días entre las dos fechas
+
+
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VIII)
+
+Complete el TODO
+
+```Python
+def buscar_libro_reimpresion_vencida(fecha_de_referencia: int, l1: dict, l2: dict, l3: dict) -> str:
+    '''
+    Verifica si alguno de los libros tiene una fecha de 
+    reimpresión anterior a la fecha de referencia usando la 
+    función calcular_dias(), y retorna el título del primer 
+    libro encontrado.
+
+    Parámetros:
+        fecha_de_referencia (int): Fecha con la que se busca 
+        hacer el análisis en formato YYYYMMDD.
+        l1 (dict): Diccionario que representa al primer libro.
+        l2 (dict): Diccionario que representa al segundo libro.
+        l3 (dict): Diccionario que representa al tercer libro.
+
+    Retorno:
+        str: El título del primer libro cuya reimpresión está "vencida".
+        En caso de empate, retorna el título del primer libro encontrado. 
+        Si ninguno cumple, retorna "Ninguno".
+    '''
+    # TODO:  Implemente la función tal y como se describe en la documentación.
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VIII) - Solución
+
+```Python
+def buscar_libro_reimpresion_vencida(fecha_de_referencia: int, l1: dict, l2: dict, l3: dict) -> str:
+    '''
+    Verifica si alguno de los libros tiene una fecha de 
+    reimpresión anterior a la fecha de referencia usando la 
+    función calcular_dias(), y retorna el título del primer 
+    libro encontrado.
+
+    Parámetros:
+        fecha_de_referencia (int): Fecha con la que se busca 
+        hacer el análisis en formato YYYYMMDD.
+        l1 (dict): Diccionario que representa al primer libro.
+        l2 (dict): Diccionario que representa al segundo libro.
+        l3 (dict): Diccionario que representa al tercer libro.
+
+    Retorno:
+        str: El título del primer libro cuya reimpresión está "vencida".
+        En caso de empate, retorna el título del primer libro encontrado. 
+        Si ninguno cumple, retorna "Ninguno".
+    '''
+    # TODO - DONE:  Implemente la función tal y como se describe en la documentación.
+    titulo_vencido = "Ninguno"
+
+    if calcular_dias(fecha_de_referencia, l1['proxima_reimpresion']) > 0:
+        titulo_vencido = l1['titulo']
+    elif calcular_dias(fecha_de_referencia, l2['proxima_reimpresion']) > 0:
+        titulo_vencido = l2['titulo']
+    elif calcular_dias(fecha_de_referencia, l3['proxima_reimpresion']) > 0:
+        titulo_vencido = l3['titulo']
+
+    return titulo_vencido
+
+```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
