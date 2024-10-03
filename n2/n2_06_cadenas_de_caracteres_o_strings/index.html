@@ -162,11 +162,14 @@ print(ord(' '))  # → 32
 
 ### `ord(...)`
 - Retorna el valor Unicode de un carácter
-- Sintaxis: `ord(c)`
-	- `c`: Es un string de un solo carácter
+- Sintaxis:
+```Python
+ord(c)
+```
+	- `c`: String de un solo carácter
 - Útil para obtener la representación numérica 
 	- De un carácter
-- `help(ord)`o [ord](https://docs.python.org/3.4/library/functions.html#ord) para más información
+- Ayuda: `help(ord)`ó [ord](https://docs.python.org/3.4/library/functions.html#ord) 
 - Ej:
     
 ```Python
@@ -181,11 +184,14 @@ ord(' ')  # → 32
 
 ### `chr(...)`
 - Retorna el carácter que corresponde a un valor Unicode
-- Sintaxis: `chr(i)`
-	-`i`: Es un entero en el rango de [códigos Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
+- Sintaxis:
+```Python
+chr(i)
+```
+	-`i`: Entero en el rango de [códigos Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
 - Útil para convertir valores Unicode 
 	- A sus caracteres correspondientes
-- `help(chr)` o [chr](https://docs.python.org/3.4/library/functions.html#chr) para más información
+- Ayuda: `help(chr)` o [chr](https://docs.python.org/3.4/library/functions.html#chr) 
 - Ej:
 ```Python
 chr(97)  # → 'a' (97 es valor Unicode para 'a')

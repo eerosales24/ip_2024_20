@@ -154,12 +154,12 @@ Universidad de los Andes
 ### Mejores Prácticas - Funciones (III)
 
 - No "reinventar la rueda"
-    - Utilizar funciones integradas ([**built-in functions**](https://docs.python.org/3/library/functions.html)):
-    - Tipos: [**`type()`**](https://docs.python.org/3/library/functions.html#type),  [**`float()`**](https://docs.python.org/3/library/functions.html#float), [**`int()`**](https://docs.python.org/3/library/functions.html#int), [**`str()`**](https://docs.python.org/3/library/functions.html#func-str)
-    - **Numéricas**: [**`abs()`**](https://docs.python.org/3/library/functions.html#abs), [**`round()`**](https://docs.python.org/3/library/functions.html#round), [ **`min()`**](https://docs.python.org/3/library/functions.html#min), [ **`max()`**](https://docs.python.org/3/library/functions.html#max), [ **`pow()`**](https://docs.python.org/3/library/functions.html#pow)
-    - Ayuda: [**`help()`**](https://docs.python.org/3/library/functions.html#help)
-    - Entrada: [**`input`**](https://docs.python.org/3/library/functions.html#input)
-    - Salida: [**`print()`**](https://docs.python.org/3/library/functions.html#print)
+    - Use funciones integradas ([built-in functions](https://docs.python.org/3/library/functions.html)):
+    - Tipos: [`type()`](https://docs.python.org/3/library/functions.html#type),  [`float()`](https://docs.python.org/3/library/functions.html#float), [`int()`](https://docs.python.org/3/library/functions.html#int), [`str()`](https://docs.python.org/3/library/functions.html#func-str)
+    - Numéricas: [`abs()`](https://docs.python.org/3/library/functions.html#abs), [`round()`](https://docs.python.org/3/library/functions.html#round), [`min()`](https://docs.python.org/3/library/functions.html#min), [`max()`](https://docs.python.org/3/library/functions.html#max), [`pow()`](https://docs.python.org/3/library/functions.html#pow)
+    - Ayuda: [`help()`](https://docs.python.org/3/library/functions.html#help)
+    - Entrada: [`input`](https://docs.python.org/3/library/functions.html#input)
+    - Salida: [`print()`](https://docs.python.org/3/library/functions.html#print)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -238,7 +238,8 @@ def calcular_perimetro(ancho: float, alto: float) -> float:
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-# TEMA OPCIONAL
+# TEMA OPCIONAL 
+(`doctests`)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -307,7 +308,8 @@ doctest.run_docstring_examples(nombre_funcion, globals(), verbose=True)
 
 ### `doctest` (III)
 
-- Para más información sobre `doctest`:
+- Ayuda: [doctest](https://docs.python.org/3/library/doctest.html)
+
 ```Python
 import doctest
 help(doctest.testmod)

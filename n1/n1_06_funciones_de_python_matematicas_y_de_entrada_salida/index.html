@@ -196,12 +196,16 @@ Una *función en matemáticas* se expresa como:
 ### `help()`
 
 - Proporciona información de ayuda de objetos, módulos, funciones, etc.
-- Sintaxis: `help(objeto)`
+- Sintaxis:
+```Python
+help(objeto)
+```
+
     - `objeto`: puede ser un objeto, módulo, función, método, etc.
 
 - Retorna la documentación relevante si está disponible
 
-- Documentación en línea: [**`help()`**](https://docs.python.org/3/library/functions.html#help)
+- Ayuda: [help](https://docs.python.org/3/library/functions.html#help)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -232,9 +236,12 @@ help() # → Modo de ayuda interactivo, escribe 'quit' para salir
 ### `abs()`
 
 - Devuelve el valor absoluto de un número
-- Sintaxis: `abs(numero)`
+- Sintaxis:
+```Python
+abs(numero)
+```
     - `numero`: Un número entero o decimal
-- `help(abs)` ó [**`abs()`**](https://docs.python.org/3/library/functions.html#abs) para más información
+- Ayuda: `help(abs)` ó [abs](https://docs.python.org/3/library/functions.html#abs) 
 
 - Ejemplos:
 ```Python
@@ -250,13 +257,17 @@ abs(-2.3)  # → 2.3
 ### `round()`
 
 - Redondea un número a un número específico de decimales
-
 - Sintaxis: `round(numero[, ndigits])`  
-    - `# [] significa: opcional`
-  - `numero`: Un número flotante
-  - `ndigits` (opcional): Número de decimales a los que redondear
-    - Si se omite, se redondea al entero más cercano
-- `help(round)` ó [**`round()`**](https://docs.python.org/3/library/functions.html#round) para más información
+```Python
+round(numero[, ndigits])
+```
+
+	- `numero`: Un número flotante
+	- `ndigits` (opcional): Número de decimales
+		- A los que redondear
+    - Si se omite
+	    - Se redondea al entero más cercano
+- Ayuda: `help(round)` ó [round](https://docs.python.org/3/library/functions.html#round)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -278,17 +289,16 @@ abs(-2.3)  # → 2.3
 
 - Devuelve el elemento menor 
     - De dos o más argumentos
-
-- Sintaxis: `min(arg1, arg2, *args[, key])`
-    - `# [] significa:  opcional`
-
-- `arg1, arg2, *args`: Valores para comparar
-
+- Sintaxis:
+```Python
+min(arg1, arg2, *args[, key])
+```
+- `arg1, arg2, *args`: Valores a comparar
 - `key` (opcional): 
     - Una función de un argumento 
         - Para personalizar la comparación
 
-- `help(min)` ó [ **`min()`**](https://docs.python.org/3/library/functions.html#min) para más información
+- Ayuda: `help(min)` ó [min](https://docs.python.org/3/library/functions.html#min)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -306,16 +316,15 @@ min(-3, -2, -1, 0, 1, 2, 3)  # → -3
 
 - Devuelve el elemento mayor 
     - De dos o más argumentos
-
-- Sintaxis: `max(arg1, arg2, *args[, key])`
-    - `# [] significa:  opcional`
-
-- `arg1, arg2, *args`: Valores para comparar
-
+- Sintaxis:
+```Python
+max(arg1, arg2, *args[, key])
+```
+- `arg1, arg2, *args`: Valores a comparar
 - `key` (opcional): Una función de un argumento 
     - Para personalizar la comparación
 
-- `help(max)` ó [ **`max()`**](https://docs.python.org/3/library/functions.html#max) para más información
+- Ayuda: `help(max)` ó [max](https://docs.python.org/3/library/functions.html#max)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -334,14 +343,13 @@ max(-3, -2, -1, 0, 1, 2, 3)  # → 3
 - Calcula la potencia de un número
 	- Equivalente a base elevado al exponente
 
-- Sintaxis: `pow(base, exp[, modulo])`
-- `base`: Número base de la potencia
-- `exp`: Exponente al que se eleva la base
-
-- `modulo` (opcional): Si se proporciona, 
-	- retorna: `((base ** exp) % modulo)`
-
-- `help(pow)`ó [ **`pow()`**](https://docs.python.org/3/library/functions.html#pow) para más información
+- Sintaxis: 
+```Python
+pow(base, exp)
+```
+	- `base`: Número base de la potencia
+	- `exp`: Exponente al que se eleva la base
+- Ayuda: `help(pow)`ó [pow](https://docs.python.org/3/library/functions.html#pow)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -448,12 +456,16 @@ abs(int(-15.6))  # → 15
 ### `input(...)`
 
 - Recolecta datos de entrada del usuario
-- Sintaxis: `input(prompt)`
-	- `prompt`: Mensaje mostrado (sin salto de línea al final)
+- Sintaxis: 
+```Python
+input(prompt)
+```
+	- `prompt`: Mensaje mostrad
+		- Sin salto de línea al final
 - Retorna un  string
 - **Nota:** Usar siempre conversión de tipos 
 	- Para obtener entrada numérica
-- `help(input)`ó [**`input`**](https://docs.python.org/3/library/functions.html#input)  para más información
+- Ayuda: `help(input)`ó [input](https://docs.python.org/3/library/functions.html#input)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -481,11 +493,14 @@ altura = float(input('Digite su altura: '))
 
 - Muestra información en la consola
 
-- Sintaxis: `print(*objects, sep=' ', end='\n', ...)`
-  - `elementos`: Elementos a imprimir
-  - `sep`: Separador entre elementos (por defecto, espacio)
-  - `end`: Carácter al final de la línea (por defecto, nueva línea)
-- `help(print)` ó [**`print()`**](https://docs.python.org/3/library/functions.html#print) para más información
+- Sintaxis: 
+```Python
+print(*objects, sep=' ', end='\n', ...)
+```
+  - objects: Elementos a imprimir
+  - `sep`: Separador entre elementos
+  - `end`: Carácter al final de la línea
+- Ayuda: `help(print)` ó [print](https://docs.python.org/3/library/functions.html#print)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 

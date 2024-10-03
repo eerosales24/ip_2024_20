@@ -134,44 +134,60 @@ Universidad de los Andes
 
 ### `int()`
 - Cambiar el tipo de dato de un objeto a un entero
-    - Sintaxis: `int(objeto)`
+    - Sintaxis: 
+```Python
+int(objeto)
+```
         - `objeto`: Un número 
 	        - Ó una cadena de **solo dígitos**
-    - Ej:
-        ```Python
-        int(5.5)  # → 5
-        int(.5)  # → 0
-        int('1')  # → 1
-        int(7)  # → 7  # (No tiene efecto alguno)
-        ```
+- Ayuda: [int](https://docs.python.org/3/library/functions.html#int)
+- Ej:
+
+```Python
+int(5.5)  # → 5
+int(.5)  # → 0
+int('1')  # → 1
+int(7)  # → 7  # (No tiene efecto alguno)
+```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### `float()`
 
 - Cambiar el tipo de dato de un objeto a un decimal
-    - Sintaxis: `float(objeto)`
+    - Sintaxis: 
+```Python
+float(objeto)
+```
         - `objeto`: Un número 
-	        - Ó una cadena de **s**olo dígitos**
-    - Ej:
-        ```Python
-        float(5)  # → 5.0
-        float('4.5')  # → 4.5
-        float(7.5)  # → 7.5 (No tiene efecto alguno)
-        ```
+	        - Ó una cadena de **solo dígitos**
+- Ayuda: [float](https://docs.python.org/3/library/functions.html#float)
+- Ej:
+
+```Python
+float(5)  # → 5.0
+float('4.5')  # → 4.5
+float(7.5)  # → 7.5 (No tiene efecto alguno)
+```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### `str()`
 - Cambiar el tipo de dato de un objeto a una cadena de caracteres
-    - Sintaxis: `str(objeto)`
+    - Sintaxis:
+```Python
+str(objeto)
+```
         - `objeto`: Un objeto de cualquier tipo
-    - Ej:
-        ```Python
-        str(5)  # → '5'
-        str(5.0)  # → '5.0'
-        str('abc')  # → 'abc' (No tiene efecto alguno)
-        ```
+- Ayuda: [str](https://docs.python.org/3/library/functions.html#func-str)
+- Ej:
+
+
+```Python
+str(5)  # → '5'
+str(5.0)  # → '5.0'
+str('abc')  # → 'abc' (No tiene efecto alguno)
+```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -239,6 +255,7 @@ int('ab12')
 	- `int(...)` espera un número o una cadena de solo dígitos
 		- Se produce un `ValueError` 
 			- Al proveer una cadena alfanumérica
+- Ayuda: [ValueError](https://docs.python.org/3/library/exceptions.html#ValueError)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -290,6 +307,7 @@ int('12')
 	- Se produce un `TypeError` 
 		- Si uno de los operandos 
 			- No es una cadena
+- Ayuda: [TypeError](https://docs.python.org/3/library/exceptions.html#TypeError)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
