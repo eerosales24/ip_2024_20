@@ -502,18 +502,67 @@ string.splitlines(keepends)
 
 ### Quiz (IV)
 
-- ¿Cuál es el propósito de la siguiente función?
+- ¿Cuál es el resultado de ejecutar el siguiente código?
 
 ```Python
-def f(x):
-    lst = x.split()
-    res = lst[::-1]
-    return ' '.join(res)
+words = ["hello", "world", "python", "rocks"]
+sentence = " ".join(words)
+print(sentence)
+
+sentence = "-".join(words)
+print(sentence + '!')
+
+words = list("12345")    # words = ['1', '2', '3', '4', '5']
+joined_numbers = ",".join(words)
+print(joined_numbers)
+
+split_back = joined_numbers.split(",")
+print(split_back)
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Quiz (IV)
+
+- Respuesta:
+
+```Python
+words = ["hello", "world", "python", "rocks"]
+sentence = " ".join(words)
+print(sentence)  # → 'hello world python rocks'
+
+sentence = "-".join(words)
+print(sentence + '!')  # → 'hello-world-python-rocks!'
+
+words = list("12345")  # words = ['1', '2', '3', '4', '5']
+joined_numbers = ",".join(words)
+print(joined_numbers)  # → '1,2,3,4,5'
+
+split_back = joined_numbers.split(",")
+print(split_back)  # → ['1', '2', '3', '4', '5']
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (V)
+
+- ¿Cuál es el propósito de la siguiente función?
+
+```Python
+def f(x):
+    r = ''
+    
+    if len(x) > 1:
+        w = x.split()
+        wi = w[::-1]
+        r = ' '.join(wi)
+    
+    return r
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (V)
 
 - Respuesta:
 
@@ -641,7 +690,7 @@ print(nueva_lista)  # → [2, 4, 6, 8]
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Quiz (V)
+### Quiz (VI)
 
 - Se solicitó un programa que imprimiera la versión original y normalizada de una lista, ¿cuál es el problema de la siguiente implementación?  
 
@@ -661,7 +710,7 @@ print('Normalized scores:', norm_scores)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Quiz (V)
+### Quiz (VI)
 
 - Respuesta:
 
@@ -669,7 +718,7 @@ Dado que la lista de puntuaciones es un objeto mutable, puede ser modificado cua
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Quiz (V)
+### Quiz (VI)
 
 ```Python
 def normalize_scores(scores: list) -> list:
@@ -685,6 +734,77 @@ print('Original scores:', scores) 
 # → [28.3, 69.81, 100.0, 84.91, 41.51]
 print('Normalized scores:', norm_scores) 
 # → [28.3, 69.81, 100.0, 84.91, 41.51]
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VII)
+
+- ¿Cómo solucionar el problema de implementación?
+
+```Python
+def normalize_scores(scores: list) -> list:
+    max_score = max(scores)
+    for i in range(len(scores)):
+        scores[i] = round((scores[i] / max_score) * 100, 2)
+    return scores
+
+scores = [15, 37, 53, 45, 22]
+norm_scores = normalize_scores(scores)
+
+print('Original scores:', scores)  
+# → [28.3, 69.81, 100.0, 84.91, 41.51]
+print('Normalized scores:', norm_scores) 
+# → [28.3, 69.81, 100.0, 84.91, 41.51]
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VII)
+
+- Solución 1:
+
+```Python
+def normalize_scores(scores: list) -> list:
+    scores_copy = scores[:]  # Se crea una copia en la función
+    max_score = max(scores_copy)
+    for i in range(len(scores_copy)):
+        scores_copy[i] = round((scores_copy[i] / max_score) * 100, 2)
+    return scores_copy
+
+scores = [15, 37, 53, 45, 22]
+norm_scores = normalize_scores(scores)
+
+print('Original scores:', scores)  
+# → [15, 37, 53, 45, 22]
+print('Normalized scores:', norm_scores)  
+# → [28.3, 69.81, 100.0, 84.91, 41.51]
+
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VII)
+
+- Solución 2:
+
+```Python
+def normalize_scores(scores: list) -> list:
+    max_score = max(scores)
+    for i in range(len(scores)):
+        scores[i] = round((scores[i] / max_score) * 100, 2)
+    return scores
+
+scores = [15, 37, 53, 45, 22]
+# Se envía una copia de la lista:
+norm_scores = normalize_scores(scores.copy()) 
+
+print('Original scores:', scores)  
+# → [15, 37, 53, 45, 22]
+print('Normalized scores:', norm_scores)  
+# → [28.3, 69.81, 100.0, 84.91, 41.51]
+
+
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">

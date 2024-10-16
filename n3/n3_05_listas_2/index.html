@@ -459,12 +459,12 @@ items.pop()   # IndexError
 
 ```Python
 items = []
-if items:  # → False  
+if items != []:  # → False  
     item_retornado = items.pop() 
 print(items)  # → []
 
 items = [1, 2, 3]
-if items:  # → True  
+if items != []:  # → True  
     item_retornado = items.pop() 
 print(items)  # → [1, 2]
 print(item_retornado)  # → 3
@@ -789,7 +789,7 @@ print(items)  # → [1, 2, 3, 4, 5]
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### `list.append()` vs `list.extend()`
+### `list.append()` vs `list.extend()` (I)
 
 - Similitudes:
 	- Modifican en sitio
@@ -798,7 +798,7 @@ print(items)  # → [1, 2, 3, 4, 5]
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### `list.append()` vs `list.extend()`
+### `list.append()` vs `list.extend()` (II)
 
 - Diferencias:
 	- `append()` agrega como un solo ítem
@@ -1108,6 +1108,42 @@ items = ['abc', 'z']
 items.sort(key=len)
 print(items)  # → ['z', 'abc']
 
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VIII)
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+words = ["apple", "orange", "banana", "kiwi"]
+words.sort()
+print(words)
+
+words.sort(reverse=True)
+print(words)
+
+words.sort(key=len)
+print(words)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (VIII)
+
+- Respuesta:
+
+```Python
+words = ["apple", "orange", "banana", "kiwi"]
+words.sort()
+print(words)  # → ['apple', 'banana', 'kiwi', 'orange']
+
+words.sort(reverse=True)
+print(words)  # → ['orange', 'kiwi', 'banana', 'apple']
+
+words.sort(key=len)
+print(words)  # → ['kiwi', 'apple', 'orange', 'banana']
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
