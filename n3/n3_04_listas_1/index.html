@@ -285,7 +285,7 @@ letras[-6]  # → 'P'
 numeros = [1, 2, 3]  # La lista `lst` is creada
 ```
 
-<img src="Screenshot 2024-10-13 at 9.16.31 AM.png" alt="" style="object-fit: scale-down">
+<img src="Screenshot 2024-10-13 at 9.18.48 AM.png" alt="" style="object-fit: scale-down">
 
 
 - `numeros` es una lista mutable (`list`) 
@@ -312,13 +312,13 @@ numeros[0] = 7  # `numeros` es modificada en sitio
 ### Las listas son Mutables (I) - Ejemplo (III)
 
 ```Python
-lst = [True, True, True]  # → lst = [True, True, True]
+items = [True, True, True]  # → lst = [True, True, True]
 
-lst[0] = False  # → lst = [False, True, True]
+items[0] = False  # → lst = [False, True, True]
 
-lst[1] = False  # → lst = [False, False, True]
+items[1] = False  # → lst = [False, False, True]
 
-lst[-1] = False  # → lst = [False, False, False]
+items[-1] = False  # → lst = [False, False, False]
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -433,7 +433,7 @@ elementos = [10,'x',9,'%',8,'&',7,'?',6,'¿',5,\
 
 # TODO - DONE: Imprima una lista con los números en `elementos`
 # ordenados ascendentemente usando list slicing
-print(lst[::-2])  # → [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print(elementos[::-2])  # → [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -564,8 +564,8 @@ len([None, None])  # → 2
     
 - Crea una nueva lista 
 	- Con sus elementos repetidos `n` veces
-- Sintaxis: `lista1 * n`     ó    `n * lista2`
-	- `n` debe ser un entero
+- Sintaxis: `lista* n`     ó    `n * lista`
+	- `n` Debe ser un entero
 - La repetición de listas es conmutativa:
 	- `A * B = B * A`
 - Sobrecarga del operador binario de multiplicación: `*`
@@ -697,8 +697,8 @@ for item in [5, 10, 15, 20]:
 
 ```Python
 items = [0, 1, 2, 3, 4, 5]
-for item in items:
-    print(items[item] + 1)
+for elemento in items:
+    print(items[elemento] + 1)
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -709,8 +709,8 @@ for item in items:
 
 ```Python
 items = [0, 1, 2, 3, 4, 5]
-for item in items:
-    print(items[item] + 1)
+for elemento in items:
+    print(items[elemento] + 1)
 ```
 
 
@@ -910,7 +910,7 @@ print(max([], default=None))  # → None (Valor por defecto)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### `list(...)`
+### `list()`
 - Crea un nueva lista
 - Sintaxis:
 ``` list(iterable)```
@@ -922,7 +922,7 @@ print(max([], default=None))  # → None (Valor por defecto)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### `list(...)` - Ejemplos
+### `list()` - Ejemplos
 
 ```Python
 list()  # → []
@@ -983,8 +983,8 @@ print(len(nums_pares))  # → 5000
 # acumulando en la variable `resultado` 
 resultado = 0
 
-for item in nums_pares:
-    resultado += item
+for par in nums_pares:
+    resultado += par
 
 print(resultado)  # → 25005000
 ```
@@ -1016,7 +1016,7 @@ print(resultado)
 - Respuesta:
 
 ```Python
-# Crea la lista `nums` con valores del 1 al 6  
+# Crea la lista `nums` con valores del 1 al 5  
 nums = list(range(1, 5 + 1))
 
 # Crea la lista `sub_nums` con valores impares
@@ -1036,16 +1036,16 @@ print(resultado)  # → 9
 - ¿Cuál es el resultado de ejecutar el siguiente código?
 
 ```Python
-lst = max(list(), default=[None])
+items = max(list(), default=[None])
 
-lst = lst * 4
-lst[1:3] = []
+items = items * 4
+items[1:3] = []
 
 i = 0
 
-for item in lst:
-    if item is None:
-        print(f'{item} en posición: {i}')
+for item_actual in items:
+    if item_actual is None:
+        print(f'{item_actual} en posición: {i}')
     i+=1
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
@@ -1056,17 +1056,17 @@ for item in lst:
 - Respuesta:
 
 ```Python
-lst = max(list(), default=[None])  
-# → lst = [None] (valor por defecto)
+items = max(list(), default=[None])  
+# → items = [None] (valor por defecto)
 
-lst = lst * 4  # → lst = [None, None, None, None]
-lst[1:3] = []  # → lst = [None, None]
+items = items * 4  # → items = [None, None, None, None]
+items[1:3] = []  # → items = [None, None]
 
 i = 0
 
-for item in lst:
-    if item is None:
-        print(f'{item} en posición: {i}')
+for item_actual in items:
+    if item_actual is None:
+        print(f'{item_actual} en posición: {i}')
     i+=1
 ```
 
