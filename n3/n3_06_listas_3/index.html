@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Introducción a la Programación (IP)
+
+
+*Listas 3*
+
+[Eduardo Rosales](mailto:ee.rosales24@uniandes.edu.co)
+
+Departamento de Ingeniería de Sistemas y Computación
+
+Universidad de los Andes
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Repasemos los Métodos de las Listas
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-10-15 at 8.37.26 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-10-15 at 8.38.55 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-10-15 at 8.40.10 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-10-15 at 8.40.47 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-10-15 at 8.41.58 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Screenshot 2024-10-15 at 8.42.52 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Estudiemos la Comparación de Listas
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Comparación de Listas (I)
+
+- Si dos listas varían en tamaño son distintas
+- Si dos listas son iguales en tamaño
+	- Se compara ítem a ítem
+		- De izquierda a derecha
+- Dos listas son iguales si sus ítems son idénticos
+- Ej:
+
+```Python
+[1, 2, 3] == [1, 2, 3]  # → True
+[1, 2, 3] == [4, 5, 6]  # → False
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Comparación de listas (II)
+- Los operadores de comparación 
+	- Pueden ser usados con listas
+		- `>, <, >=, <=`
+		
+```Python
+[0, 1, 2] < [3, 4, 5]   # → True
+[3, 4, 5] > [0, 1, 2]   # → True
+[0, 1, 2] <= [0, 1, 2]   # → True
+[0, 1, 2] >= [0, 1, 2]   # → True
+
+
+[1, 1, 1] > [0, 1, 1]   # → True 
+[1, 1, 1] > [1, 1, 0]   # → True 
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (I)
+
+- Se tiene dos listas y cada una contiene un gran número de elementos, ¿cómo se puede determinar si las dos listas contienen exactamente los mismos elementos, de una forma eficiente?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (I)
+
+- Respuesta:
+	- Se puede comparar la longitud de las listas
+		- Si las listas tienen igual longitud
+			- Se pueden ordenar las listas 
+				- Y compararlas
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+```Python
+lista1 = [0, 2, 7, 3, 4, 5, 6, 1, 6, 5, 4, 3, 2, 6, 1, 7,]
+lista2 = [6, 5, 4, 3, 2, 6, 1, 7, 0, 2, 7, 3, 4, 5, 6, 1]
+
+son_iguales = ( (len(lista1) == len(lista2)) \
+               and lista1.sort() == lista2.sort())
+
+print(son_iguales)  # → True
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (II)
+
+- ¿Cuál es el propósito de la siguiente función?
+
+```Python
+def f(data: list) -> list:
+    resultado = data[:]
+    
+    if len(data) > 1:
+        resultado = [data[-1]] + data[1:-1] + [data[0]]
+    
+    return resultado
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (II)
+
+- Respuesta:
+
+```Python
+def intercambiar_extremos(data: list) -> list:
+    '''
+    Retorna una nueva lista en donde se intercambiaron los
+    primeros y últimos elementos de la lista que es pasada 
+    como argumento. La lista original (aquella pasada como
+    argumento) permanece sin cambios.
+
+    Parámetros:
+        data (list): La lista de elementos.
+
+    Retorna:
+        list: Una lista con los primeros y últimos elementos
+        intercambiados.
+        
+    >>> intercambiar_extremos([])
+    []
+    >>> intercambiar_extremos([1, 2, 3, 4, 5])
+    [5, 2, 3, 4, 1]
+    >>> intercambiar_extremos([10, 20, 30, 40])
+    [40, 20, 30, 10]
+    '''
+    resultado = data[:]  # Variable de retorno
+    
+    if len(data) > 1:
+        resultado = [data[-1]] + data[1:-1] + [data[0]]
+    
+    return resultado  # Usa un solo return
+
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Estudiemos la copia de listas
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `list.copy()`
+- Crea una copia de la lista
+- Sintaxis: 
+```Python
+lista.copy()
+```
+- No modifica la lista original
+- `list.copy()` retorna una nueva lista
+- Evita la modificación de la lista original
+- Ayuda: `help(list.copy)`  ó  [list.copy](https://docs.python.org/3/tutorial/datastructures.html)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `list.copy()` - Ejemplo (I)
+
+```Python
+original = [1, 2, 3]
+copia = original.copy()
+print(original)  # → [1, 2, 3]
+print(copia)  # → [1, 2, 3]
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `list.copy()` - Ejemplo (II)
+
+<img src="Screenshot 2024-10-15 at 9.07.59 PM.png" alt="" style="object-fit: scale-down">
+
+
+```Python
+original = [1, 2, 3]
+copia = original.copy()
+```
+
+- `copia` es un objeto independiente de `original`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `list.copy()` - Ejemplo (III)
+
+<img src="Screenshot 2024-10-15 at 9.09.22 PM.png" alt="" style="object-fit: scale-down">
+
+
+```Python
+original = [1, 2, 3]
+copia = original.copy()
+original[0] = 9
+print(original)  # → [9, 2, 3]
+print(copia)  # → [1, 2, 3]
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `list.copy()` - Ejemplo (IV)
+
+<img src="Screenshot 2024-10-15 at 9.11.19 PM.png" alt="" style="object-fit: scale-down">
+
+
+```Python
+original = [1, 2, 3]
+copia = original.copy()
+print(original == copia)  # → True (mismo contenido)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `list.copy()` - Ejemplo (V)
+
+<img src="Screenshot 2024-10-15 at 9.11.19 PM.png" alt="" style="object-fit: scale-down">
+
+
+```Python
+original = [1, 2, 3]
+copia = original.copy()
+print(original is copia)  # → False (son distintos objetos)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `list.copy()`y List slicing
+
+```Python
+original = [1, 2, 3]
+copia_copy = original.copy()  # copia_copy = [1, 2, 3]
+copia_slicing = original[:]  # copia_slicing = [1, 2, 3]
+```
+
+- Copiar usando `list.copy()` y list slicing (`[:]`)     
+	- Es semánticamente equivalente
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Otra Forma de Copiar una Lista (I)
+
+<img src="Screenshot 2024-10-15 at 9.11.19 PM.png" alt="" style="object-fit: scale-down">
+
+
+```Python
+original = [1, 2, 3]
+copia = original[:]  # Crea una copia independiente de la original
+print(original == copia)  # → True (mismo contenido)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Otra Forma de Copiar una Lista (II)
+
+<img src="Screenshot 2024-10-15 at 9.11.19 PM.png" alt="" style="object-fit: scale-down">
+
+
+```Python
+original = [1, 2, 3]
+copia = original[:]  # Crea una copia independiente de la original
+print(original is copia)  # → False (son distintos objetos)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Referencias a Listas (I)
+
+<img src="Screenshot 2024-10-15 at 9.20.15 PM.png" alt="" style="object-fit: scale-down">
+
+
+```Python
+# Se asigna un nombre a la lista [1, 2, 3]
+original = [1, 2, 3]  
+
+# Se asigna otro nombre a la misma lista
+esto_no_es_una_copia = original  
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Referencias a Listas (II)
+
+<img src="Screenshot 2024-10-15 at 9.20.15 PM.png" alt="" style="object-fit: scale-down">
+
+
+- Es importante entender que hay **una sola lista**
+	- La cual tiene dos nombres
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Referencias a Listas (III)
+
+<img src="Screenshot 2024-10-15 at 9.20.15 PM.png" alt="" style="object-fit: scale-down">
+
+
+```Python
+original = [1, 2, 3]
+esto_no_es_una_copia = original
+print(original == esto_no_es_una_copia)  # → True
+print(original is esto_no_es_una_copia)  # → True
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (III)
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+lista1 = ['a', 'b', 'c', 'b']
+lista2 = lista1
+lista3 = lista1[:]
+lista4 = lista1.copy()  
+
+print(lista1 == lista2)
+print(lista1 is lista2)  
+  
+print(lista1 == lista3)
+print(lista1 is lista3)  
+
+print(lista1 == lista4)
+print(lista1 is lista4)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (III)
+
+- Respuesta:
+
+```Python
+lista1 = ['a', 'b', 'c', 'b']
+lista2 = lista1
+lista3 = lista1[:]
+lista4 = lista1.copy()  
+ 
+print(lista1 == lista2)  # → True
+print(lista1 is lista2)  # → True  
+
+print(lista1 == lista3)  # → True
+print(lista1 is lista3)  # → False
+  
+print(lista1 == lista4)  # → True
+print(lista1 is lista4)  # → False
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Estudiemos más métodos de strings que usan listas
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.split()`
+- Divide una cadena en subcadenas 
+	- Utilizando un separador dado
+- Retorna una lista con las subcadenas
+- Sintaxis: 
+```Python
+string.split(sep, maxsplit)
+```
+- `sep`:  Separador (opcional, default: espacio)
+- `maxsplit`:  Número de separadores a considerar
+(opcional, por defecto: sin límite) 
+- Ayuda: `help(str.split)` ó [str.split](https://docs.python.org/3/library/stdtypes.html#str.split)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.splitlines()`
+- Divide una cadena en subcadenas 
+	- Por saltos de línea
+- Retorna una lista con las subcadenas
+- Sintaxis: 
+```Python
+string.splitlines(keepends)
+```
+- `keepends`: `True` para conservar saltos de línea  
+    (opcional, por defecto: `False`)
+- Ayuda: `help(str.splitlines)` ó  [str.splitlines](https://docs.python.org/3/library/stdtypes.html#str.splitlines)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `str.join()`
+- Concatena todos los ítems de un iterable
+- Sintaxis: 
+```Python
+'sep'.join(iterable)
+```
+
+- `sep`: separador usado para concatenar los ítems
+- `iterable`: iterable (e.g., string, list(str))
+- Retorna un concatenación (string) 
+	- De los ítems del iterable, separados por `sep`
+- Ayuda: `help(str.join)` ó  [str.join](https://docs.python.org/3/library/stdtypes.html#str.join)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (IV)
+
+- ¿Cuál es el propósito de la siguiente función?
+
+```Python
+def f(x):
+    lst = x.split()
+    res = lst[::-1]
+    return ' '.join(res)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (IV)
+
+- Respuesta:
+
+```Python
+def invertir_palabras(oracion: str) -> str:
+    '''
+    Invierte el orden de las palabras en una oración dada.
+    Utiliza str.split() para dividir la oración y str.join() para unirla.
+
+    Parámetros:
+        oracion (str): La oración de entrada con palabras separadas 
+        por espacios.
+
+    Retorna:
+        (str): La oración con las palabras en orden inverso.
+
+    >>> invertir_palabras('')
+    ''
+    >>> invertir_palabras('Python es divertido')
+    'divertido es Python'
+    >>> invertir_palabras('Hola mundo')
+    'mundo Hola'
+    >>> invertir_palabras('bienvenido')
+    'bienvenido'
+    '''
+    resultado = ''  # Variable de retorno
+    
+    if len(oracion) > 1:
+        palabras = oracion.split()
+        palabras_invertidas = palabras[::-1]
+        resultado = ' '.join(palabras_invertidas)
+    
+    return resultado  # Uso de un solo return
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Repaso del Paso de Argumentos con Mutables
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Tipos de datos Mutables (Repaso)
+- Un tipo de dato es mutable
+	- Si después de crearlo, se puede cambiar
+- Tipos de datos mutables vistos hasta ahora:
+	- `dict`, `list`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de Argumentos Mutables - Ejemplo (I)
+
+```Python
+lista_original = [1, 2, 3, 4]
+
+def duplicar_lista(lista_original: list) -> None:
+    for i in range(len(lista_original)):
+        lista_original[i] *= 2  
+
+print(lista_original)  # → [1, 2, 3, 4]
+# `original` es un objeto mutable y una función puede cambiarlo:
+duplicar_lista(lista_original)  
+print(lista_original)  # → [2, 4, 6, 8]
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Buenas Prácticas con Paso de Listas (I)
+ 
+- Evitar pasar listas como argumentos
+	- A no ser que se necesite 
+		- (Dado el propósito de la función)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Buenas Prácticas con Paso de Listas (II)
+
+- Evitar modificar listas dentro de una función
+	- A no ser que se necesite 
+		- (Dado el propósito de la función)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Buenas Prácticas con Paso de Listas (III)
+- Pasar una copia de una lista a la función
+	- En lugar de la lista original
+	- Evitando posibles modificaciones indeseadas
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de Argumentos Mutables - Ejemplo (II)
+
+```Python
+lista_original = [1, 2, 3, 4]
+
+def duplicar_lista(lista: list) -> list:
+    for i in range(len(lista)):
+        lista[i] *= 2
+    return lista  
+  
+print(lista_original)  # → [1, 2, 3, 4]
+# Aquí se pasa una copia (vía slicing) de `original`:
+nueva_lista = duplicar_lista(lista_original[:])
+print(lista_original)     # → [1, 2, 3, 4]
+print(nueva_lista)  # → [2, 4, 6, 8]
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de Argumentos Mutables - Ejemplo (III)
+
+```Python
+lista_original = [1, 2, 3, 4]
+
+def duplicar_lista(lista: list) -> list:
+    for i in range(len(lista)):
+        lista[i] *= 2
+  
+print(lista_original)  # → [1, 2, 3, 4]
+nueva_lista = lista_original[:]
+# Aquí se pasa una copia (vía slicing) de `original`:
+duplicar_lista(nueva_lista)
+print(lista_original)     # → [1, 2, 3, 4]
+print(nueva_lista)  # → [2, 4, 6, 8]
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (V)
+
+- Se solicitó un programa que imprimiera la versión original y normalizada de una lista, ¿cuál es el problema de la siguiente implementación?  
+
+```Python
+def normalize_scores(scores: list) -> list:
+    max_score = max(scores)
+    for i in range(len(scores)):
+        scores[i] = round((scores[i] / max_score) * 100, 2)
+    return scores
+
+scores = [15, 37, 53, 45, 22]
+norm_scores = normalize_scores(scores)
+
+print('Original scores:', scores)     
+print('Normalized scores:', norm_scores)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (V)
+
+- Respuesta:
+
+Dado que la lista de puntuaciones es un objeto mutable, puede ser modificado cuando se pasa como argumento a una función. En consecuencia, la lista original de puntuaciones también se normaliza
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (V)
+
+```Python
+def normalize_scores(scores: list) -> list:
+    max_score = max(scores)
+    for i in range(len(scores)):
+        scores[i] = round((scores[i] / max_score) * 100, 2)
+    return scores
+
+scores = [15, 37, 53, 45, 22]
+norm_scores = normalize_scores(scores)
+
+print('Original scores:', scores)  
+# → [28.3, 69.81, 100.0, 84.91, 41.51]
+print('Normalized scores:', norm_scores) 
+# → [28.3, 69.81, 100.0, 84.91, 41.51]
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Pasted image 20240817131627.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+[Click para volver al menú principal](https://eerosales24.github.io/ip_2024_20/)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="copyright.png" alt="" style="object-fit: scale-down">
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
