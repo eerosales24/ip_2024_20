@@ -1037,7 +1037,7 @@ def cargar_vuelos(ruta_archivo: str) -> dict:
         for linea in archivo:
             datos = linea.strip().split(',')
             vuelo_info = {}
-
+            # Usa el identificador de vuelo (el segundo campo) como llave principal:
             vuelo_id = datos[1]  
 
             for i in range(len(encabezado)):
