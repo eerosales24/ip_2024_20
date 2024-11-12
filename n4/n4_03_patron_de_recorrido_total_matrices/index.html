@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Introducción a la Programación (IP)
+
+
+*Patrón de Recorrido Total Matrices*
+
+[Eduardo Rosales](mailto:ee.rosales24@uniandes.edu.co)
+
+Departamento de Ingeniería de Sistemas y Computación
+
+Universidad de los Andes
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Patrón de Recorrido Total
+- Procesar a los elementos
+	- De uno en uno
+		- Desde el inicio
+			- Y hasta el final
+- ¿Cuándo usarlo?
+	- Cuando se requiere recorrer 
+		- **Toda la matriz**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido Total - Ejemplos
+ 
+- Matrices
+	- Sumar todos los valores
+	- Obtener el elemento menor
+	- Contar cuanto elementos
+		- Son impares
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Estudiemos cómo obtener el **número de filas**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Obtener el Número de Filas
+- El número de filas de la matriz:
+
+```Python
+len(matriz)
+```
+
+- Cuenta el número de las listas internas
+	- Cada una, representando una fila
+- Ej:
+
+```Python
+matriz = [[1, 2], [3, 4], [5, 6]] 
+num_filas = len(matriz) # num_filas = 3
+```
+
+<table border="1" style="border-collapse: collapse; text-align: center;">
+  <tr>
+    <td>1</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>6</td>
+  </tr>
+</table>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Estudiemos cómo obtener el **número de columnas**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Obtener el Número de Columnas
+- El número de columnas de la matriz:
+
+```Python
+len(matriz[0])
+```
+
+- Cuenta el número de ítems en la primera lista 
+	- Representando c/u a una columna
+
+- Ej:
+
+```Python
+matriz = [[1, 2], [3, 4], [5, 6]] 
+num_columnas = len(matriz[0])  # num_columnas = 2
+```
+
+<table border="1" style="border-collapse: collapse; text-align: center;">
+  <tr>
+    <td>1</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>6</td>
+  </tr>
+</table>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Patrón de Recorrido Total - `for-in`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Patrón de Recorrido Total - `for-in`
+
+ (I)
+
+<img src="Screenshot 2024-11-10 at 3.44.14 PM.png" alt="" style="object-fit: scale-down">
+
+```Python
+# Ciclo externo para recorrer cada fila de la matriz
+for fila in matriz:
+    # Ciclo interno para recorrer cada elemento de la fila
+    for elemento in fila:
+        # TODO: Usar elemento para procesar
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Patrón de Recorrido Total - `for-in`
+
+ (II)
+
+```Python
+# Ciclo externo para recorrer cada fila de la matriz
+for fila in matriz:
+    # Ciclo interno para recorrer cada elemento de la fila
+    for elemento in fila:
+        # TODO: Usar elemento para procesar
+```
+
+- `fila` representa la lista actual de elementos
+- `elemento` es cada ítem dentro de la fila actual
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Patrón de Recorrido Total - `for-in`
+
+ (III)
+
+```Python
+# Ciclo externo para recorrer cada fila de la matriz
+for fila in matriz:
+    # Ciclo interno para recorrer cada elemento de la fila
+    for elemento in fila:
+        # TODO: Usar elemento para procesar
+```
+
+
+ - ✅ Forma Pythonica
+ - ✅ Ideal para procesar elementos directamente
+ - ✅ Reduce riesgos de error con índices manuales
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Patrón de Recorrido Total - `for-in`
+
+ (IV)
+
+<img src="Screenshot 2024-11-10 at 3.46.57 PM.png" alt="" style="object-fit: scale-down">
+
+
+```Python
+matriz = [[1, 2], [3, 4]]
+# Ciclo externo para recorrer cada fila de la matriz
+for fila in matriz:
+    # Ciclo interno para recorrer cada elemento de la fila
+    for elemento in fila:
+        print(elemento)
+```
+
+```plaintext
+1
+2
+3
+4
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (I)
+
+- Implemente la función `sumar_matriz()`:
+
+```Python
+def sumar_matriz(matriz: list) -> int:
+    '''
+    Suma todos los elementos en una matriz dada.
+
+    Parámetros:
+        matriz (list): Una lista de listas que representa la matriz.
+
+    Retorna:
+        (int): La suma de todos los elementos de la matriz.
+
+    >>> sumar_matriz([])
+    0
+    >>> sumar_matriz([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+    45
+    >>> sumar_matriz([[0, 0], [0, 0]])
+    0
+    >>> sumar_matriz([[1], [2], [3]])
+    6
+    >>> sumar_matriz([[1, -1], [2, -2], [3, -3]])
+    0
+    >>> sumar_matriz(5)
+    5
+    '''
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (I) - Solución
+
+
+```Python
+def sumar_matriz(matriz: list) -> int:
+    '''
+    Suma todos los elementos en una matriz dada.
+
+    Parámetros:
+        matriz (list): Una lista de listas que representa la matriz.
+
+    Retorna:
+        (int): La suma de todos los elementos de la matriz.
+
+    >>> sumar_matriz([])
+    0
+    >>> sumar_matriz([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+    45
+    >>> sumar_matriz([[0, 0], [0, 0]])
+    0
+    >>> sumar_matriz([[1], [2], [3]])
+    6
+    >>> sumar_matriz([[1, -1], [2, -2], [3, -3]])
+    0
+    >>> sumar_matriz(5)
+    5
+    '''
+    suma = 0  # Variable de retorno
+
+    # Ciclo para recorrer cada fila en la matriz
+    for fila in matriz:
+        # Ciclo para recorrer cada elemento en la fila
+        for elemento in fila:
+            # Actualizar la suma
+            suma += elemento
+
+    # Retornar el resultado final
+    return suma  # Se usa un solo return
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Patrón de Recorrido Total - `for-in range`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Patrón de Recorrido Total - `for-in range` (I)
+
+```Python
+# Obtener número de filas y columnas
+filas = len(matriz)
+columnas = len(matriz[0])
+
+# Ciclos para recorrer cada elemento usando índices
+for i in range(filas):
+    for k in range(columnas):
+        # TODO: Usar matriz[i][k] para procesar el elemento
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Patrón de Recorrido Total - `for-in range` (II)
+
+```Python
+# Obtener número de filas y columnas
+filas = len(matriz)
+columnas = len(matriz[0])
+
+# Ciclos para recorrer cada elemento usando índices
+for i in range(filas):
+    for k in range(columnas):
+        # TODO: Usar matriz[i][k] para procesar el elemento
+```
+
+- `i` representa el índice de la fila actual
+- `k` representa el índice de la columna actual
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Patrón de Recorrido Total - `for-in range` (III)
+
+```Python
+# Ciclos para recorrer cada elemento usando índices
+for i in range(len(matriz)):
+    for k in range(len(matriz[0])):
+        # TODO: Usar matriz[i][k] para procesar el elemento
+```
+
+- El ciclo externo recorre cada fila
+- El ciclo interno recorre cada columna 
+    - De la fila actual
+- ✅ Permite acceso directo a cada elemento 
+	- Mediante índices
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Patrón de Recorrido Total - `for-in`
+
+ (III) - Ejemplo Matrices
+
+```Python
+matriz = [[1, 2], [3, 4]]
+# Ciclo externo para recorrer los índices de las filas
+for i in range(len(matriz)):
+    # Ciclo interno para recorrer los índices de los elementos en la fila
+    for k in range(len(matriz[i])):
+        print(f"Elemento en posición ({i}, {k}): {matriz[i][k]}")
+```
+
+```plaintext
+Elemento en posición (0, 0): 1
+Elemento en posición (0, 1): 2
+Elemento en posición (1, 0): 3
+Elemento en posición (1, 1): 4
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (II)
+
+- Implemente la función `encontrar_posiciones_mayores()`:
+
+```Python
+def encontrar_posiciones_mayores(matriz: list, valor: int) -> list:
+    '''
+    Encuentra las posiciones (índices) de los elementos en una matriz que 
+    son mayores que un valor dado.
+
+    Parámetros:
+        matriz (list): Una lista de listas que representa la matriz.
+        valor (int): El valor con el que se comparan los elementos de la matriz.
+
+    Retorna:
+        (list): Una lista de tuplas con las posiciones (fila, columna) 
+        de los elementos mayores que el valor.
+
+    >>> encontrar_posiciones_mayores([[1, 5, 3], [4, 8, 6], [7, 2, 9]], 5)
+    [(0, 1), (1, 1), (1, 2), (2, 0), (2, 2)]
+
+    >>> encontrar_posiciones_mayores([[0, -1], [-2, -3]], 0)
+    []
+
+    >>> encontrar_posiciones_mayores([[10, 20], [30, 40]], 25)
+    [(1, 0), (1, 1)]
+    '''
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (II) - Solución
+
+
+```Python
+def encontrar_posiciones_mayores(matriz: list, valor: int) -> list:
+    '''
+    Encuentra las posiciones (índices) de los elementos en una matriz que 
+    son mayores que un valor dado.
+
+    Parámetros:
+        matriz (list): Una lista de listas que representa la matriz.
+        valor (int): El valor con el que se comparan los elementos de la matriz.
+
+    Retorna:
+        (list): Una lista de tuplas con las posiciones (fila, columna) 
+        de los elementos mayores que el valor.
+
+    >>> encontrar_posiciones_mayores([[1, 5, 3], [4, 8, 6], [7, 2, 9]], 5)
+    [(0, 1), (1, 1), (1, 2), (2, 0), (2, 2)]
+
+    >>> encontrar_posiciones_mayores([[0, -1], [-2, -3]], 0)
+    []
+
+    >>> encontrar_posiciones_mayores([[10, 20], [30, 40]], 25)
+    [(1, 0), (1, 1)]
+    '''
+    posiciones = []  # Lista de retorno para guardar las posiciones
+
+    # Ciclo para recorrer cada elemento usando índices
+    for i in range(len(matriz)):  # Recorre las filas
+        for k in range(len(matriz[i])):  # Recorre las columnas
+            if matriz[i][k] > valor:  # Compara el elemento con el valor dado
+                posiciones.append((i, k))  # Guarda la posición como una tupla
+
+    # Retornar la lista de posiciones
+    return posiciones
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (III)
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+matriz = [['p', 'e'], ['r', 'r'], ['i', 't'], ['o', 's']]
+for filas in range(len(matriz)):
+    for columnas in range(len(matriz[0])):
+        print(matriz[filas][columnas], end='')
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (III)
+
+- Respuesta:
+
+```Python
+matriz = [['p', 'e'], ['r', 'r'], ['i', 't'], ['o', 's']]
+for filas in range(len(matriz)):
+    for columnas in range(len(matriz[0])):
+        print(matriz[filas][columnas], end='')
+```
+
+```Plaintext
+perritos
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (IV)
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+m = [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+s = 0.0
+
+for i in range(len(m)):
+    for k in range(len(m[0])):
+        s += m[i][k]
+  
+print(s/len(m))
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (IV)
+
+- Respuesta:
+
+```Python
+m = [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+s = 0.0
+
+for i in range(len(m)):
+    for k in range(len(m[0])):
+        s += m[i][k]
+  
+print(s/len(m))
+```
+
+```Plaintext
+3.0
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Pasted image 20240817131627.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+[Click para volver al menú principal](https://eerosales24.github.io/ip_2024_20/)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="copyright.png" alt="" style="object-fit: scale-down">
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
