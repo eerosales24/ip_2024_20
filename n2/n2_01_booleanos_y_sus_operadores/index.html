@@ -136,7 +136,32 @@ Universidad de los Andes
 
 ### Tipo de dato (repaso)
 
-<img src="Screenshot 2024-08-17 at 4.18.30 PM.png" alt="" style="object-fit: scale-down">
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center; font-size: 30px;">
+  <thead style="background-color: #d3d3d3;">
+    <tr>
+      <th style="color: black;">Nombre</th>
+      <th style="color: black;">Tipo</th>
+      <th style="color: black;">Ejemplos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Entero</td>
+      <td><code>int</code></td>
+      <td><code>0</code>, <code>1</code>, <code>-2</code>, <code>1_000</code></td>
+    </tr>
+    <tr>
+      <td>Decimal</td>
+      <td><code>float</code></td>
+      <td><code>.0</code>, <code>3.14</code>, <code>3.14e-10</code></td>
+    </tr>
+    <tr>
+      <td>Cadena de caracteres</td>
+      <td><code>str</code></td>
+      <td style="color: green;"><code>"Hello World"</code></td>
+    </tr>
+  </tbody>
+</table>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -144,7 +169,37 @@ Conozcamos un **nuevo tipo de dato**
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-<img src="Screenshot 2024-09-02 at 10.03.03 AM.png" alt="" style="object-fit: scale-down">
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center;">
+  <thead style="background-color: #d3d3d3;">
+    <tr>
+      <th style="color: black;">Nombre</th>
+      <th style="color: black;">Tipo</th>
+      <th style="color: black;">Ejemplos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Entero</td>
+      <td >int</td>
+      <td >0, 1, -2, 1_000</td>
+    </tr>
+    <tr>
+      <td>Decimal</td>
+      <td >float</td>
+      <td >.0, 3.14, 3.14e-10</td>
+    </tr>
+    <tr>
+      <td>Cadena de caracteres</td>
+      <td>str</td>
+      <td style="color: green;">"Hello World"</td>
+    </tr>
+    <tr>
+      <td>Booleano</td>
+      <td>bool</td>
+      <td>True, False</td>
+    </tr>
+  </tbody>
+</table>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -403,8 +458,78 @@ bool(0)  # → False
 
 ### Operadores Relacionales - Resumen
 
-
-<img src="Screenshot 2024-09-02 at 10.39.27 AM.png" alt="" style="object-fit: scale-down">
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center; font-size: 20px;">
+  <thead style="background-color: #d0e6f8;">
+    <tr>
+      <th style="color: black;">Operador</th>
+      <th style="color: black;">Nombre</th>
+      <th style="color: black;">Ejemplo</th>
+      <th style="color: black;">Resultado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2"><code>==</code></td>
+      <td rowspan="2">Es igual que</td>
+      <td><code>5 == 5</code></td>
+      <td><code>True</code></td>
+    </tr>
+    <tr style="background-color: #f3f3f3;">
+      <td style="color: black;"><code>5 == '5'</code></td>
+      <td style="color: black;"><code>False</code></td>
+    </tr>
+    <tr>
+      <td rowspan="2"><code>!=</code></td>
+      <td rowspan="2">Es diferente que</td>
+      <td><code>5 != '5'</code></td>
+      <td><code>True</code></td>
+    </tr>
+    <tr style="background-color: #f3f3f3;">
+      <td style="color: black;"><code>5 != 5</code></td>
+      <td style="color: black;"><code>False</code></td>
+    </tr>
+    <tr>
+      <td rowspan="2"><code>&gt;</code></td>
+      <td rowspan="2">Es mayor que</td>
+      <td><code>5 &gt; 4</code></td>
+      <td><code>True</code></td>
+    </tr>
+    <tr style="background-color: #f3f3f3;">
+      <td style="color: black;"><code>5 &gt; 5</code></td>
+      <td style="color: black;"><code>False</code></td>
+    </tr>
+    <tr>
+      <td rowspan="2"><code>&lt;</code></td>
+      <td rowspan="2">Es menor que</td>
+      <td><code>5 &lt; 6</code></td>
+      <td><code>True</code></td>
+    </tr>
+    <tr style="background-color: #f3f3f3;">
+      <td style="color: black;"><code>5 &lt; 5</code></td>
+      <td style="color: black;"><code>False</code></td>
+    </tr>
+    <tr>
+      <td rowspan="2"><code>&gt;=</code></td>
+      <td rowspan="2">Es mayor o igual que</td>
+      <td><code>5 &gt;= 5</code></td>
+      <td><code>True</code></td>
+    </tr>
+    <tr style="background-color: #f3f3f3;">
+      <td style="color: black;"><code>5 &gt;= 6</code></td>
+      <td style="color: black;"><code>False</code></td>
+    </tr>
+    <tr>
+      <td rowspan="2"><code>&lt;=</code></td>
+      <td rowspan="2">Es menor o igual que</td>
+      <td><code>5 &lt;= 5</code></td>
+      <td><code>True</code></td>
+    </tr>
+    <tr style="background-color: #f3f3f3;">
+      <td style="color: black;"><code>5 &lt;= 4</code></td>
+      <td style="color: black;"><code>False</code></td>
+    </tr>
+  </tbody>
+</table>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -414,11 +539,17 @@ bool(0)  # → False
 
 ```Python
 10_000 == 10_000
+
 10_000 - 10_000 >= 0
+
 True > False
+
 True < 1
+
 False < 1
+
 True >= 1
+
 False <= 1
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
@@ -545,7 +676,57 @@ is not
 
 ### Operadores de Identidad - Repaso
 
-<img src="Screenshot 2024-09-02 at 10.52.26 AM.png" alt="" style="object-fit: scale-down">
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center; font-size: 22px;">
+  <thead style="background-color: #d0e6f8;">
+    <tr>
+      <th style="color: black;">Operador</th>
+      <th style="color: black;">Nombre</th>
+      <th style="color: black;">Descripción</th>
+      <th style="color: black;">Ejemplo</th>
+      <th style="color: black;">Resultado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2"><code>is</code></td>
+      <td rowspan="2">Identidad</td>
+      <td rowspan="2">Retorna <code>True</code> si los dos objetos<br>son el mismo.<br>Caso contrario <code>False</code></td>
+      <td style="text-align: left;">
+        <code>x = 'a'</code><br>
+        <code>y = x</code><br>
+        <code>x is y</code>
+      </td>
+      <td><code>True</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left;background-color: #f3f3f3; color: black;" >
+        <code>x = 'a'</code><br>
+        <code>y = 5</code><br>
+        <code>x is y</code>
+      </td>
+      <td style="background-color: #f3f3f3; color: black;"><code>False</code></td>
+    </tr>
+    <tr>
+      <td rowspan="2"><code>is not</code></td>
+      <td rowspan="2">Negación de identidad</td>
+      <td rowspan="2">La negación de <code>is</code></td>
+      <td style="text-align: left;">
+        <code>x = 'a'</code><br>
+        <code>y = 5</code><br>
+        <code>x is not y</code>
+      </td>
+      <td><code>True</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left;background-color: #f3f3f3; color: black;">
+        <code>x = 'a'</code><br>
+        <code>y = x</code><br>
+        <code>x is not y</code>
+      </td>
+      <td style="background-color: #f3f3f3; color: black;"><code>False</code></td>
+    </tr>
+  </tbody>
+</table>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 

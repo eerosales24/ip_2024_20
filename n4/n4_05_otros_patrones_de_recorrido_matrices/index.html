@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Introducción a la Programación (IP)
+
+
+*Otros Patrones de Recorrido en Matrices*
+
+[Eduardo Rosales](mailto:ee.rosales24@uniandes.edu.co)
+
+Departamento de Ingeniería de Sistemas y Computación
+
+Universidad de los Andes
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Patrón de Recorrido por Filas
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido por Filas - `for-in`
+
+```Python
+# Ciclo para recorrer cada fila de la matriz
+for fila in matriz:
+    # Procesar cada fila
+```
+- Recorre la matriz fila por fila
+- Útil para trabajar con filas completas
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido por Filas - `for-in` - Ejemplo
+
+
+```Python
+def imprimir_filas(matriz: list) -> None:
+    """
+    Imprime cada fila (lista interna) de la matriz.
+
+    Parámetros:
+        matriz (list): Una lista de listas 
+        que representa la matriz.
+
+    Retorna:
+        None
+    """
+    # Recorrer cada fila de la matriz e imprimirla
+    for fila in matriz:
+        print(fila)
+```
+
+```Python
+matriz = [[1, 0], [0, 1]] 
+imprimir_filas(matriz)
+```
+
+```plaintext
+[1, 0]
+[0, 1]
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido por Filas - `for-in range`
+
+```Python
+# Ciclo para recorrer cada fila de la matriz
+for i in range(len(matriz)):
+    # Procesar cada fila
+```
+- Recorre la matriz fila por fila
+- Útil para trabajar con filas completas
+	- Usando índices
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido por Filas - `for-in range` - Ejemplo (I)
+
+
+```Python
+def imprimir_filas_con_indice(matriz: list) -> None:
+    """
+    Imprime el número de cada fila seguido por el contenido de la lista interna.
+
+    Parámetros:
+        matriz (list): Una lista de listas que representa la matriz.
+
+    Retorna:
+        None
+    """
+    # Recorrer cada fila de la matriz e imprimir el número de fila y su contenido
+    for i in range(len(matriz)):
+        print(f"Fila {i}: {matriz[i]}")
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido por Filas - `for-in range` - Ejemplo (II)
+
+```Python
+    for i in range(len(matriz)):
+        print(f"Fila {i}: {matriz[i]}")
+```
+
+<img src="Screenshot 2024-11-10 at 5.23.07 PM.png" alt="" style="object-fit: scale-down">
+
+
+```Python
+matriz = [[1, 0], [0, 1]]
+imprimir_filas_con_indice(matriz)
+```
+
+```plaintext
+Fila 0: [1, 0]
+Fila 1: [0, 1]
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Patrón de Recorrido por Columnas
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido por Columnas - `for-in range` 
+
+```Python
+
+# Ciclo para recorrer cada columna por separado
+for k in range(len(matriz[0])):
+    # Procesar cada columna
+    # for i in range(len(matriz)):
+```
+- Recorre la matriz columna por columna
+- Útil para trabajar con columnas específicas
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido por Columnas - `for-in range` - Ejemplo (I)
+ 
+
+```Python
+def imprimir_elementos_por_columna(matriz: list) -> None:
+    """
+    Imprime los elementos de cada columna en orden, 
+    recorriendo la matriz columna por columna.
+
+    Parámetros:
+        matriz (list): Una lista de listas que representa la matriz.
+
+    Retorna:
+        None
+    """
+    # Ciclo para recorrer cada columna
+    for columna in range(len(matriz[0])):
+        for fila in range(len(matriz)):
+            print(matriz[fila][columna])
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido por Columnas - `for-in range` - Ejemplo (II)
+
+```Python
+    # Ciclo para recorrer cada columna
+    for columna in range(len(matriz[0])):
+        for fila in range(len(matriz)):
+            print(matriz[fila][columna])
+```
+
+<img src="Screenshot 2024-11-10 at 5.18.58 PM.png" alt="" style="object-fit: scale-down">
+
+
+```Python
+matriz = [['a', 'b'], ['c', 'd']]
+imprimir_elementos_por_columna(matriz)
+```
+
+```plaintext
+a
+c
+b
+d
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Se pueden crear muchas variedades de recorridos sobre matrices
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido en Diagonal
+
+- Recorre únicamente la diagonal de la matriz
+	- De izquierda a derecha
+- Los índices de fila, columna
+	- Son iguales en la diagonal
+
+<table border="1" style="border-collapse: collapse; text-align: center;">
+  <tr>
+    <td style="background-color: lightgreen;">1</td>
+    <td>2</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td style="background-color: lightgreen;">5</td>
+    <td>6</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>8</td>
+    <td style="background-color: lightgreen;">9</td>
+  </tr>
+</table>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido en Diagonal - Ejemplo
+
+```Python
+def imprimir_diagonal_principal(matriz: list) -> None:
+    """
+    Imprime los elementos de la diagonal principal de la matriz.
+
+    Parámetros:
+        matriz (list): Una lista de listas que representa la matriz.
+
+    Retorna:
+        None
+    """
+    for i in range(len(matriz)):
+        print(matriz[i][i])
+```
+
+```Pythpn
+matriz = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+imprimir_diagonal_principal(matriz)
+```
+
+```Plaintext
+1
+5
+9
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido en la Diagonal Secundaria
+
+- Recorre la *diagonal secundaria*
+	- Ítems donde se cumple esta condición:
+	```Python
+	(i + j == len(matriz) - 1)
+	```
+
+<table border="1" style="border-collapse: collapse; text-align: center;">
+  <tr>
+    <td>1</td>
+    <td>2</td>
+    <td style="background-color: lightgreen;">3</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td style="background-color: lightgreen;">5</td>
+    <td>6</td>
+  </tr>
+  <tr>
+    <td style="background-color: lightgreen;">7</td>
+    <td>8</td>
+    <td>9</td>
+  </tr>
+</table>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido en la Diagonal Secundaria - Ejemplo (I)
+
+```Python
+def imprimir_diagonal_secundaria(matriz: list) -> None:
+    """
+    Imprime los elementos de la diagonal secundaria de la matriz.
+
+    Parámetros:
+        matriz (list): Una lista de listas que representa la matriz.
+
+    Retorna:
+        None
+    """
+    n = len(matriz)
+    for i in range(n):
+        print(matriz[i][n - 1 - i])
+```
+
+```Pythpn
+matriz = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+imprimir_diagonal_secundaria(matriz)
+```
+
+```Plaintext
+3
+5
+7
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido en la Diagonal Secundaria - Ejemplo (II)
+
+```Python
+    n = len(matriz)
+    for i in range(n):
+        print(matriz[i][n - 1 - i])
+```
+
+- Primera iteración:
+
+```Python
+matriz = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+n = 3
+i = 0
+matriz[i] = [1, 2, 3]
+[1, 2, 3][2] = 3
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido en la Diagonal Secundaria - Ejemplo (III)
+
+```Python
+    n = len(matriz)
+    for i in range(n):
+        print(matriz[i][n - 1 - i])
+```
+
+- Segunda iteración:
+
+```Python
+matriz = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+n = 3
+i = 1
+matriz[i] = [4, 5, 6]
+[4, 5, 6][1] = 5
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido en la Diagonal Secundaria - Ejemplo (IV)
+
+```Python
+    n = len(matriz)
+    for i in range(n):
+        print(matriz[i][n - 1 - i])
+```
+
+- Tercera iteración:
+
+```Python
+matriz = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+n = 3
+i = 2
+matriz[i] = [7, 8, 9]
+[7, 8, 9][0] = 7
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (I)
+
+- Implemente la función `imprimir_en_x()`:
+
+```Python
+def imprimir_en_x(matriz: list) -> None:
+    """
+    Imprime los elementos de la matriz que forman una "X".
+    Esto incluye los elementos de la diagonal principal y la diagonal secundaria.
+
+    Parámetros:
+        matriz (list): Una lista de listas que representa la matriz.
+
+    Retorna:
+        None
+    """
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (I) - Explicación
+
+
+<table border="1" style="border-collapse: collapse; text-align: center;">
+  <tr>
+    <td style="background-color: lightgreen;">1</td>
+    <td>2</td>
+    <td style="background-color: lightgreen;">3</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td style="background-color: lightgreen;">5</td>
+    <td>6</td>
+  </tr>
+  <tr>
+    <td style="background-color: lightgreen;">7</td>
+    <td>8</td>
+    <td style="background-color: lightgreen;">9</td>
+  </tr>
+</table>
+
+-  Use un solo recorrido total
+- Use `matriz[i][i]` para la diagonal principal
+- Use `matriz[i][n - 1 - i]` 
+	- Para la diagonal secundaria
+- Evite duplicar el centro si `i == n - 1 - i`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz (I) - Solución
+
+```Python
+def imprimir_en_x(matriz: list) -> None:
+    """
+    Imprime los elementos de la matriz que forman una "X".
+    Esto incluye los elementos de la diagonal principal y la diagonal secundaria.
+
+    Parámetros:
+        matriz (list): Una lista de listas que representa la matriz.
+
+    Retorna:
+        None
+    """
+    n = len(matriz)
+    
+    for i in range(n):
+        # Imprimir el elemento de la diagonal principal
+        print(matriz[i][i])
+        # Imprimir el elemento de la diagonal secundaria, 
+        # evitando duplicar el elemento central
+        if i != n - 1 - i:
+            print(matriz[i][n - 1 - i])
+
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido en Cuadro
+
+- Recorre en cuadro (bordes exteriores) de la matriz
+- Ej:
+	- Recorrer primero la fila superior
+	- Luego la última columna
+	- La fila inferior en orden inverso 
+	- y  la primera columna en orden inverso
+
+<table border="1" style="border-collapse: collapse; text-align: center;">
+  <tr>
+    <td style="background-color: lightgreen;">1</td>
+    <td style="background-color: lightgreen;">2</td>
+    <td style="background-color: lightgreen;">3</td>
+  </tr>
+  <tr>
+    <td style="background-color: lightgreen;">4</td>
+    <td>5</td>
+    <td style="background-color: lightgreen;">6</td>
+  </tr>
+  <tr>
+    <td style="background-color: lightgreen;">7</td>
+    <td style="background-color: lightgreen;">8</td>
+    <td style="background-color: lightgreen;">9</td>
+  </tr>
+</table>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido en Cuadro - Ejemplo (I)
+
+```Python
+def imprimir_borde_exterior(matriz: list) -> None:
+    """
+    Imprime los elementos en el borde exterior de la matriz.
+
+    Parámetros:
+        matriz (list): Una lista de listas que representa la matriz.
+
+    Retorna:
+        None
+    """
+	filas = len(matriz)
+	columnas = len(matriz[0])
+
+	# Recorrer la fila superior (de izquierda a derecha)
+	for k in range(columnas):
+		print(matriz[0][k])
+
+	# Recorrer la última columna (de arriba hacia abajo)
+	for i in range(1, filas):
+		print(matriz[i][columnas - 1])
+
+	# Recorrer la fila inferior (de derecha a izquierda)
+	if filas > 1:  # Asegurarse de no repetir la fila superior
+		for k in range(columnas - 2, -1, -1):
+			print(matriz[filas - 1][k])
+
+	# Recorrer la primera columna (de abajo hacia arriba)
+	if columnas > 1:  # Asegurarse de no repetir la última columna
+		for i in range(filas - 2, 0, -1):
+			print(matriz[i][0])
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido en Cuadro - Ejemplo (II)
+
+```Python
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+imprimir_borde_exterior(matriz)
+```
+
+```Plaintext
+1
+2
+3
+6
+9
+8
+7
+4
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recorrido de Vecinos
+
+- Recorre cada casilla de la matriz
+- Considerando las casillas que no existen
+- Ej:
+	- Los vecinos de la posición (0,0) son:
+	- `[4, 2, 5]` 
+
+<table border="1" style="border-collapse: collapse; text-align: center;">
+  <tr>
+    <td>1</td>
+    <td style="background-color: lightgreen;">2</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td style="background-color: lightgreen;">4</td>
+    <td style="background-color: lightgreen;">5</td>
+    <td>6</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>8</td>
+    <td>9</td>
+  </tr>
+</table>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tarea
+
+- Implemente la función `obtener_vecinos()`:
+
+```Python
+def obtener_vecinos(matriz: list, fila: int, columna: int) -> list:
+    """
+    Encuentra todos los vecinos de una casilla en una matriz.
+
+    Parámetros:
+        matriz (list): Una lista de listas que representa la matriz.
+        fila (int): El índice de la fila de la casilla.
+        columna (int): El índice de la columna de la casilla.
+
+    Retorna:
+        list: Una lista de valores vecinos.
+    """
+    #TODO: Implemente la función tal y como se describe en la documentación.
+
+
+
+
+# Ejemplo de uso
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+# Obtener vecinos de la casilla en la posición (1, 1) -> 5
+vecinos = obtener_vecinos(matriz, 1, 1)
+print(vecinos)  # Salida: [1, 2, 3, 4, 6, 7, 8, 9]
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Pasted image 20240817131627.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+[Click para volver al menú principal](https://eerosales24.github.io/ip_2024_20/)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="copyright.png" alt="" style="object-fit: scale-down">
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

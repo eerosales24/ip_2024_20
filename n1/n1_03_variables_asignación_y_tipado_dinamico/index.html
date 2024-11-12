@@ -260,16 +260,60 @@ Según la convención [PEP 8 Style](https://peps.python.org/pep-0008/#naming-con
 
 ### Palabra Clave
 
-- Palabra reservada con un significado especial en Python
+- Palabra *reservada* que tiene 
+	- Un significado especial en Python:
 
-| `False`  | `await`    | `else`    | `import`   | `pass`   |
-| -------- | ---------- | --------- | ---------- | -------- |
-| `None`   | `break`    | `except`  | `in`       | `raise`  |
-| `True`   | `class`    | `finally` | `is`       | `return` |
-| `and`    | `continue` | `for`     | `lambda`   | `try`    |
-| `as`     | `def`      | `from`    | `nonlocal` | `while`  |
-| `assert` | `del`      | `global`  | `not`      | `with`   |
-| `async`  | `elif`     | `if`      | `or`       | `yield`  |
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center; font-size: 26px;">
+  <tr>
+    <td><code>False</code></td>
+    <td><code>await</code></td>
+    <td><code>else</code></td>
+    <td><code>import</code></td>
+    <td><code>pass</code></td>
+  </tr>
+  <tr>
+    <td><code>None</code></td>
+    <td><code>break</code></td>
+    <td><code>except</code></td>
+    <td><code>in</code></td>
+    <td><code>raise</code></td>
+  </tr>
+  <tr>
+    <td><code>True</code></td>
+    <td><code>class</code></td>
+    <td><code>finally</code></td>
+    <td><code>is</code></td>
+    <td><code>return</code></td>
+  </tr>
+  <tr>
+    <td><code>and</code></td>
+    <td><code>continue</code></td>
+    <td><code>for</code></td>
+    <td><code>lambda</code></td>
+    <td><code>try</code></td>
+  </tr>
+  <tr>
+    <td><code>as</code></td>
+    <td><code>def</code></td>
+    <td><code>from</code></td>
+    <td><code>nonlocal</code></td>
+    <td><code>while</code></td>
+  </tr>
+  <tr>
+    <td><code>assert</code></td>
+    <td><code>del</code></td>
+    <td><code>global</code></td>
+    <td><code>not</code></td>
+    <td><code>with</code></td>
+  </tr>
+  <tr>
+    <td><code>async</code></td>
+    <td><code>elif</code></td>
+    <td><code>if</code></td>
+    <td><code>or</code></td>
+    <td><code>yield</code></td>
+  </tr>
+</table>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -278,7 +322,7 @@ Comprendamos ejemplos de **identificadores válidos**
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Ejemplos de Identificadores Válidos
-```Python
+```Plaintext
 x
 result
 average_speed
@@ -349,7 +393,7 @@ promedio = promedio +  1
 promedio = promedio +  1
 ```
 
-```Python
+```Plaintext
 Traceback (most recent call last):
 
     Cell In[...], line …

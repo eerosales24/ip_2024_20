@@ -100,25 +100,152 @@ Universidad de los Andes
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Tablas de Verdad - `and`
-<img src="Screenshot 2024-09-05 at 9.19.58 AM.png" alt="" style="object-fit: scale-down">
+
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center; font-size: 22px;">
+  <thead style="background-color: #d0e6f8;">
+    <tr>
+      <th style="color: black;" colspan="2">Operador</th>
+      <th style="color: black;">Resultado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="4">and</td>
+      <td><code>True</code> and <code>True</code></td>
+      <td><code>True</code></td>
+    </tr>
+    <tr style="background-color: #f3f3f3; color: black;">
+      <td><code>True</code> and <code>False</code></td>
+      <td><code>False</code></td>
+    </tr>
+    <tr>
+      <td><code>False</code> and <code>True</code></td>
+      <td><code>False</code></td>
+    </tr>
+    <tr style="background-color: #f3f3f3; color: black;">
+      <td><code>False</code> and <code>False</code></td>
+      <td><code>False</code></td>
+    </tr>
+  </tbody>
+</table>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Tablas de Verdad - `or`
 
-<img src="Screenshot 2024-09-05 at 9.20.57 AM.png" alt="" style="object-fit: scale-down">
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center; font-size: 22px;">
+  <thead style="background-color: #d0e6f8;">
+    <tr>
+      <th style="color: black;" colspan="2">Operador</th>
+      <th style="color: black;">Resultado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="4">or</td>
+      <td><code>True</code> or <code>True</code></td>
+      <td><code>True</code></td>
+    </tr>
+    <tr style="background-color: #f3f3f3; color: black;">
+      <td><code>True</code> or <code>False</code></td>
+      <td><code>True</code></td>
+    </tr>
+    <tr>
+      <td><code>False</code> or <code>True</code></td>
+      <td><code>True</code></td>
+    </tr>
+    <tr style="background-color: #f3f3f3; color: black;">
+      <td><code>False</code> or <code>False</code></td>
+      <td><code>False</code></td>
+    </tr>
+  </tbody>
+</table>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Tablas de Verdad - `not`
 
-<img src="Screenshot 2024-09-05 at 9.21.21 AM.png" alt="" style="object-fit: scale-down">
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center; font-size: 22px;">
+  <thead style="background-color: #d0e6f8;">
+    <tr>
+      <th style="color: black;" colspan="2">Operador</th>
+      <th style="color: black;">Resultado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">not</td>
+      <td><code>not False</code></td>
+      <td><code>True</code></td>
+    </tr>
+    <tr style="background-color: #f3f3f3; color: black;">
+      <td><code>not True</code></td>
+      <td><code>False</code></td>
+    </tr>
+  </tbody>
+</table>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Tablas de Verdad - Resumen
 
-<img src="Screenshot 2024-09-04 at 3.46.11 PM.png" alt="" style="object-fit: scale-down">
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center; font-size: 20px;">
+  <thead style="background-color: #d3d3d3;">
+    <tr>
+      <th style="color: black;">Operador</th>
+      <th style="color: black;">Condición</th>
+      <th style="color: black;">Resultado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- and operator -->
+    <tr>
+      <td rowspan="4"><code>and</code></td>
+      <td><code>True and True</code></td>
+      <td><code>True</code></td>
+    </tr>
+    <tr style="background-color: #f3f3f3; color: black;">
+      <td><code>True and False</code></td>
+      <td><code>False</code></td>
+    </tr>
+    <tr>
+      <td><code>False and True</code></td>
+      <td><code>False</code></td>
+    </tr>
+    <tr style="background-color: #f3f3f3; color: black;">
+      <td><code>False and False</code></td>
+      <td><code>False</code></td>
+    </tr>
+    <!-- or operator -->
+    <tr>
+      <td rowspan="4"><code>or</code></td>
+      <td><code>True or True</code></td>
+      <td><code>True</code></td>
+    </tr>
+    <tr style="background-color: #f3f3f3; color: black;">
+      <td><code>True or False</code></td>
+      <td><code>True</code></td>
+    </tr>
+    <tr>
+      <td><code>False or True</code></td>
+      <td><code>True</code></td>
+    </tr>
+    <tr style="background-color: #f3f3f3; color: black;">
+      <td><code>False or False</code></td>
+      <td><code>False</code></td>
+    </tr>
+    <!-- not operator -->
+    <tr>
+      <td rowspan="2"><code>not</code></td>
+      <td><code>not False</code></td>
+      <td><code>True</code></td>
+    </tr>
+    <tr style="background-color: #f3f3f3; color: black;">
+      <td><code>not True</code></td>
+      <td><code>False</code></td>
+    </tr>
+  </tbody>
+</table>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -174,12 +301,84 @@ not not (x) == x
 
 ### Jerarquía de Prioridades (repaso)
 
-<img src="Screenshot 2024-08-18 at 1.54.22 PM.png" alt="" style="object-fit: scale-down">
+
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center; font-size: 30px;">
+  <thead style="background-color: #d0e6f8;">
+    <tr>
+      <th style="color: black;">Prioridad</th>
+      <th style="color: black;">Operador</th>
+      <th style="color: black;">Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><code>**</code></td>
+      <td>Binario</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code>+, -</code></td>
+      <td>Unario</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><code>*, /, //, %</code></td>
+      <td>Binario</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><code>+, -</code></td>
+      <td>Binario</td>
+    </tr>
+  </tbody>
+</table>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Jerarquía de Prioridades - Actualizada
-<img src="Screenshot 2024-09-04 at 3.51.40 PM.png" alt="" style="object-fit: scale-down">
+
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center; font-size: 30px;">
+  <thead style="background-color: #d0e6f8;">
+    <tr>
+      <th style="color: black;">Prioridad</th>
+      <th style="color: black;">Operador</th>
+      <th style="color: black;">Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><code>**</code></td>
+      <td>Binario</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code>+, -</code></td>
+      <td>Unario</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><code>*, /, //, %</code></td>
+      <td>Binario</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><code>+, -</code></td>
+      <td>Binario</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><code>==, !=, &lt;, &lt;=, &gt;, &gt;=, is, is not</code></td>
+      <td>Relacional</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><code>not, and, or</code></td>
+      <td>Lógico</td>
+    </tr>
+  </tbody>
+</table>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -260,8 +459,48 @@ print(a * b < a * b / c)  # → ???
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Jerarquía de Prioridades (repaso)
-<img src="Screenshot 2024-09-04 at 3.51.40 PM.png" alt="" style="object-fit: scale-down">
 
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center; font-size: 20px;">
+  <thead style="background-color: #d0e6f8;">
+    <tr>
+      <th style="color: black;">Prioridad</th>
+      <th style="color: black;">Operador</th>
+      <th style="color: black;">Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><code>**</code></td>
+      <td>Binario</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code>+, -</code></td>
+      <td>Unario</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><code>*, /, //, %</code></td>
+      <td>Binario</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><code>+, -</code></td>
+      <td>Binario</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><code>==, !=, &lt;, &lt;=, &gt;, &gt;=, is, is not</code></td>
+      <td>Relacional</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><code>not, and, or</code></td>
+      <td>Lógico</td>
+    </tr>
+  </tbody>
+</table>
 
 - Primero multiplicación
 	- Luego división (flotante)

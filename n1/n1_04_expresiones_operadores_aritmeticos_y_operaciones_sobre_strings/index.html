@@ -166,7 +166,7 @@ Universidad de los Andes
 	- El comentario muestra el identificador 
 		- y luego el valor que le es asignado
 	
-```
+```Python
 - suma = 2 + 2  # suma = 4
 - division = 2 / 2  # division = 1.0
 - apellido = 'Goméz'  # apellido = 'Goméz'
@@ -264,7 +264,30 @@ nombre = 'Julio Verne'  # nombre = 'Julio Verne'
 
 ### Operadores Unarios - Resumen
 
-<img src="Screenshot 2024-08-18 at 1.52.28 PM.png" alt="" style="object-fit: scale-down">
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center;font-size: 30px;">
+  <thead style="background-color: #d0e6f8;">
+    <tr>
+      <th style="color: black;">Operador</th>
+      <th style="color: black;">Descripción</th>
+      <th style="color: black;">Ejemplo</th>
+      <th style="color: black;">Resultado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>−</td>
+      <td style="text-align: left;">Cambio de signo:<br>Invierte el signo</td>
+      <td>−2</td>
+      <td>−2</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td style="text-align: left;">Identidad:<br>No tiene efecto<br>(solo para hacer explícito el signo)</td>
+      <td>+5</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -285,7 +308,60 @@ nombre = 'Julio Verne'  # nombre = 'Julio Verne'
 
 ## Operadores Aritméticos (III) - Resumen
 
-<img src="Screenshot 2024-08-18 at 1.52.53 PM.png" alt="" style="object-fit: scale-down">
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center;font-size: 30px;">
+  <thead style="background-color: #d0e6f8;">
+    <tr>
+      <th style="color: black;">Operador</th>
+      <th style="color: black;">Descripción</th>
+      <th style="color: black;">Ejemplo</th>
+      <th style="color: black;">Resultado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>+</td>
+      <td>Suma</td>
+      <td>5 + 5</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>−</td>
+      <td>Resta</td>
+      <td>10 - 2</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>*</td>
+      <td>Multiplicación</td>
+      <td>7 * 3</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <td>/</td>
+      <td>División</td>
+      <td>9 / 2</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <td>//</td>
+      <td>División (entera)</td>
+      <td>9 // 2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>%</td>
+      <td>Módulo  (o resto)</td>
+      <td>9 % 2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>**</td>
+      <td>Exponenciación</td>
+      <td>2 ** 4</td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -533,8 +609,37 @@ Veamos las **reglas** que aplican a las operaciones aritméticas en Python
 
 ### Jerarquía de Prioridades - Version 1
 
-<img src="Screenshot 2024-08-18 at 1.53.30 PM.png" alt="" style="object-fit: scale-down">
-
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center; font-size: 30px;">
+  <thead style="background-color: #d0e6f8;">
+    <tr>
+      <th style="color: black;">Prioridad</th>
+      <th style="color: black;">Operador</th>
+      <th style="color: black;">Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><code>**</code></td>
+      <td>Binario</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code>+, −</code></td>
+      <td>Unario</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><code>*, /, //, %</code></td>
+      <td>Binario</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><code>+, -</code></td>
+      <td>Binario</td>
+    </tr>
+  </tbody>
+</table>
 
 - *Jerarquía de prioridades*
 	- Los operadores de mayor prioridad 
@@ -698,7 +803,42 @@ La exponenciación es **única** es tener  **asociatividad de derecha a izquierd
 
 ### Jerarquía de Prioridades - Version 2
 
-<img src="Screenshot 2024-08-18 at 1.54.22 PM.png" alt="" style="object-fit: scale-down">
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center; font-size: 30px;">
+  <thead style="background-color: #d0e6f8;">
+    <tr>
+      <th style="color: black;">Prioridad</th>
+      <th style="color: black;">Operador</th>
+      <th style="color: black;">Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><code>(expresión)</code></td>
+      <td>Expresión entre paréntesis</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><code>**</code></td>
+      <td>Binario</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code>+, −</code></td>
+      <td>Unario</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><code>*, /, //, %</code></td>
+      <td>Binario</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><code>+, -</code></td>
+      <td>Binario</td>
+    </tr>
+  </tbody>
+</table>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -751,7 +891,7 @@ resultado = a + b + c  # resultado = 38
  
  - Respuesta:
  
- ```Python
+ ```Plaintext
 Traceback (most recent call last):
     Cell In[...], line …
         1/0
@@ -813,7 +953,60 @@ x **= 1  # → 1.0 (Equivalente a: x = x ** 1)
 
 ### Asignaciones con Operador - Resumen
 
-<img src="Screenshot 2024-08-18 at 1.55.44 PM.png" alt="" style="object-fit: scale-down">
+<table border="1" style="border-collapse: collapse; width: 90%; text-align: center; font-size: 30px; padding: 8px;">
+  <thead style="background-color: #d0e6f8;">
+    <tr>
+      <th style="color: black; padding: 4px;">Operador</th>
+      <th style="color: black; padding: 4px;">Descripción</th>
+      <th style="color: black; padding: 4px;">Ejemplo</th>
+      <th style="color: black; padding: 4px;">Equivalente</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 4px;"><code>+=</code></td>
+      <td style="padding: 4px;">Suma y asignación</td>
+      <td style="padding: 4px;"><code>x += 5</code></td>
+      <td style="padding: 4px;"><code>x = x + 5</code></td>
+    </tr>
+    <tr>
+      <td style="padding: 4px;"><code>-=</code></td>
+      <td style="padding: 4px;">Resta y asignación</td>
+      <td style="padding: 4px;"><code>x -= 5</code></td>
+      <td style="padding: 4px;"><code>x = x - 5</code></td>
+    </tr>
+    <tr>
+      <td style="padding: 4px;"><code>*=</code></td>
+      <td style="padding: 4px;">Multiplicación y asignación</td>
+      <td style="padding: 4px;"><code>x *= 5</code></td>
+      <td style="padding: 4px;"><code>x = x * 5</code></td>
+    </tr>
+    <tr>
+      <td style="padding: 4px;"><code>/=</code></td>
+      <td style="padding: 4px;">División y asignación</td>
+      <td style="padding: 4px;"><code>x /= 5</code></td>
+      <td style="padding: 4px;"><code>x = x / 5</code></td>
+    </tr>
+    <tr>
+      <td style="padding: 4px;"><code>//=</code></td>
+      <td style="padding: 4px;">División entera y asignación</td>
+      <td style="padding: 4px;"><code>x //= 5</code></td>
+      <td style="padding: 4px;"><code>x = x // 5</code></td>
+    </tr>
+    <tr>
+      <td style="padding: 4px;"><code>%=</code></td>
+      <td style="padding: 4px;">Módulo y asignación</td>
+      <td style="padding: 4px;"><code>x %= 5</code></td>
+      <td style="padding: 4px;"><code>x = x % 5</code></td>
+    </tr>
+    <tr>
+      <td style="padding: 4px;"><code>**=</code></td>
+      <td style="padding: 4px;">Exponenciación y asignación</td>
+      <td style="padding: 4px;"><code>x **= 5</code></td>
+      <td style="padding: 4px;"><code>x = x ** 5</code></td>
+    </tr>
+  </tbody>
+</table>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
