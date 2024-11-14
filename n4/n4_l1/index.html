@@ -116,7 +116,7 @@
 
 ### Imagen
 - Una matriz de píxeles
-	- En donde cada píxel representa un color
+    - En donde cada píxel representa un color
     ​
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -131,9 +131,9 @@
 ### Matriz de Píxeles (I)
     
 - Una matriz
-	- Que contiene los píxeles de la imagen
+    - Que contiene los píxeles de la imagen
 - La posición destacada en la parte inferior es (2, 1)
-	- Y es un pixel verde
+    - Y es un pixel verde
 
 <table border="3">
   <tr>
@@ -158,7 +158,7 @@
 ### Matriz de Píxeles (II)
 
 - Cada píxel se representa como un vector
-	- De tres elementos (RGB)
+    - De tres elementos (RGB)
 
 <img src="Screenshot 2024-11-12 at 7.27.33 PM.png" alt="" style="object-fit: scale-down">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
@@ -167,32 +167,25 @@
 ### RGB
 
 - Forma de representación de colores
-	- Red (Rojo)
-	- Green (Verde)
-	- Blue (Azul)
+    - Red (Rojo)
+    - Green (Verde)
+    - Blue (Azul)
 - Para cada uno, se tiene un valor
-	- En las imágenes de este laboratorio
-		- Será un valor entre 0 y 1
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-Matriz como una lista tridimensional
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<img src="Screenshot 2024-11-14 at 11.25.38 AM.png" alt="" style="object-fit: scale-down">
+    - En las imágenes de este laboratorio
+        - Será un valor entre 0 y 1
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Matriz como una lista tridimensional
 
+<img src="Screenshot 2024-11-14 at 11.25.38 AM.png" alt="" width="300">
 
 
 - Hay una lista externa
 - Dentro de ella, hay listas que representan las filas
 - Dentro de cada fila
-	- Hay listas que representan los pixeles
-		- Cada pixel es una lista de 3 valores RGB
+    - Hay listas que representan los pixeles
+        - Cada pixel es una lista de 3 valores RGB
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -227,7 +220,11 @@ Estudiemos una **matriz de pixeles** en Python
 
 ### Matriz de pixeles en Python - Ejemplo (II)
 
-<img src="Screenshot 2024-11-12 at 8.17.57 PM.png" alt="" style="object-fit: scale-down">
+<img src="Screenshot 2024-11-12 at 8.17.57 PM.png" alt="" width="300">
+
+
+- Así se vería la anterior matriz
+- Estudie de nuevo el código y **compréndalo**
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -235,9 +232,9 @@ Estudiemos una **matriz de pixeles** en Python
 
 - Las imágenes pueden venir en varios formatos
 - Ej:
-	- JPEG 
-	- PNG
-	- BMP
+    - JPEG 
+    - PNG
+    - BMP
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -248,20 +245,20 @@ Estudiemos cómo **cargar** una imagen
 ### Cargar una imagen
 
 - Leer los datos de la imagen 
-	- Desde un archivo y 
-		- Convertirlos en una estructura de datos 
-			- Que Python pueda manipular
+    - Desde un archivo y 
+        - Convertirlos en una estructura de datos 
+            - Que Python pueda manipular
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### matplotlib
  
 - Librería para la creación y manipulación 
-	- De gráficos
+    - De gráficos
 - Ofrece control sobre los 
-	- Estilos
-	- Colores
-	- Tamaños de los gráficos, etc.
+    - Estilos
+    - Colores
+    - Tamaños de los gráficos, etc.
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -269,10 +266,10 @@ Estudiemos cómo **cargar** una imagen
 
 - Módulo para manipular imágenes
 - Permite cargar imágenes:
-	- `imread()`: Función para leer una imagen
-		- Puede leer diferentes formatos como:
-			- PNG, 
-			- JPEG, etc.
+    - `imread()`: Función para leer una imagen
+        - Puede leer diferentes formatos como:
+            - PNG, 
+            - JPEG, etc.
 - Ayuda: [matplotlib.image](https://matplotlib.org/stable/api/image_api.html#module-matplotlib.image) y [imread()](https://matplotlib.org/stable/api/image_api.html#matplotlib.image.imread)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -314,10 +311,10 @@ Estudiemos cómo **mostrar** una imagen
 
 ### `matplotlib.pyplot`
 - Módulo para manipular imágenes
-	- Permite visualizar imágenes: 
-		- `imshow()`: Muestra una imagen
-			- En una cuadrícula 2D
-		- `show()`: Muestra el gráfico
+    - Permite visualizar imágenes: 
+        - `imshow()`: Muestra una imagen
+            - En una cuadrícula 2D
+        - `show()`: Muestra el gráfico
 - Ayuda: [matplotlib.pyplot](https://matplotlib.org/stable/api/pyplot_summary.html#module-matplotlib.pyplot), [imshow()](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imshow.html#matplotlib.pyplot.imshow), [show()](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -358,13 +355,13 @@ def visualizar_imagen(imagen: list) -> None:
 ### Descargar el esqueleto del laboratorio
 
 - Descargue el esqueleto del laboratorio:
-	- [`procesador_imagenes.zip`](https://eerosales24.github.io/ip_2024_20/n4/n4_l1/procesador_imagenes.zip)
+    - [`procesador_imagenes.zip`](https://eerosales24.github.io/ip_2024_20/n4/n4_l1/procesador_imagenes.zip)
 - Este contiene los siguientes archivos:
-	-  `procesador_imagenes.py`
-	- `consola_procesador_imagenes.py`
-	- `cosmos.png`
+    -  `procesador_imagenes.py`
+    - `consola_procesador_imagenes.py`
+    - `cosmos.png`
 - Copie los 3 archivos 
-	- A su **directorio de trabajo** de Spyder
+    - A su **directorio de trabajo** de Spyder
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -375,7 +372,7 @@ def visualizar_imagen(imagen: list) -> None:
 ### Ejecutar el procesador de imágenes
 
 - En Spyder, ejecute el archivo:
-	- `consola_procesador_imagenes.py`
+    - `consola_procesador_imagenes.py`
 - Seleccione la opción 1:
 
 ```Python
@@ -390,20 +387,16 @@ Ingrese el nombre del archivo imagen o *Enter* para cargar la imagen de prueba:
 
 - Presione `Enter`
 - Se cargará  y mostrará una imagen de prueba
-	- Ver ejemplo en la siguiente diapositiva
+    - Ver ejemplo en la siguiente diapositiva
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Ejecutar el procesador de imágenes - Ejemplo
 
 - Abra la pestaña 'plot' de Spyder
-	- La siguiente diapositiva
-		- Ilustra cómo debe verse 
-			- La imagen cargada
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+    - Así debería verse la imagen cargada:
 
-<img src="Screenshot 2024-11-12 at 8.28.06 PM.png" alt="" style="object-fit: scale-down">
+<img src="Screenshot 2024-11-12 at 8.28.06 PM.png" alt="" width="300">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -415,10 +408,10 @@ Ingrese el nombre del archivo imagen o *Enter* para cargar la imagen de prueba:
 
 - Explore el archivo `procesador_imagenes.py`
 - Ubique y estudie las siguientes funciones:
-	- `cargar_imagen()`
-	- `visualizar_imagen()`
+    - `cargar_imagen()`
+    - `visualizar_imagen()`
 - Estas funciones ya fueron explicadas 
-	- En diapositivas anteriores
+    - En diapositivas anteriores
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -426,7 +419,7 @@ Ingrese el nombre del archivo imagen o *Enter* para cargar la imagen de prueba:
 
 - En el archivo `procesador_imagenes.py`
 - Ubique y estudie la función:
-	- `convertir_negativo()`
+    - `convertir_negativo()`
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -484,7 +477,7 @@ def convertir_negativo(imagen: list) -> list:
 ```
 
 - Cada píxel tiene 3 componentes RGB
-	- El último ciclo recorre esos 3 componentes
+    - El último ciclo recorre esos 3 componentes
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -500,7 +493,7 @@ def convertir_negativo(imagen: list) -> list:
 ```
 
 - Se hace una *inversión de color*
-	- Restando el valor del componente de 1
+    - Restando el valor del componente de 1
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -508,18 +501,23 @@ def convertir_negativo(imagen: list) -> list:
 
 ```Python
 imagen[fila][columna][componente] = 
-						1 - imagen[fila][columna][componente]
+                        1 - imagen[fila][columna][componente]
 ```
 
-	- En esta línea si un componente RGB es 0.3
-		- La resta resultaría en 0.7
-			- Invirtiendo la intensidad
-				- *Efecto de negativo*
+    - En esta línea si un componente RGB es 0.3
+        - La resta resultaría en 0.7
+            - Invirtiendo la intensidad
+                - *Efecto de negativo*
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Negativo - Imagen de Prueba
-<img src="Screenshot 2024-11-12 at 9.39.52 PM.png" alt="" style="object-fit: scale-down">
+### Negativo - Imagen de Prueba
+
+<img src="Screenshot 2024-11-12 at 9.39.52 PM.png" alt="" width="300">
+
+
+- Así se ve el efecto negativo 
+    - En la imagen de prueba
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -593,7 +591,7 @@ def aplicar_filtro_umbral(imagen: list, umbral: float) -> list:
 
 ### `sum()`
 - Calcula y retorna la suma de todos los ítems 
-	- De un iterable dado
+    - De un iterable dado
 - Sintaxis: 
 ```Python
 sum(iterable, start)
@@ -617,7 +615,7 @@ def aplicar_filtro_umbral(imagen: list, umbral: float) -> list:
 ```
 
 - `sum(...) / 3`
-	- Obtiene un valor promedio
+    - Obtiene un valor promedio
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -644,14 +642,14 @@ imagen[fila][columna] = [1, 0, 0]  # Rojo
 ```
 
 - Cuando el promedio supera el umbral
-	- Esta línea cambia el color del píxel a rojo
+    - Esta línea cambia el color del píxel a rojo
     - *Filtro umbral* que destaca áreas brillantes
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Filtro Umbral - Imagen de Prueba - umbral = 0.5
 
-<img src="Screenshot 2024-11-12 at 9.41.42 PM.png" alt="" style="object-fit: scale-down">
+<img src="Screenshot 2024-11-12 at 9.41.42 PM.png" alt="" width="300">
 
 
  Así se ve el filtro umbral, con `umbral=0.5` 
@@ -663,21 +661,21 @@ El laboratorio viene con una imagen `.png` para cargar
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-`cosmos.png` (I)
+### `cosmos.png` (I)
 
-<img src="Screenshot 2024-11-12 at 9.36.26 PM.png" alt="" style="object-fit: scale-down">
+<img src="Screenshot 2024-11-12 at 9.36.26 PM.png" alt="" width="300">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### `cosmos.png` (II)
 - "Los Pilares de la Creación"
 - Son estructuras de gas y polvo 
-	- En la Nebulosa del Águila
+    - En la Nebulosa del Águila
 - A 7000 años luz de distancia
 - Abarca 70 x 50 años luz
 - Capturados por los telescopios espaciales 
-	- Hubble y 
-	- James Webb
+    - Hubble y 
+    - James Webb
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -688,7 +686,7 @@ El laboratorio viene con una imagen `.png` para cargar
 - Llamados así por su apariencia columnar
 - Extensión aproximadamente de 4 o 5 años luz
 - Los pilares se están erosionando 
-	- Por la radiación de estrellas cercanas
+    - Por la radiación de estrellas cercanas
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -696,13 +694,16 @@ Observemos los efectos anteriores al ser aplicados a `cosmos.png`
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Negativo - `cosmos.png`
-<img src="Screenshot 2024-11-12 at 9.44.28 PM.png" alt="" style="object-fit: scale-down">
+### Negativo - `cosmos.png`
+
+<img src="Screenshot 2024-11-12 at 9.44.28 PM.png" alt="" width="300">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Filtro Umbral - `cosmos.png` - `umbral = 0.5`
-<img src="Screenshot 2024-11-12 at 9.45.46 PM.png" alt="" style="object-fit: scale-down">
+### Filtro Umbral - `cosmos.png` - `umbral = 0.5`
+
+
+<img src="Screenshot 2024-11-12 at 9.45.46 PM.png" alt="" width="300">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -715,11 +716,11 @@ Filtro Umbral - `cosmos.png` - `umbral = 0.5`
 - En el archivo `procesador_imagenes.py`
 - Ubique e implemente los TODOs
 - A continuación se proveen salidas de ejemplo
-	- Para la imagen de prueba
-	- Para la imagen `cosmos.png`
+    - Para la imagen de prueba
+    - Para la imagen `cosmos.png`
 - **Siempre pruebe primero**
-	- Con la imagen de prueba
-		- Y luego, con `cosmos.png`
+    - Con la imagen de prueba
+        - Y luego, con `cosmos.png`
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -727,13 +728,15 @@ Filtro Umbral - `cosmos.png` - `umbral = 0.5`
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Efecto Reflejar - Imagen de Prueba
-<img src="Screenshot 2024-11-12 at 9.48.33 PM.png" alt="" style="object-fit: scale-down">
+### Efecto Reflejar - Imagen de Prueba
+
+<img src="Screenshot 2024-11-12 at 9.48.33 PM.png" alt="" width="300">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Efecto Reflejar - `cosmos.png`
-<img src="Screenshot 2024-11-12 at 10.07.34 PM.png" alt="" style="object-fit: scale-down">
+### Efecto Reflejar - `cosmos.png`
+
+<img src="Screenshot 2024-11-12 at 10.07.34 PM.png" alt="" width="300">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -741,13 +744,15 @@ Efecto Reflejar - `cosmos.png`
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Efecto Binarizar - Imagen de Prueba - `umbral = 0.5`
-<img src="Screenshot 2024-11-12 at 9.52.42 PM.png" alt="" style="object-fit: scale-down">
+### Efecto Binarizar - Imagen de Prueba - `umbral = 0.5`
+
+<img src="Screenshot 2024-11-12 at 9.52.42 PM.png" alt="" width="300">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Efecto Binarizar - `cosmos.png` - `umbral = 0.5`
-<img src="Screenshot 2024-11-12 at 10.08.06 PM.png" alt="" style="object-fit: scale-down">
+### Efecto Binarizar - `cosmos.png` - `umbral = 0.5`
+
+<img src="Screenshot 2024-11-12 at 10.08.06 PM.png" alt="" width="300">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -755,13 +760,16 @@ Efecto Binarizar - `cosmos.png` - `umbral = 0.5`
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Efecto Escala Grises - Imagen de Prueba
-<img src="Screenshot 2024-11-12 at 9.54.10 PM.png" alt="" style="object-fit: scale-down">
+### Efecto Escala Grises - Imagen de Prueba
+
+
+<img src="Screenshot 2024-11-12 at 9.54.10 PM.png" alt="" width="300">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Efecto Escala Grises - `cosmos.png`
-<img src="Screenshot 2024-11-12 at 10.08.37 PM.png" alt="" style="object-fit: scale-down">
+### Efecto Escala Grises - `cosmos.png`
+
+<img src="Screenshot 2024-11-12 at 10.08.37 PM.png" alt="" width="300">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -769,15 +777,15 @@ Efecto Escala Grises - `cosmos.png`
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Efecto Ajustar Brillo - Imagen de Prueba - `ajuste = 0.45`
+### Efecto Ajustar Brillo - Imagen de Prueba - `ajuste = 0.45`
 
-<img src="Screenshot 2024-11-12 at 9.56.30 PM.png" alt="" style="object-fit: scale-down">
+<img src="Screenshot 2024-11-12 at 9.56.30 PM.png" alt="" width="300">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Efecto Ajustar Brillo - `cosmos.png` - `ajuste = 0.45`
+### Efecto Ajustar Brillo - `cosmos.png` - `ajuste = 0.45`
 
-<img src="Screenshot 2024-11-12 at 10.09.07 PM.png" alt="" style="object-fit: scale-down">
+<img src="Screenshot 2024-11-12 at 10.09.07 PM.png" alt="" width="300">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -785,54 +793,60 @@ Efecto Ajustar Brillo - `cosmos.png` - `ajuste = 0.45`
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Filtro Sepia - Imagen de Prueba 
-<img src="Screenshot 2024-11-12 at 9.58.41 PM.png" alt="" style="object-fit: scale-down">
+### Filtro Sepia - Imagen de Prueba 
+
+<img src="Screenshot 2024-11-12 at 9.58.41 PM.png" alt="" width="300">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Filtro Sepia - `cosmos.png`
-<img src="Screenshot 2024-11-12 at 10.09.36 PM.png" alt="" style="object-fit: scale-down">
+### Filtro Sepia - `cosmos.png`
+
+<img src="Screenshot 2024-11-12 at 10.09.36 PM.png" alt="" width="300">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### `TODO6`: Obtener las Coordenadas del Punto Verde
 
 - ¿En dónde está el **pixel verde**?
-	- Para averiguralo 
-		- Implemente un recorrido parcial
-	- Imagen de prueba:
-		- Hay un (obvio) pixel verde 
-	- `cosmos.png`:
-		- El profesor **escondió un pixel verde**
-			- Obtenga sus coordenadas
+    - Para averiguralo 
+        - Implemente un recorrido parcial
+    - Imagen de prueba:
+        - Hay un (obvio) pixel verde 
+    - `cosmos.png`:
+        - El profesor **escondió un pixel verde**
+            - Obtenga sus coordenadas
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### `TODO7`:  Cree su Filtro Personalizado
 - Implemente su propio filtro personalizado
-	- El profesor dejó un filtro de ejemplo
-		- `aplicar_filtro_personalizado()`
-	- **Reemplácelo** por su propio filtro personalizado
+    - El profesor dejó un filtro de ejemplo
+        - `aplicar_filtro_personalizado()`
+    - **Reemplácelo** por su propio filtro personalizado
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Ejemplo Efecto Personalizado - Imagen de Prueba
-<img src="Screenshot 2024-11-12 at 10.06.08 PM.png" alt="" style="object-fit: scale-down">
+### Ejemplo Efecto Personalizado - Imagen de Prueba
+
+
+<img src="Screenshot 2024-11-12 at 10.06.08 PM.png" alt="" width="300">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Ejemplo Efecto Personalizado - `cosmos.png`
-<img src="Screenshot 2024-11-12 at 10.07.02 PM.png" alt="" style="object-fit: scale-down">
+### Ejemplo Efecto Personalizado - `cosmos.png`
+
+
+<img src="Screenshot 2024-11-12 at 10.07.02 PM.png" alt="" width="300">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Bono
 - Esta es una actividad OPCIONAL 
 - Si su filtro personalizado es **llamativo** y **complejo**
-	- Y **NO generado por un chatbot**
+    - Y **NO generado por un chatbot**
 - Puede compartirlo y aspirar a un bono para N3
 - Para ello, siga las instrucciones en el correo:
-	- *"IP - 2024-20  - Bono - Filtro Personalizado"*
+    - *"IP - 2024-20  - Bono - Filtro Personalizado"*
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-dark-background drop" data-background-color="#2E3440" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
